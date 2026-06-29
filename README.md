@@ -35,6 +35,29 @@ De site draait dan op http://localhost:3000
 Bij de eerste start wordt de database (`fightpro.db`) automatisch aangemaakt en
 gevuld met categorieën en producten uit `data/catalog.js`.
 
+## Online zetten (echte link) — zonder Node op je eigen pc
+
+Je kunt de site gratis online zetten via **Render**, rechtstreeks vanuit GitHub.
+Je krijgt dan een echte URL die je in je browser én op je telefoon kunt openen.
+
+1. Ga naar **https://render.com** en log in met je **GitHub**-account.
+2. Klik op **New +** → **Web Service**.
+3. Kies de repository **fightpro** uit de lijst (geef Render toegang als dat
+   gevraagd wordt).
+4. Belangrijk: zet **Branch** op `claude/chat-session-r2oqx3`.
+5. Render herkent automatisch dat het een Node-project is. Controleer:
+   - **Build Command:** `npm install`
+   - **Start Command:** `npm start`
+   - **Instance Type:** Free
+6. Klik op **Create Web Service**. Na een paar minuten staat de site online op
+   een adres als `https://fightpro.onrender.com`.
+
+> De gratis variant valt na inactiviteit even "in slaap"; de eerste keer openen
+> kan daardoor ~30 seconden duren. Bestellingen worden in een tijdelijke
+> database bewaard en kunnen bij een herstart worden gewist — de winkel zelf
+> (categorieën/producten) werkt altijd, want die wordt automatisch opnieuw
+> ingeladen.
+
 ## Projectstructuur
 
 ```

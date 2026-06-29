@@ -1,0 +1,13 @@
+# Render blueprint — zet de FightPro-webshop gratis online.
+# Render leest dit bestand automatisch in en draait de site voor je.
+services:
+  - type: web
+    name: fightpro
+    runtime: node
+    branch: claude/chat-session-r2oqx3
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
