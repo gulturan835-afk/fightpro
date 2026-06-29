@@ -1,0 +1,55 @@
+<section class="block wrap" id="{{ section.settings.anchor | default: 'services' }}">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <div class="scan-line"></div>
+    </div>
+    <p class="sub">{{ section.settings.subtitle }}</p>
+  </div>
+  <div class="svc-grid">
+    {%- for block in section.blocks -%}
+      <div class="svc-card reveal" {{ block.shopify_attributes }}>
+        <div class="svc-icon">{% render 'clima-icons', icon: block.settings.icon %}</div>
+        <h3>{{ block.settings.name }}</h3>
+        <p>{{ block.settings.desc }}</p>
+        <ul class="svc-points">
+          {%- assign pts = block.settings.points | split: ',' -%}
+          {%- for pt in pts -%}<li>{{ pt | strip }}</li>{%- endfor -%}
+        </ul>
+        <div class="svc-price">
+          {%- if block.settings.from == blank or block.settings.from == '0' -%}FREE<span> · no obligation</span>
+          {%- else -%}from € {{ block.settings.from | replace: '.', ',' }}<span> · incl. BTW</span>{%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Services",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor id", "default": "services" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Service desk" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Installation & Maintenance" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Certified engineers — from survey to lifetime upkeep." }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [
+          {"value":"tools","label":"Tools"},{"value":"shield","label":"Shield"},{"value":"wrench","label":"Wrench"},{"value":"clipboard","label":"Clipboard"}
+        ], "default": "tools" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Installation" },
+        { "type": "textarea", "id": "desc", "label": "Description", "default": "Certified F-gas engineers. Wall mount, vacuum, gas check & commissioning." },
+        { "type": "text", "id": "points", "label": "Points (comma separated)", "default": "F-gas certified, Within 10 working days, 5-year workmanship" },
+        { "type": "text", "id": "from", "label": "From price (0 = FREE)", "default": "295" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Services" } ]
+}
+{% endschema %}

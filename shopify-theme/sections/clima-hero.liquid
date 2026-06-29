@@ -1,0 +1,55 @@
+<section class="hero wrap" id="top">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h1>{{ section.settings.heading }} <span class="hl">{{ section.settings.heading_highlight }}</span></h1>
+      <p class="lead">{{ section.settings.lead }}</p>
+      <div class="hero-actions">
+        {%- if section.settings.cta1_label != blank -%}<a href="{{ section.settings.cta1_link }}" class="btn btn-primary">{{ section.settings.cta1_label }}</a>{%- endif -%}
+        {%- if section.settings.cta2_label != blank -%}<a href="{{ section.settings.cta2_link }}" class="btn btn-ghost">{{ section.settings.cta2_label }}</a>{%- endif -%}
+      </div>
+      <div class="hero-badges">
+        {%- for block in section.blocks -%}
+          <span class="hero-badge" {{ block.shopify_attributes }}><span class="dot"></span> <b>{{ block.settings.strong }}</b> {{ block.settings.text }}</span>
+        {%- endfor -%}
+      </div>
+    </div>
+    <div class="stage" id="hero-stage">
+      <span class="stage-tag">● LIVE 3D PACKAGING</span>
+      <span class="stage-hint">drag to rotate</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "★ Climate goods · freshly stocked" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop comfort like" },
+    { "type": "text", "id": "heading_highlight", "label": "Heading highlight", "default": "premium groceries." },
+    { "type": "textarea", "id": "lead", "label": "Lead text", "default": "Every air conditioner, ventilation unit and fan arrives as a real supermarket product — complete with barcode, energy label, climate-facts and a spinning 3D package you can inspect from every angle." },
+    { "type": "text", "id": "cta1_label", "label": "Primary button label", "default": "Browse the aisles →" },
+    { "type": "text", "id": "cta1_link", "label": "Primary button link", "default": "#featured" },
+    { "type": "text", "id": "cta2_label", "label": "Secondary button label", "default": "Free site survey" },
+    { "type": "text", "id": "cta2_link", "label": "Secondary button link", "default": "#contact" }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Hero badge",
+      "settings": [
+        { "type": "text", "id": "strong", "label": "Strong text", "default": "A-rated" },
+        { "type": "text", "id": "text", "label": "Text", "default": "energy efficiency" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "badge", "settings": { "strong": "A-rated", "text": "energy efficiency" } },
+      { "type": "badge", "settings": { "strong": "F-gas", "text": "certified install" } },
+      { "type": "badge", "settings": { "strong": "5-yr", "text": "warranty" } }
+    ]
+  }
+}
+{% endschema %}

@@ -1,0 +1,31 @@
+<section class="block wrap">
+  <div class="contact-grid">
+    <div class="card" style="padding:1.4rem">
+      <div class="card-media" style="border-bottom:1px dashed var(--line)">
+        {%- if product.featured_image -%}
+          <img class="card-illu" src="{{ product.featured_image | image_url: width: 700 }}" alt="{{ product.title | escape }}">
+        {%- else -%}
+          {% render 'clima-illustration', kind: product.metafields.custom.kind, color: product.metafields.custom.accent_color %}
+        {%- endif -%}
+      </div>
+    </div>
+    <div>
+      <div class="card-brand">{{ product.vendor }}</div>
+      <h1 style="font-size:2rem;margin:.3rem 0">{{ product.title }}</h1>
+      {%- if product.metafields.custom.energy_rating != blank -%}
+        <div style="margin:.6rem 0">{% render 'clima-energy-label', rating: product.metafields.custom.energy_rating %}</div>
+      {%- endif -%}
+      <div class="rte" style="margin:1rem 0">{{ product.description }}</div>
+      {%- form 'product', product -%}
+        {%- assign cv = product.selected_or_first_available_variant -%}
+        <input type="hidden" name="id" value="{{ cv.id }}">
+        <div class="card-foot" style="gap:1rem">
+          <div class="price"><span class="amt mono">{{ cv.price | money }}</span><span class="vat">incl. BTW</span></div>
+          <button type="submit" class="btn btn-primary" {% unless cv.available %}disabled{% endunless %}>
+            {%- if cv.available -%}Add to cart →{%- else -%}Sold out{%- endif -%}
+          </button>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>

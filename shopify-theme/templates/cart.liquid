@@ -1,0 +1,27 @@
+<section class="block wrap">
+  <div class="section-head"><div><span class="eyebrow">Self-checkout</span><h2>Your receipt</h2><div class="scan-line"></div></div></div>
+
+  {%- if cart.item_count > 0 -%}
+    <form action="{{ routes.cart_url }}" method="post" class="card" style="padding:1.4rem">
+      <table class="spec-table" style="font-size:.85rem">
+        <caption>CART ITEMS</caption>
+        {%- for item in cart.items -%}
+          <tr>
+            <th style="text-align:left">
+              <a href="{{ item.url }}" style="color:var(--ink);font-weight:700">{{ item.product.title }}</a><br>
+              <span style="color:var(--ink-soft)">{{ item.variant.title }} × {{ item.quantity }}</span>
+            </th>
+            <td style="text-align:right">{{ item.final_line_price | money }}</td>
+          </tr>
+        {%- endfor -%}
+      </table>
+      <div class="totline grand" style="margin-top:1rem"><span>TOTAL</span><span>{{ cart.total_price | money }}</span></div>
+      <div style="display:flex;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap">
+        <button type="submit" name="update" class="btn btn-ghost">Update</button>
+        <button type="submit" name="checkout" class="btn btn-primary">Checkout →</button>
+      </div>
+    </form>
+  {%- else -%}
+    <p class="sub">Your receipt is empty. <a href="{{ routes.root_url }}" style="color:var(--blue)">Back to the aisles →</a></p>
+  {%- endif -%}
+</section>

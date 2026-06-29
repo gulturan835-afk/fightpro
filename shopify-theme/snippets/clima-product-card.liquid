@@ -1,0 +1,75 @@
+{%- comment -%}
+  Receipt-style product card.
+  Expected variables:
+    pid, name, brand, price (dot-decimal string/number), rating (A–G),
+    kind, color, barcode, badge, category,
+    features_raw (comma separated), specs_raw ("Label | Value" per line),
+    photo (image url, optional), variant_id (optional, real Shopify product)
+{%- endcomment -%}
+
+{%- assign price_num = price | replace: ',', '.' -%}
+{%- assign price_display = price_num | replace: '.', ',' -%}
+
+{%- comment -%} ---- parse specs into JSON + keep lines for the table ---- {%- endcomment -%}
+{%- assign spec_lines = specs_raw | strip | newline_to_br | split: '<br />' -%}
+{%- assign specs_pairs = '' -%}
+{%- for line in spec_lines -%}
+  {%- assign kv = line | strip | split: '|' -%}
+  {%- if kv.size >= 2 -%}
+    {%- assign sk = kv[0] | strip | json -%}
+    {%- assign sv = kv[1] | strip | json -%}
+    {%- assign one = sk | append: ':' | append: sv -%}
+    {%- if specs_pairs == '' -%}{%- assign specs_pairs = one -%}{%- else -%}{%- assign specs_pairs = specs_pairs | append: ',' | append: one -%}{%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} ---- parse features into JSON ---- {%- endcomment -%}
+{%- assign feat_list = features_raw | split: ',' -%}
+{%- assign feat_pairs = '' -%}
+{%- for f in feat_list -%}
+  {%- assign ff = f | strip -%}
+  {%- if ff != blank -%}
+    {%- assign fj = ff | json -%}
+    {%- if feat_pairs == '' -%}{%- assign feat_pairs = fj -%}{%- else -%}{%- assign feat_pairs = feat_pairs | append: ',' | append: fj -%}{%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<article class="card reveal" data-id="{{ pid }}"{% if variant_id != blank %} data-variant-id="{{ variant_id }}"{% endif %}>
+  <div class="card-media">
+    {%- if badge != blank -%}<span class="badge">{{ badge }}</span>{%- endif -%}
+    <button class="view3d" data-view3d="{{ pid }}" type="button">{% render 'clima-icons', icon: 'cube' %}<span>3D PACK</span></button>
+    {%- if photo != blank -%}
+      <img src="{{ photo }}" alt="{{ name | escape }}" class="card-illu">
+    {%- else -%}
+      {% render 'clima-illustration', kind: kind, color: color %}
+    {%- endif -%}
+  </div>
+  <div class="card-body">
+    <div class="card-brand">{{ brand }}</div>
+    <h3 class="card-name">{{ name }}</h3>
+    <div class="card-feats">
+      {%- for f in feat_list -%}{%- assign ff = f | strip -%}{%- if ff != blank -%}<span class="chip">{{ ff }}</span>{%- endif -%}{%- endfor -%}
+    </div>
+    <table class="spec-table"><caption>CLIMATE FACTS</caption>
+      {%- for line in spec_lines -%}
+        {%- if forloop.index > 4 -%}{%- break -%}{%- endif -%}
+        {%- assign kv = line | strip | split: '|' -%}
+        {%- if kv.size >= 2 -%}<tr><th>{{ kv[0] | strip }}</th><td>{{ kv[1] | strip }}</td></tr>{%- endif -%}
+      {%- endfor -%}
+    </table>
+    <div class="tag-row">
+      {% render 'clima-energy-label', rating: rating %}
+      <div style="text-align:center">
+        <div class="barcode-host" data-barcode="{{ barcode }}" data-h="38"></div>
+        <div class="barcode-num">{{ barcode }}</div>
+      </div>
+    </div>
+    <div class="card-foot">
+      <div class="price"><span class="cur">€</span><span class="amt">{{ price_display }}</span><span class="vat">incl. 21% BTW</span></div>
+      <button class="add-btn" data-add="{{ pid }}" type="button">{% render 'clima-icons', icon: 'cart' %}<span>ADD</span></button>
+    </div>
+  </div>
+  <script type="application/json" class="product-data">
+    {"id":{{ pid | json }},"name":{{ name | json }},"brand":{{ brand | json }},"category":{{ category | json }},"kind":{{ kind | json }},"price":{{ price_num | default: 0 }},"rating":{{ rating | json }},"color":{{ color | json }},"barcode":{{ barcode | json }},"badge":{{ badge | json }},"features":[{{ feat_pairs }}],"specs":{ {{ specs_pairs }} }}
+  </script>
+</article>

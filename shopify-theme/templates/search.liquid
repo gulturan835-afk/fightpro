@@ -1,0 +1,14 @@
+<section class="block wrap">
+  <div class="section-head"><div><span class="eyebrow">Search</span><h2>Find climate goods</h2><div class="scan-line"></div></div></div>
+  <form action="{{ routes.search_url }}" method="get" class="form-row" style="max-width:520px">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search products…">
+  </form>
+  {%- if search.performed -%}
+    <p class="sub" style="margin:1rem 0">{{ search.results_count }} results for "{{ search.terms }}"</p>
+    <div class="product-grid">
+      {%- for item in search.results -%}
+        <a class="card" href="{{ item.url }}" style="text-decoration:none"><div class="card-body"><h3 class="card-name">{{ item.title }}</h3></div></a>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</section>

@@ -1,0 +1,98 @@
+<section class="block wrap" id="{{ section.settings.anchor | default: section.id }}">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <div class="scan-line"></div>
+    </div>
+    <p class="sub">{{ section.settings.subtitle }}</p>
+  </div>
+
+  <div class="product-grid">
+    {%- if section.settings.collection != blank and section.settings.collection.products.size > 0 -%}
+      {%- comment -%} Real Shopify products + metafields {%- endcomment -%}
+      {%- for product in section.settings.collection.products -%}
+        {%- assign variant = product.selected_or_first_available_variant -%}
+        {%- assign p_price = product.price | divided_by: 100.0 -%}
+        {%- assign p_photo = '' -%}
+        {%- if product.featured_image -%}{%- assign p_photo = product.featured_image | image_url: width: 600 -%}{%- endif -%}
+        {% render 'clima-product-card',
+          pid: product.handle,
+          name: product.title,
+          brand: product.vendor,
+          price: p_price,
+          rating: product.metafields.custom.energy_rating,
+          kind: product.metafields.custom.kind,
+          color: product.metafields.custom.accent_color,
+          barcode: variant.barcode,
+          badge: product.metafields.custom.badge,
+          category: section.settings.category,
+          features_raw: product.metafields.custom.features,
+          specs_raw: product.metafields.custom.specs,
+          photo: p_photo,
+          variant_id: variant.id %}
+      {%- endfor -%}
+    {%- else -%}
+      {%- comment -%} Demo products from theme-editor blocks {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        {%- assign block_pid = section.id | append: '__' | append: block.id -%}
+        <div {{ block.shopify_attributes }} style="display:contents">
+          {% render 'clima-product-card',
+            pid: block_pid,
+            name: block.settings.name,
+            brand: block.settings.brand,
+            price: block.settings.price,
+            rating: block.settings.rating,
+            kind: block.settings.kind,
+            color: block.settings.color,
+            barcode: block.settings.barcode,
+            badge: block.settings.badge,
+            category: section.settings.category,
+            features_raw: block.settings.features,
+            specs_raw: block.settings.specs %}
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product aisle",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor id (for nav links)", "default": "featured" },
+    { "type": "text", "id": "category", "label": "Category key (hero uses 'featured')", "default": "featured" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Aisle 01 · Split systems" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Featured Air Conditioners" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Wall-mounted inverter cooling & heating — silent, smart, A-rated." },
+    { "type": "header", "content": "Data source" },
+    { "type": "paragraph", "content": "Leave the collection empty to use the demo product blocks below. Select a collection to use real products (map energy_rating, kind, accent_color, badge, features, specs via product metafields under the 'custom' namespace; barcode comes from the variant)." },
+    { "type": "collection", "id": "collection", "label": "Collection (optional)" }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "ArcticPro 3.5kW Split" },
+        { "type": "text", "id": "brand", "label": "Brand", "default": "NORDLUFT" },
+        { "type": "text", "id": "price", "label": "Price (e.g. 749.00)", "default": "749.00" },
+        { "type": "select", "id": "rating", "label": "Energy rating", "options": [
+          {"value":"A","label":"A"},{"value":"B","label":"B"},{"value":"C","label":"C"},{"value":"D","label":"D"},{"value":"E","label":"E"},{"value":"F","label":"F"},{"value":"G","label":"G"}
+        ], "default": "A" },
+        { "type": "select", "id": "kind", "label": "Product kind (illustration + 3D)", "options": [
+          {"value":"split","label":"Split AC"},{"value":"portable","label":"Portable AC"},{"value":"ventilation","label":"Ventilation"},{"value":"fan-ceiling","label":"Ceiling fan"},{"value":"fan-stand","label":"Standing fan"}
+        ], "default": "split" },
+        { "type": "color", "id": "color", "label": "Accent color", "default": "#3aa6e0" },
+        { "type": "text", "id": "barcode", "label": "Barcode (EAN)", "default": "8710421003051" },
+        { "type": "text", "id": "badge", "label": "Badge (optional)", "default": "BESTSELLER" },
+        { "type": "text", "id": "features", "label": "Features (comma separated)", "default": "Inverter, Wifi + App, Self-clean, Heat pump" },
+        { "type": "textarea", "id": "specs", "label": "Climate facts (one per line: Label | Value)", "default": "Cooling capacity | 3.5 kW (12.000 BTU)\nCoverage | up to 35 m²\nNoise level | 19 dB(A)\nSEER | 7.4\nRefrigerant | R32 · eco\nWifi control | Yes — app & voice" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Product aisle" }
+  ]
+}
+{% endschema %}

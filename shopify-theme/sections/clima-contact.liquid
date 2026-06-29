@@ -1,0 +1,86 @@
+<section class="block wrap" id="{{ section.settings.anchor | default: 'contact' }}">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2>{{ section.settings.heading }}</h2>
+      <div class="scan-line"></div>
+    </div>
+    <p class="sub">{{ section.settings.subtitle }}</p>
+  </div>
+  <div class="contact-grid">
+    {%- form 'contact', id: 'quote-form', class: 'quote-form', novalidate: 'novalidate' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="form-note" style="color:var(--green);font-weight:700">✓ Thanks — we'll email a tailored quote within one working day.</div>
+      {%- endif -%}
+      <div class="form-grid-2">
+        <div class="form-row">
+          <label for="q-name">FULL NAME</label>
+          <input id="q-name" name="contact[name]" type="text" placeholder="Jane de Vries" value="{{ form.name }}">
+          <span class="form-error" data-err="name"></span>
+        </div>
+        <div class="form-row">
+          <label for="q-email">EMAIL</label>
+          <input id="q-email" name="contact[email]" type="email" placeholder="jane@email.nl" value="{{ form.email }}">
+          <span class="form-error" data-err="email"></span>
+        </div>
+      </div>
+      <div class="form-grid-2">
+        <div class="form-row">
+          <label for="q-postcode">POSTCODE</label>
+          <input id="q-postcode" name="contact[postcode]" type="text" placeholder="7511 AB">
+          <span class="form-error" data-err="postcode"></span>
+        </div>
+        <div class="form-row">
+          <label for="q-interest">INTERESTED IN</label>
+          <select id="q-interest" name="contact[interest]">
+            <option value="">Select…</option>
+            <option>Split air conditioner</option>
+            <option>Multi-split (multiple rooms)</option>
+            <option>Ventilation / heat recovery</option>
+            <option>Portable air conditioner</option>
+            <option>Ceiling / standing fan</option>
+            <option>Maintenance plan</option>
+          </select>
+          <span class="form-error" data-err="interest"></span>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="q-msg">MESSAGE (room size, photos, timing…)</label>
+        <textarea id="q-msg" name="contact[body]" rows="4" placeholder="Living room ~38 m², south-facing, want it before summer.">{{ form.body }}</textarea>
+      </div>
+      <input type="hidden" name="contact[basket]" id="basket-summary" value="">
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Request quotation →</button>
+      <p class="form-note">By submitting you agree to be contacted about your request. We never share your data.</p>
+    {%- endform -%}
+
+    <div class="contact-side">
+      <div class="contact-card">
+        <h3>{{ section.settings.card_title }}</h3>
+        <div class="line">{% render 'clima-icons', icon: 'pin' %} {{ section.settings.address }}</div>
+        <div class="line">{% render 'clima-icons', icon: 'phone' %} {{ section.settings.phone }}</div>
+        <div class="line">{% render 'clima-icons', icon: 'mail' %} {{ section.settings.email }}</div>
+        <div class="line" style="border-bottom:none">{{ section.settings.hours }}</div>
+      </div>
+      <div class="map-faux">
+        <span class="pin">{% render 'clima-icons', icon: 'pin' %}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact & quote",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor id", "default": "contact" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Self-checkout" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Contact & Quotation Request" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Tell us your space — get a tailored, no-obligation quote." },
+    { "type": "text", "id": "card_title", "label": "Info card title", "default": "CLIMA MARKT — store info" },
+    { "type": "text", "id": "address", "label": "Address", "default": "Koelstraat 21 · 7511 AB Enschede" },
+    { "type": "text", "id": "phone", "label": "Phone", "default": "+31 53 123 45 67" },
+    { "type": "text", "id": "email", "label": "Email", "default": "verkoop@climamarkt.nl" },
+    { "type": "text", "id": "hours", "label": "Hours", "default": "Mon–Fri 08:00–18:00 · Sat 09:00–16:00" }
+  ]
+}
+{% endschema %}

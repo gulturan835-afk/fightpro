@@ -1,0 +1,13 @@
+{%- comment -%}
+  EU energy ladder A–G. Usage: {% render 'clima-energy-label', rating: 'A' %}
+{%- endcomment -%}
+{%- assign scale = 'A,B,C,D,E,F,G' | split: ',' -%}
+<div class="energy">
+  {%- for g in scale -%}
+    {%- if g == rating -%}
+      <span class="bar" data-g="{{ g }}">{{ g }}</span>
+    {%- else -%}
+      <span class="bar dim" data-g="{{ g }}">{{ g }}</span>
+    {%- endif -%}
+  {%- endfor -%}
+</div>

@@ -1,0 +1,23 @@
+<section class="block wrap">
+  <div class="section-head"><div><span class="eyebrow">Aisle</span><h2>{{ collection.title }}</h2><div class="scan-line"></div></div><p class="sub">{{ collection.products_count }} products</p></div>
+  <div class="product-grid">
+    {%- for product in collection.products -%}
+      <a class="card" href="{{ product.url }}" style="text-decoration:none">
+        <div class="card-media">
+          {%- if product.featured_image -%}
+            <img class="card-illu" src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title | escape }}">
+          {%- else -%}
+            {% render 'clima-illustration', kind: product.metafields.custom.kind, color: product.metafields.custom.accent_color %}
+          {%- endif -%}
+        </div>
+        <div class="card-body">
+          <div class="card-brand">{{ product.vendor }}</div>
+          <h3 class="card-name">{{ product.title }}</h3>
+          <div class="card-foot"><div class="price"><span class="amt mono">{{ product.price | money }}</span></div></div>
+        </div>
+      </a>
+    {%- else -%}
+      <p class="sub">No products in this collection yet.</p>
+    {%- endfor -%}
+  </div>
+</section>

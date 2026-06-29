@@ -1,0 +1,59 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="{{ routes.root_url }}#top" class="brand">
+          <span class="logo">{% render 'clima-icons', icon: 'snow' %}</span>
+          <span class="brand-name">{{ section.settings.brand_name }}</span>
+        </a>
+        <p>{{ section.settings.about }}</p>
+      </div>
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}>
+          <h4>{{ block.settings.heading }}</h4>
+          <ul>
+            {%- assign labels = block.settings.labels | split: ',' -%}
+            {%- assign links = block.settings.links | split: ',' -%}
+            {%- for label in labels -%}
+              <li><a href="{{ links[forloop.index0] | default: '#' | strip }}">{{ label | strip }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endfor -%}
+    </div>
+    <div class="footer-bottom">
+      <span>{{ section.settings.legal }}</span>
+      <span>{{ section.settings.tagline }}</span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "text", "id": "brand_name", "label": "Brand name", "default": "CLIMA MARKT" },
+    { "type": "textarea", "id": "about", "label": "About text", "default": "The supermarket for climate control. Air conditioning, ventilation and fans — stocked, scanned and installed across Twente." },
+    { "type": "text", "id": "legal", "label": "Legal line", "default": "© 2026 CLIMA MARKT · KVK 8842 1190 · BTW NL0042.18.221.B01" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "RECEIPT-GRADE COMFORT · THANK YOU FOR SHOPPING" }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Link column",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Aisles" },
+        { "type": "text", "id": "labels", "label": "Labels (comma separated)", "default": "Air Conditioners,Ventilation,Portable,Fans" },
+        { "type": "text", "id": "links", "label": "Links (comma separated, same order)", "default": "#featured,#ventilation,#portable,#fans" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "column", "settings": { "heading": "Aisles", "labels": "Air Conditioners,Ventilation,Portable,Fans", "links": "#featured,#ventilation,#portable,#fans" } },
+      { "type": "column", "settings": { "heading": "Service desk", "labels": "Installation,Maintenance,Repairs,Free survey", "links": "#services,#services,#services,#contact" } },
+      { "type": "column", "settings": { "heading": "Company", "labels": "Reviews,Contact,Quotation", "links": "#reviews,#contact,#contact" } }
+    ]
+  }
+}
+{% endschema %}

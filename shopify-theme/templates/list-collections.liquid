@@ -1,0 +1,11 @@
+<section class="block wrap">
+  <div class="section-head"><div><span class="eyebrow">Departments</span><h2>Collections</h2><div class="scan-line"></div></div></div>
+  <div class="product-grid">
+    {%- for collection in collections -%}
+      <a class="card" href="{{ collection.url }}" style="text-decoration:none">
+        <div class="card-media">{%- if collection.featured_image -%}<img class="card-illu" src="{{ collection.featured_image | image_url: width: 500 }}" alt="{{ collection.title | escape }}">{%- endif -%}</div>
+        <div class="card-body"><h3 class="card-name">{{ collection.title }}</h3><p class="sub">{{ collection.products_count }} products</p></div>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>

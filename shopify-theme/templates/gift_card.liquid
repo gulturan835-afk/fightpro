@@ -1,0 +1,5 @@
+<section class="block wrap" style="text-align:center;max-width:520px">
+  <div class="section-head"><div><span class="eyebrow">Gift card</span><h2>{{ shop.name }}</h2><div class="scan-line"></div></div></div>
+  <p class="price"><span class="amt mono">{{ gift_card.balance | money }}</span></p>
+  <p class="sub">Card code: <b>{{ gift_card.code | format_code }}</b></p>
+</section>

@@ -1,0 +1,49 @@
+{%- comment -%} Cart receipt drawer + 3D modal + toast — rendered on every page {%- endcomment -%}
+
+<!-- CART DRAWER -->
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping receipt">
+  <div class="drawer-head">
+    <div class="store"><b>{{ shop.name | default: 'CLIMA MARKT' }}</b><small>YOUR RECEIPT · {{ shop.domain }}</small></div>
+    <button class="drawer-close" id="drawer-close" type="button" aria-label="Close">×</button>
+  </div>
+  <div class="receipt-meta" id="receipt-meta"></div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-empty" id="cart-empty">
+    {% render 'clima-icons', icon: 'bag' %}
+    <div>Your receipt is empty.<br>Add some climate goods!</div>
+  </div>
+  <div class="cart-foot">
+    <div class="totline"><span id="sum-items">0 items</span><span></span></div>
+    <div class="totline"><span>Subtotal (excl. BTW)</span><span id="sum-sub">€ 0,00</span></div>
+    <div class="totline"><span>BTW 21%</span><span id="sum-vat">€ 0,00</span></div>
+    <div class="totline grand"><span>TOTAL</span><span id="sum-total">€ 0,00</span></div>
+    <button class="btn btn-primary" id="checkout-btn" type="button" disabled>Checkout · print receipt</button>
+    <div class="receipt-barcode" id="drawer-barcode"></div>
+  </div>
+</aside>
+
+<!-- 3D MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-stage" id="modal-stage"></div>
+    <div class="modal-info">
+      <button class="close" id="modal-close" type="button" aria-label="Close">×</button>
+      <div class="brand" id="m-brand"></div>
+      <h3 id="m-name"></h3>
+      <div id="m-energy" style="margin:0.8rem 0;display:flex;gap:1rem;align-items:flex-start;flex-wrap:wrap"></div>
+      <table class="spec-table" id="m-specs"></table>
+      <div class="card-foot" style="margin-top:1.2rem">
+        <div class="price"><span class="amt mono" id="m-price"></span><span class="vat">incl. 21% BTW</span></div>
+        <button class="add-btn" id="m-add" type="button">{% render 'clima-icons', icon: 'cart' %}<span>ADD</span></button>
+      </div>
+      <div class="receipt-barcode" id="m-barcode" style="margin-top:1rem"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  {% render 'clima-icons', icon: 'check' %}
+  <span id="toast-msg"></span>
+</div>

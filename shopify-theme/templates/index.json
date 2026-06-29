@@ -1,0 +1,164 @@
+{
+  "sections": {
+    "hero": {
+      "type": "clima-hero",
+      "blocks": {
+        "b1": { "type": "badge", "settings": { "strong": "A-rated", "text": "energy efficiency" } },
+        "b2": { "type": "badge", "settings": { "strong": "F-gas", "text": "certified install" } },
+        "b3": { "type": "badge", "settings": { "strong": "5-yr", "text": "warranty" } }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
+    "featured": {
+      "type": "clima-aisle",
+      "settings": {
+        "anchor": "featured",
+        "category": "featured",
+        "eyebrow": "Aisle 01 · Split systems",
+        "heading": "Featured Air Conditioners",
+        "subtitle": "Wall-mounted inverter cooling & heating — silent, smart, A-rated."
+      },
+      "blocks": {
+        "p1": { "type": "product", "settings": {
+          "name": "ArcticPro 3.5kW Split", "brand": "NORDLUFT", "price": "749.00", "rating": "A",
+          "kind": "split", "color": "#3aa6e0", "barcode": "8710421003051", "badge": "BESTSELLER",
+          "features": "Inverter, Wifi + App, Self-clean, Heat pump",
+          "specs": "Cooling capacity | 3.5 kW (12.000 BTU)\nCoverage | up to 35 m²\nNoise level | 19 dB(A)\nSEER | 7.4\nRefrigerant | R32 · eco\nWifi control | Yes — app & voice"
+        } },
+        "p2": { "type": "product", "settings": {
+          "name": "PolarX 5.0kW Split", "brand": "NORDLUFT", "price": "1049.00", "rating": "A",
+          "kind": "split", "color": "#1d7fb8", "barcode": "8710421005024", "badge": "PREMIUM",
+          "features": "Inverter, Wifi + App, Turbo cool, Heat pump",
+          "specs": "Cooling capacity | 5.0 kW (18.000 BTU)\nCoverage | up to 55 m²\nNoise level | 21 dB(A)\nSEER | 8.1\nRefrigerant | R32 · eco\nWifi control | Yes — app & voice"
+        } },
+        "p3": { "type": "product", "settings": {
+          "name": "Breeze Duo Multi-Split", "brand": "AIRO", "price": "1399.00", "rating": "B",
+          "kind": "split", "color": "#2bb3c0", "barcode": "8710421007028", "badge": "MULTI-ROOM",
+          "features": "Dual zone, Inverter, Wifi + App, Sleep mode",
+          "specs": "Cooling capacity | 2× 2.6 kW\nCoverage | 2 rooms · 50 m²\nNoise level | 22 dB(A)\nSEER | 6.9\nRefrigerant | R32 · eco\nWifi control | Yes — per unit"
+        } }
+      },
+      "block_order": ["p1", "p2", "p3"]
+    },
+    "ventilation": {
+      "type": "clima-aisle",
+      "settings": {
+        "anchor": "ventilation",
+        "category": "ventilation",
+        "eyebrow": "Aisle 02 · Air exchange",
+        "heading": "Ventilation Systems",
+        "subtitle": "Heat-recovery & extraction that keeps indoor air fresh and dry."
+      },
+      "blocks": {
+        "p1": { "type": "product", "settings": {
+          "name": "FlowMaster HRV 400", "brand": "VENTA", "price": "1289.00", "rating": "A",
+          "kind": "ventilation", "color": "#4cb5e8", "barcode": "8710421101015", "badge": "HEAT RECOVERY",
+          "features": "Heat recovery, CO₂ sensor, Silent, F7 filter",
+          "specs": "Airflow | 400 m³/h\nHeat recovery | 92%\nCoverage | whole home\nNoise level | 24 dB(A)\nFilter | F7 + carbon\nWifi control | Yes — CO₂ auto"
+        } },
+        "p2": { "type": "product", "settings": {
+          "name": "DuctLine Q Inline Fan", "brand": "VENTA", "price": "219.00", "rating": "B",
+          "kind": "ventilation", "color": "#3aa6e0", "barcode": "8710421102029", "badge": "",
+          "features": "Inline, Low noise, Easy fit, Humidity stat",
+          "specs": "Airflow | 180 m³/h\nDuct size | Ø 125 mm\nCoverage | kitchen / bath\nNoise level | 28 dB(A)\nFilter | washable mesh\nWifi control | optional module"
+        } },
+        "p3": { "type": "product", "settings": {
+          "name": "EcoExtract Bathroom", "brand": "AIRO", "price": "89.00", "rating": "A",
+          "kind": "ventilation", "color": "#5cc0d6", "barcode": "8710421103033", "badge": "VALUE",
+          "features": "Timer, Humidity stat, Backdraft shutter, Quiet",
+          "specs": "Airflow | 95 m³/h\nDuct size | Ø 100 mm\nCoverage | bathroom / wc\nNoise level | 26 dB(A)\nFilter | —\nWifi control | no"
+        } }
+      },
+      "block_order": ["p1", "p2", "p3"]
+    },
+    "portable": {
+      "type": "clima-aisle",
+      "settings": {
+        "anchor": "portable",
+        "category": "portable",
+        "eyebrow": "Aisle 03 · Plug & cool",
+        "heading": "Portable Air Conditioners",
+        "subtitle": "No installation needed — wheel it in, plug it, cool the room."
+      },
+      "blocks": {
+        "p1": { "type": "product", "settings": {
+          "name": "Nomad 9K Portable", "brand": "AIRO", "price": "329.00", "rating": "A",
+          "kind": "portable", "color": "#3aa6e0", "barcode": "8710421201019", "badge": "PLUG & COOL",
+          "features": "No install, Wheels, App, Dehumidify",
+          "specs": "Cooling capacity | 2.6 kW (9.000 BTU)\nCoverage | up to 25 m²\nNoise level | 54 dB(A)\nEER | 2.6\nRefrigerant | R290 · eco\nWifi control | Yes — app"
+        } },
+        "p2": { "type": "product", "settings": {
+          "name": "Nomad 12K Portable", "brand": "AIRO", "price": "449.00", "rating": "A",
+          "kind": "portable", "color": "#1d7fb8", "barcode": "8710421202023", "badge": "",
+          "features": "No install, Wheels, App, 3-in-1",
+          "specs": "Cooling capacity | 3.5 kW (12.000 BTU)\nCoverage | up to 35 m²\nNoise level | 56 dB(A)\nEER | 2.8\nRefrigerant | R290 · eco\nWifi control | Yes — app"
+        } },
+        "p3": { "type": "product", "settings": {
+          "name": "MistCube Evaporative", "brand": "KOELO", "price": "159.00", "rating": "A",
+          "kind": "portable", "color": "#2bb3c0", "barcode": "8710421203030", "badge": "LOW WATT",
+          "features": "65 W only, Ice tray, 3 speeds, Oscillation",
+          "specs": "Cooling capacity | evaporative\nCoverage | up to 18 m²\nNoise level | 48 dB(A)\nPower | 65 W\nTank | 7 L\nWifi control | no"
+        } }
+      },
+      "block_order": ["p1", "p2", "p3"]
+    },
+    "fans": {
+      "type": "clima-aisle",
+      "settings": {
+        "anchor": "fans",
+        "category": "fans",
+        "eyebrow": "Aisle 04 · Airflow",
+        "heading": "Ceiling & Standing Fans",
+        "subtitle": "Whisper-quiet DC airflow for everyday comfort and circulation."
+      },
+      "blocks": {
+        "p1": { "type": "product", "settings": {
+          "name": "Halo DC Ceiling Fan", "brand": "KOELO", "price": "199.00", "rating": "A",
+          "kind": "fan-ceiling", "color": "#4cb5e8", "barcode": "8710421301013", "badge": "DC MOTOR",
+          "features": "DC motor, Remote, LED light, 6 speeds",
+          "specs": "Blade span | 132 cm\nAirflow | 11.000 m³/h\nNoise level | 32 dB(A)\nPower | 6–35 W (DC)\nLight | integrated LED\nWifi control | Yes — remote + app"
+        } },
+        "p2": { "type": "product", "settings": {
+          "name": "Tower Breeze Standing", "brand": "KOELO", "price": "119.00", "rating": "A",
+          "kind": "fan-stand", "color": "#3aa6e0", "barcode": "8710421302027", "badge": "",
+          "features": "Oscillation, Remote, Timer, 3 speeds",
+          "specs": "Height | 102 cm\nAirflow | 2.400 m³/h\nNoise level | 36 dB(A)\nPower | 45 W\nOscillation | 80°\nWifi control | remote"
+        } },
+        "p3": { "type": "product", "settings": {
+          "name": "PureAir Bladeless", "brand": "NORDLUFT", "price": "249.00", "rating": "A",
+          "kind": "fan-stand", "color": "#1d7fb8", "barcode": "8710421303031", "badge": "PURIFY",
+          "features": "Bladeless, HEPA purify, App, Night mode",
+          "specs": "Height | 95 cm\nAirflow | 1.900 m³/h\nNoise level | 34 dB(A)\nPower | 40 W\nFilter | HEPA + carbon\nWifi control | Yes — app"
+        } }
+      },
+      "block_order": ["p1", "p2", "p3"]
+    },
+    "services": {
+      "type": "clima-services",
+      "settings": {},
+      "blocks": {
+        "s1": { "type": "service", "settings": { "icon": "tools", "name": "Installation", "desc": "Certified F-gas engineers. Wall mount, vacuum, gas check & commissioning.", "points": "F-gas certified, Within 10 working days, 5-year workmanship", "from": "295" } },
+        "s2": { "type": "service", "settings": { "icon": "shield", "name": "Maintenance Plan", "desc": "Yearly clean, filter swap, gas-pressure check and efficiency report.", "points": "Annual visit, Filters included, Priority callout", "from": "89" } },
+        "s3": { "type": "service", "settings": { "icon": "wrench", "name": "Repair & Diagnostics", "desc": "Fault finding, leak detection and parts replacement for all major brands.", "points": "All brands, Leak detection, Genuine parts", "from": "65" } },
+        "s4": { "type": "service", "settings": { "icon": "clipboard", "name": "Free Site Survey", "desc": "On-site measurement and a tailored quotation — no obligation.", "points": "No obligation, Heat-load calc, Same-week visit", "from": "0" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"]
+    },
+    "reviews": {
+      "type": "clima-reviews",
+      "settings": {},
+      "blocks": {
+        "r1": { "type": "review", "settings": { "stars": 5, "text": "The ArcticPro keeps our whole living room at 21° silently. Install team was in and out in three hours. Receipt-style invoice was a nice touch!", "name": "Marloes V.", "place": "Enschede", "product": "ArcticPro 3.5kW", "date": "2026-05-18" } },
+        "r2": { "type": "review", "settings": { "stars": 5, "text": "Ordered the FlowMaster HRV after the free survey. CO₂ levels dropped instantly and the heat recovery is paying for itself.", "name": "Daan K.", "place": "Hengelo", "product": "FlowMaster HRV 400", "date": "2026-04-30" } },
+        "r3": { "type": "review", "settings": { "stars": 4, "text": "Portable Nomad 12K was plug-and-play for my home office. App control is genuinely useful. Only wish it were a touch quieter at night.", "name": "Priya S.", "place": "Almelo", "product": "Nomad 12K Portable", "date": "2026-06-02" } },
+        "r4": { "type": "review", "settings": { "stars": 5, "text": "The Halo ceiling fan looks premium and the DC motor sips power. Maintenance plan means I never think about it. Top supermarket-of-climate concept.", "name": "Tom B.", "place": "Oldenzaal", "product": "Halo DC Ceiling Fan", "date": "2026-03-21" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4"]
+    },
+    "contact": {
+      "type": "clima-contact",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "featured", "ventilation", "portable", "fans", "services", "reviews", "contact"]
+}

@@ -1,0 +1,51 @@
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="{{ routes.root_url }}#top" class="brand">
+      <span class="logo">{% render 'clima-icons', icon: 'snow' %}</span>
+      <span class="brand-name">{{ section.settings.brand_name }}<small>{{ section.settings.brand_tagline }}</small></span>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.link }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+      {%- endfor -%}
+    </nav>
+    <button class="cart-btn" id="cart-btn" type="button" aria-label="Open cart">
+      {% render 'clima-icons', icon: 'cart' %}
+      <span>CART</span>
+      <span class="cart-count" id="cart-count">0</span>
+    </button>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menu">{% render 'clima-icons', icon: 'menu' %}</button>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "text", "id": "brand_name", "label": "Brand name", "default": "CLIMA MARKT" },
+    { "type": "text", "id": "brand_tagline", "label": "Tagline", "default": "AIR · VENTILATION · COOL" }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Nav link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Link" },
+        { "type": "text", "id": "link", "label": "URL / anchor", "default": "#featured" }
+      ]
+    }
+  ],
+  "default": {
+    "settings": {},
+    "blocks": [
+      { "type": "link", "settings": { "label": "Air Conditioners", "link": "#featured" } },
+      { "type": "link", "settings": { "label": "Ventilation", "link": "#ventilation" } },
+      { "type": "link", "settings": { "label": "Portable", "link": "#portable" } },
+      { "type": "link", "settings": { "label": "Fans", "link": "#fans" } },
+      { "type": "link", "settings": { "label": "Services", "link": "#services" } },
+      { "type": "link", "settings": { "label": "Reviews", "link": "#reviews" } },
+      { "type": "link", "settings": { "label": "Quote", "link": "#contact" } }
+    ]
+  }
+}
+{% endschema %}
