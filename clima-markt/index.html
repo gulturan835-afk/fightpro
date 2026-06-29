@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLIMA MARKT — Air Conditioning & Ventilation Supermarket</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%231d7fb8'/%3E%3Cpath d='M12 4v16M5 7l14 10M19 7 5 17' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <meta name="description" content="Shop air conditioners, ventilation and fans like premium supermarket goods — each with barcode, energy label, climate-facts and interactive 3D packaging." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============================ HEADER ============================ -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="#top" class="brand">
+        <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M4.2 6l15.6 12M19.8 6 4.2 18"/></svg></span>
+        <span class="brand-name">CLIMA MARKT<small>AIR · VENTILATION · COOL</small></span>
+      </a>
+      <nav class="main-nav" id="main-nav">
+        <a href="#featured">Air Conditioners</a>
+        <a href="#ventilation">Ventilation</a>
+        <a href="#portable">Portable</a>
+        <a href="#fans">Fans</a>
+        <a href="#services">Services</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Quote</a>
+      </nav>
+      <button class="cart-btn" id="cart-btn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L21 7H6"/></svg>
+        <span>CART</span>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#1c2226" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============================ HERO ============================ -->
+    <section class="hero wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">★ Climate goods · freshly stocked</span>
+          <h1>Shop comfort like <span class="hl">premium groceries.</span></h1>
+          <p class="lead">Every air conditioner, ventilation unit and fan arrives as a real supermarket product — complete with barcode, energy label, climate-facts and a spinning 3D package you can inspect from every angle.</p>
+          <div class="hero-actions">
+            <a href="#featured" class="btn btn-primary">Browse the aisles →</a>
+            <a href="#contact" class="btn btn-ghost">Free site survey</a>
+          </div>
+          <div class="hero-badges">
+            <span class="hero-badge"><span class="dot"></span> <b>A-rated</b> energy efficiency</span>
+            <span class="hero-badge"><span class="dot"></span> <b>F-gas</b> certified install</span>
+            <span class="hero-badge"><span class="dot"></span> <b>5-yr</b> warranty</span>
+          </div>
+        </div>
+        <div class="stage" id="hero-stage">
+          <span class="stage-tag">● LIVE 3D PACKAGING</span>
+          <span class="stage-hint">drag to rotate</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURED AIR CONDITIONERS ============= -->
+    <section class="block wrap" id="featured">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Aisle 01 · Split systems</span>
+          <h2>Featured Air Conditioners</h2>
+          <div class="scan-line"></div>
+        </div>
+        <p class="sub">Wall-mounted inverter cooling & heating — silent, smart, A-rated.</p>
+      </div>
+      <div class="product-grid" data-cat="featured"></div>
+    </section>
+
+    <!-- ===================== VENTILATION SYSTEMS =================== -->
+    <section class="block wrap" id="ventilation">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Aisle 02 · Air exchange</span>
+          <h2>Ventilation Systems</h2>
+          <div class="scan-line"></div>
+        </div>
+        <p class="sub">Heat-recovery & extraction that keeps indoor air fresh and dry.</p>
+      </div>
+      <div class="product-grid" data-cat="ventilation"></div>
+    </section>
+
+    <!-- ===================== PORTABLE AIR CONDITIONERS ============= -->
+    <section class="block wrap" id="portable">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Aisle 03 · Plug & cool</span>
+          <h2>Portable Air Conditioners</h2>
+          <div class="scan-line"></div>
+        </div>
+        <p class="sub">No installation needed — wheel it in, plug it, cool the room.</p>
+      </div>
+      <div class="product-grid" data-cat="portable"></div>
+    </section>
+
+    <!-- ===================== CEILING & STANDING FANS =============== -->
+    <section class="block wrap" id="fans">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Aisle 04 · Airflow</span>
+          <h2>Ceiling & Standing Fans</h2>
+          <div class="scan-line"></div>
+        </div>
+        <p class="sub">Whisper-quiet DC airflow for everyday comfort and circulation.</p>
+      </div>
+      <div class="product-grid" data-cat="fans"></div>
+    </section>
+
+    <!-- ===================== SERVICES ============================== -->
+    <section class="block wrap" id="services">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Service desk</span>
+          <h2>Installation & Maintenance</h2>
+          <div class="scan-line"></div>
+        </div>
+        <p class="sub">Certified engineers — from survey to lifetime upkeep.</p>
+      </div>
+      <div class="svc-grid" id="svc-grid"></div>
+    </section>
+
+    <!-- ===================== REVIEWS =============================== -->
+    <section class="block wrap" id="reviews">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Verified checkout reviews</span>
+          <h2>Customer Reviews</h2>
+          <div class="scan-line"></div>
+        </div>
+        <p class="sub">★ 4.9 / 5 average across 1.240+ installations.</p>
+      </div>
+      <div class="review-grid" id="review-grid"></div>
+    </section>
+
+    <!-- ===================== CONTACT / QUOTE ======================= -->
+    <section class="block wrap" id="contact">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Self-checkout</span>
+          <h2>Contact & Quotation Request</h2>
+          <div class="scan-line"></div>
+        </div>
+        <p class="sub">Tell us your space — get a tailored, no-obligation quote.</p>
+      </div>
+      <div class="contact-grid">
+        <form class="quote-form" id="quote-form" novalidate>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label for="q-name">FULL NAME</label>
+              <input id="q-name" name="name" type="text" placeholder="Jane de Vries" />
+              <span class="form-error" data-err="name"></span>
+            </div>
+            <div class="form-row">
+              <label for="q-email">EMAIL</label>
+              <input id="q-email" name="email" type="email" placeholder="jane@email.nl" />
+              <span class="form-error" data-err="email"></span>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label for="q-postcode">POSTCODE</label>
+              <input id="q-postcode" name="postcode" type="text" placeholder="7511 AB" />
+              <span class="form-error" data-err="postcode"></span>
+            </div>
+            <div class="form-row">
+              <label for="q-interest">INTERESTED IN</label>
+              <select id="q-interest" name="interest">
+                <option value="">Select…</option>
+                <option>Split air conditioner</option>
+                <option>Multi-split (multiple rooms)</option>
+                <option>Ventilation / heat recovery</option>
+                <option>Portable air conditioner</option>
+                <option>Ceiling / standing fan</option>
+                <option>Maintenance plan</option>
+              </select>
+              <span class="form-error" data-err="interest"></span>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="q-msg">MESSAGE (room size, photos, timing…)</label>
+            <textarea id="q-msg" name="message" rows="4" placeholder="Living room ~38 m², south-facing, want it before summer."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Request quotation →</button>
+          <div id="quote-result"></div>
+          <p class="form-note">By submitting you agree to be contacted about your request. We never share your data.</p>
+        </form>
+
+        <div class="contact-side">
+          <div class="contact-card">
+            <h3>CLIMA MARKT — store info</h3>
+            <div class="line"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg> Koelstraat 21 · 7511 AB Enschede</div>
+            <div class="line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg> +31 53 123 45 67</div>
+            <div class="line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> verkoop@climamarkt.nl</div>
+            <div class="line" style="border-bottom:none">Mon–Fri 08:00–18:00 · Sat 09:00–16:00</div>
+          </div>
+          <div class="map-faux">
+            <span class="pin"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#top" class="brand">
+            <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M4.2 6l15.6 12M19.8 6 4.2 18"/></svg></span>
+            <span class="brand-name">CLIMA MARKT</span>
+          </a>
+          <p>The supermarket for climate control. Air conditioning, ventilation and fans — stocked, scanned and installed across Twente.</p>
+        </div>
+        <div>
+          <h4>Aisles</h4>
+          <ul>
+            <li><a href="#featured">Air Conditioners</a></li>
+            <li><a href="#ventilation">Ventilation</a></li>
+            <li><a href="#portable">Portable</a></li>
+            <li><a href="#fans">Fans</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Service desk</h4>
+          <ul>
+            <li><a href="#services">Installation</a></li>
+            <li><a href="#services">Maintenance</a></li>
+            <li><a href="#services">Repairs</a></li>
+            <li><a href="#contact">Free survey</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact">Quotation</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 CLIMA MARKT · KVK 8842 1190 · BTW NL0042.18.221.B01</span>
+        <span>RECEIPT-GRADE COMFORT · THANK YOU FOR SHOPPING</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================ CART DRAWER ======================= -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Shopping receipt">
+    <div class="drawer-head">
+      <div class="store"><b>CLIMA MARKT</b><small>YOUR RECEIPT · climamarkt.nl</small></div>
+      <button class="drawer-close" id="drawer-close" aria-label="Close">×</button>
+    </div>
+    <div class="receipt-meta" id="receipt-meta"></div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-empty" id="cart-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 7h12l-1 14H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+      <div>Your receipt is empty.<br>Add some climate goods!</div>
+    </div>
+    <div class="cart-foot">
+      <div class="totline"><span id="sum-items">0 items</span><span></span></div>
+      <div class="totline"><span>Subtotal (excl. BTW)</span><span id="sum-sub">€ 0,00</span></div>
+      <div class="totline"><span>BTW 21%</span><span id="sum-vat">€ 0,00</span></div>
+      <div class="totline grand"><span>TOTAL</span><span id="sum-total">€ 0,00</span></div>
+      <button class="btn btn-primary" id="checkout-btn" disabled>Checkout · print receipt</button>
+      <div class="receipt-barcode" id="drawer-barcode"></div>
+    </div>
+  </aside>
+
+  <!-- ============================ 3D MODAL ========================== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-stage" id="modal-stage"></div>
+      <div class="modal-info">
+        <button class="close" id="modal-close" aria-label="Close">×</button>
+        <div class="brand" id="m-brand"></div>
+        <h3 id="m-name"></h3>
+        <div id="m-energy" style="margin:0.8rem 0;display:flex;gap:1rem;align-items:flex-start;flex-wrap:wrap"></div>
+        <table class="spec-table" id="m-specs"></table>
+        <div class="card-foot" style="margin-top:1.2rem">
+          <div class="price"><span class="amt mono" id="m-price"></span><span class="vat">incl. 21% BTW</span></div>
+          <button class="add-btn" id="m-add"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.2a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L21 7H6"/></svg><span>ADD</span></button>
+        </div>
+        <div class="receipt-barcode" id="m-barcode" style="margin-top:1rem"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================ TOAST ============================= -->
+  <div class="toast" id="toast">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m4 12 5 5L20 6"/></svg>
+    <span id="toast-msg"></span>
+  </div>
+
+  <!-- ============================ SCRIPTS =========================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
