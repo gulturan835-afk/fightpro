@@ -3,3 +3,7 @@ fightpro.db
 fightpro.db-shm
 fightpro.db-wal
 *.log
+
+# Statische export (gegenereerd)
+fightpro-website/
+fightpro-website.zip
