@@ -1,0 +1,99 @@
+<%- include('partials/header') %>
+
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb"><a href="/">Home</a> <span>/</span> <a href="/winkelwagen">Winkelwagen</a> <span>/</span> <span class="cur">Afrekenen</span></nav>
+    <h1 class="shop-title">Afrekenen</h1>
+  </div>
+</div>
+
+<section class="sec" style="background:var(--black);padding-top:24px;">
+  <div class="container">
+    <form action="/afrekenen" method="post" class="checkout-g" novalidate>
+      <div class="checkout-main">
+
+        <div class="co-block">
+          <h2 class="co-h">1 · Gegevens</h2>
+          <div class="co-field">
+            <label for="name">Naam</label>
+            <input type="text" id="name" name="name" value="<%= form.name || '' %>" class="<%= errors.name ? 'err' : '' %>">
+            <% if (errors.name) { %><span class="fe"><%= errors.name %></span><% } %>
+          </div>
+          <div class="co-row">
+            <div class="co-field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" value="<%= form.email || '' %>" class="<%= errors.email ? 'err' : '' %>">
+              <% if (errors.email) { %><span class="fe"><%= errors.email %></span><% } %>
+            </div>
+            <div class="co-field">
+              <label for="phone">Telefoon <span class="opt">(optioneel)</span></label>
+              <input type="tel" id="phone" name="phone" value="<%= form.phone || '' %>">
+            </div>
+          </div>
+          <div class="co-field">
+            <label for="address">Adres</label>
+            <input type="text" id="address" name="address" placeholder="Straat en huisnummer" value="<%= form.address || '' %>" class="<%= errors.address ? 'err' : '' %>">
+            <% if (errors.address) { %><span class="fe"><%= errors.address %></span><% } %>
+          </div>
+          <div class="co-row">
+            <div class="co-field" style="max-width:160px;">
+              <label for="postcode">Postcode</label>
+              <input type="text" id="postcode" name="postcode" placeholder="7511 CT" value="<%= form.postcode || '' %>" class="<%= errors.postcode ? 'err' : '' %>">
+              <% if (errors.postcode) { %><span class="fe"><%= errors.postcode %></span><% } %>
+            </div>
+            <div class="co-field">
+              <label for="city">Plaats</label>
+              <input type="text" id="city" name="city" value="<%= form.city || '' %>" class="<%= errors.city ? 'err' : '' %>">
+              <% if (errors.city) { %><span class="fe"><%= errors.city %></span><% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="co-block">
+          <h2 class="co-h">2 · Betaalmethode</h2>
+          <% if (errors.payment) { %><span class="fe" style="margin-bottom:10px;display:block;"><%= errors.payment %></span><% } %>
+          <div class="pay-opts">
+            <% var pays=[
+              {id:'ideal', label:'iDEAL', desc:'Betaal direct via je eigen bank'},
+              {id:'creditcard', label:'Creditcard', desc:'VISA / Mastercard'},
+              {id:'paypal', label:'PayPal', desc:'Betaal met je PayPal-account'},
+              {id:'bancontact', label:'Bancontact', desc:'Voor Belgische klanten'},
+              {id:'afterpay', label:'Achteraf betalen', desc:'Binnen 14 dagen'}
+            ]; %>
+            <% pays.forEach(function(opt, i){ %>
+              <label class="pay-opt">
+                <input type="radio" name="payment" value="<%= opt.id %>" <%= form.payment===opt.id ? 'checked' : '' %>>
+                <span class="pay-card">
+                  <span class="pay-name"><%= opt.label %></span>
+                  <span class="pay-desc"><%= opt.desc %></span>
+                </span>
+              </label>
+            <% }) %>
+          </div>
+          <p class="co-note">🔒 Dit is een demo-betaling. Er wordt geen geld afgeschreven — je bestelling wordt wel echt aangemaakt en bevestigd.</p>
+        </div>
+
+      </div>
+
+      <aside class="checkout-side">
+        <h2 class="sum-title">Je bestelling</h2>
+        <div class="co-items">
+          <% cart.lines.forEach(function(l){ %>
+            <div class="co-item">
+              <span class="co-item-q"><%= l.qty %>×</span>
+              <span class="co-item-n"><%= l.product.brand %> <%= l.product.name %><% if (l.size) { %> <small>(<%= l.size %>)</small><% } %></span>
+              <span class="co-item-p"><%= euro(l.lineTotal) %></span>
+            </div>
+          <% }) %>
+        </div>
+        <div class="sum-row"><span>Subtotaal</span><span><%= euro(cart.subtotal) %></span></div>
+        <div class="sum-row"><span>Verzending</span><span><%= cart.shipping === 0 ? 'Gratis' : euro(cart.shipping) %></span></div>
+        <div class="sum-total"><span>Totaal</span><span><%= euro(cart.total) %></span></div>
+        <button type="submit" class="btn-p btn-lg sum-checkout">Bestelling plaatsen →</button>
+        <a href="/winkelwagen" class="sum-cont">← Terug naar winkelwagen</a>
+      </aside>
+    </form>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

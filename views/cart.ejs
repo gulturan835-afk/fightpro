@@ -1,0 +1,66 @@
+<%- include('partials/header') %>
+
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb"><a href="/">Home</a> <span>/</span> <span class="cur">Winkelwagen</span></nav>
+    <h1 class="shop-title">Winkelwagen</h1>
+  </div>
+</div>
+
+<section class="sec" style="background:var(--black);padding-top:24px;">
+  <div class="container">
+    <% if (!cart.lines.length) { %>
+      <div class="empty-cart">
+        <p class="empty-msg">Je winkelwagen is leeg.</p>
+        <a href="/categorie/bokshandschoenen" class="btn-p btn-lg">Verder winkelen →</a>
+      </div>
+    <% } else { %>
+      <div class="cart-g">
+        <div class="cart-lines">
+          <% cart.lines.forEach(function(l){ %>
+            <div class="cart-line">
+              <a href="/product/<%= l.product.slug %>" class="cart-thumb"><%- productArt(l.product, 90) %></a>
+              <div class="cart-mid">
+                <div class="cart-brand"><%= l.product.brand %></div>
+                <a href="/product/<%= l.product.slug %>" class="cart-name"><%= l.product.name %></a>
+                <% if (l.size) { %><div class="cart-size">Maat: <%= l.size %></div><% } %>
+                <div class="cart-unit"><%= euro(l.product.price) %> per stuk</div>
+              </div>
+              <div class="cart-right">
+                <form action="/winkelwagen/update" method="post" class="cart-qty-form">
+                  <input type="hidden" name="slug" value="<%= l.slug %>">
+                  <input type="hidden" name="size" value="<%= l.size %>">
+                  <div class="qty-box sm">
+                    <button type="submit" name="qty" value="<%= l.qty-1 %>" class="qty-btn" aria-label="Minder">−</button>
+                    <span class="qty-val"><%= l.qty %></span>
+                    <button type="submit" name="qty" value="<%= l.qty+1 %>" class="qty-btn" aria-label="Meer">+</button>
+                  </div>
+                </form>
+                <div class="cart-line-total"><%= euro(l.lineTotal) %></div>
+                <form action="/winkelwagen/verwijder" method="post">
+                  <input type="hidden" name="slug" value="<%= l.slug %>">
+                  <input type="hidden" name="size" value="<%= l.size %>">
+                  <button type="submit" class="cart-remove" aria-label="Verwijderen">Verwijderen</button>
+                </form>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+
+        <aside class="cart-summary">
+          <h2 class="sum-title">Overzicht</h2>
+          <div class="sum-row"><span>Subtotaal</span><span><%= euro(cart.subtotal) %></span></div>
+          <div class="sum-row"><span>Verzending</span><span><%= cart.shipping === 0 ? 'Gratis' : euro(cart.shipping) %></span></div>
+          <% if (cart.shipping > 0) { %>
+            <p class="sum-hint">Nog <%= euro(7500 - cart.subtotal) %> tot gratis verzending.</p>
+          <% } %>
+          <div class="sum-total"><span>Totaal</span><span><%= euro(cart.total) %></span></div>
+          <a href="/afrekenen" class="btn-p btn-lg sum-checkout">Afrekenen →</a>
+          <a href="/categorie/bokshandschoenen" class="sum-cont">← Verder winkelen</a>
+        </aside>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

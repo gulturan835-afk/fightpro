@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="FightPro Enschede — Dé vechtsportwinkel van Twente. Bokshandschoenen, scheenbeschermers en meer van Hayabusa, Twins, Joya, Fairtex en King. Passen voor kopen.">
+<meta name="theme-color" content="#B8973A">
+<title><%= title %></title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="topbar"><p>📍 Lipperkerkstraat 19, Enschede &nbsp;·&nbsp; Di–Vr 13:00–18:00 &nbsp;·&nbsp; Za 10:00–16:00 &nbsp;·&nbsp; <a href="tel:0634039734">06 340 397 34</a></p></div>
+
+<header id="hdr">
+<div class="header-wrap">
+<a href="/" class="logo" aria-label="FightPro homepage"><img src="/img/logo.png" alt="FightPro by FP Fight Gear" width="156" height="52"></a>
+<nav class="nav-d" role="navigation" aria-label="Hoofdnavigatie">
+  <% navGroups.forEach(function(g){ %>
+    <div class="has-sub nav-item" tabindex="0" aria-haspopup="true">
+      <a href="/categorie/<%= g.slug %>" style="color:inherit;padding:0;"><%= g.name %></a> <span class="cv">▾</span>
+      <div class="sub">
+        <% g.children.forEach(function(c){ %>
+          <a href="/categorie/<%= c.slug %>"><%= c.name %></a>
+        <% }) %>
+      </div>
+    </div>
+  <% }) %>
+  <% navSingles.forEach(function(c){ %>
+    <a href="/categorie/<%= c.slug %>" class="nav-item"><%= c.name %></a>
+  <% }) %>
+  <a href="/#over-ons" class="nav-item">Over ons</a>
+</nav>
+<div class="hdr-r">
+  <form action="/zoeken" method="get" class="hdr-search" role="search">
+    <button class="ib" type="submit" aria-label="Zoeken"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+    <input type="search" name="q" value="<%= query %>" placeholder="Zoeken…" aria-label="Zoeken naar producten">
+  </form>
+  <a href="/winkelwagen" class="ib" aria-label="Winkelwagen" style="position:relative;">
+    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <span class="cb" id="cartBadge"><%= cartCount %></span>
+  </a>
+  <a href="/#contact" class="btn-p" style="padding:10px 22px;font-size:13px;">Winkel bezoeken</a>
+  <button class="ham" id="ham" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div>
+</div>
+</header>
+
+<nav class="mob-nav" id="mnav" aria-label="Mobiel menu">
+  <% navGroups.forEach(function(g){ %>
+    <div class="mob-sec"><a href="/categorie/<%= g.slug %>" style="color:var(--gold)"><%= g.name %></a></div>
+    <% g.children.forEach(function(c){ %>
+      <a href="/categorie/<%= c.slug %>"><%= c.name %></a>
+    <% }) %>
+  <% }) %>
+  <div class="mob-sec">Overig</div>
+  <% navSingles.forEach(function(c){ %>
+    <a href="/categorie/<%= c.slug %>"><%= c.name %></a>
+  <% }) %>
+  <div class="mob-sec">Info</div>
+  <a href="/#over-ons">Over ons</a><a href="/#groothandel">Groothandel</a><a href="/#contact">Contact & Openingstijden</a>
+  <a href="/winkelwagen" class="mob-cta">🛒 Naar winkelwagen</a>
+</nav>

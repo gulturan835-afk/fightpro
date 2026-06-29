@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb"><a href="/">Home</a> <span>/</span> <% if (category.parent) { %><a href="/categorie/<%= category.parent %>"><%= category.parent.charAt(0).toUpperCase()+category.parent.slice(1) %></a> <span>/</span> <% } %><span class="cur"><%= category.name %></span></nav>
+    <h1 class="shop-title"><%= category.name %></h1>
+    <% if (category.blurb) { %><p class="shop-blurb"><%= category.blurb %></p><% } %>
+
+    <% if (children && children.length) { %>
+      <div class="subcat-row">
+        <% children.forEach(function(c){ %>
+          <a href="/categorie/<%= c.slug %>" class="chip"><%= c.name %></a>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<section class="sec" style="background:var(--black);padding-top:32px;">
+  <div class="container">
+    <% if (brands && brands.length > 1) { %>
+      <div class="filter-row">
+        <span class="filter-lbl">Merk:</span>
+        <a href="/categorie/<%= category.slug %>" class="chip <%= !activeBrand ? 'chip-on' : '' %>">Alle</a>
+        <% brands.forEach(function(b){ %>
+          <a href="/categorie/<%= category.slug %>?merk=<%= encodeURIComponent(b) %>" class="chip <%= activeBrand===b ? 'chip-on' : '' %>"><%= b %></a>
+        <% }) %>
+      </div>
+    <% } %>
+
+    <p class="result-count"><%= products.length %> product<%= products.length===1?'':'en' %></p>
+
+    <% if (products.length) { %>
+      <div class="pg">
+        <% products.forEach(function(p){ %>
+          <%- include('partials/product-card', { p: p }) %>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <p class="empty-msg">Geen producten gevonden in deze categorie.</p>
+    <% } %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

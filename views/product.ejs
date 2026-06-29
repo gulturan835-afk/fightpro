@@ -1,0 +1,89 @@
+<%- include('partials/header') %>
+
+<div class="shop-head" style="padding-bottom:0;">
+  <div class="container">
+    <nav class="crumb">
+      <a href="/">Home</a> <span>/</span>
+      <% if (category) { %><a href="/categorie/<%= category.slug %>"><%= category.name %></a> <span>/</span> <% } %>
+      <span class="cur"><%= product.name %></span>
+    </nav>
+  </div>
+</div>
+
+<section class="sec" style="background:var(--black);padding-top:24px;">
+  <div class="container">
+    <div class="pd-g">
+      <div class="pd-media">
+        <% if (product.badge) { %><span class="bdg bg pd-badge"><%= product.badge %></span><% } %>
+        <%- productArt(product, 320) %>
+      </div>
+
+      <div class="pd-info">
+        <div class="pd-brand"><%= product.brand %></div>
+        <h1 class="pd-name"><%= product.name %></h1>
+        <div class="pd-price-row">
+          <span class="pd-price"><%= euro(product.price) %></span>
+          <% if (product.old_price) { %>
+            <span class="pd-old"><%= euro(product.old_price) %></span>
+            <span class="pd-save">Bespaar <%= euro(product.old_price - product.price) %></span>
+          <% } %>
+        </div>
+        <p class="pd-desc"><%= product.description %></p>
+
+        <form class="pd-form js-add-form" action="/winkelwagen/toevoegen" method="post" data-slug="<%= product.slug %>">
+          <input type="hidden" name="slug" value="<%= product.slug %>">
+
+          <% if (product.sizes && product.sizes.length) { %>
+            <div class="pd-field">
+              <label class="pd-label">Maat</label>
+              <div class="size-row">
+                <% product.sizes.forEach(function(s, i){ %>
+                  <label class="size-opt">
+                    <input type="radio" name="size" value="<%= s %>" <%= i===0 ? 'checked' : '' %>>
+                    <span><%= s %></span>
+                  </label>
+                <% }) %>
+              </div>
+            </div>
+          <% } %>
+
+          <div class="pd-actions">
+            <div class="qty-box">
+              <button type="button" class="qty-btn js-qty-minus" aria-label="Minder">−</button>
+              <input type="number" name="qty" class="qty-input" value="1" min="1" max="<%= product.stock || 10 %>" aria-label="Aantal">
+              <button type="button" class="qty-btn js-qty-plus" aria-label="Meer">+</button>
+            </div>
+            <button type="submit" class="btn-p btn-lg pd-add">In winkelwagen →</button>
+          </div>
+          <p class="pd-stock"><% if (product.stock > 0) { %><span class="dot-ok"></span> Op voorraad — vandaag te passen in de winkel<% } else { %><span class="dot-no"></span> Op aanvraag<% } %></p>
+        </form>
+
+        <% if (product.specs && product.specs.length) { %>
+          <div class="pd-specs">
+            <div class="pd-specs-t">Kenmerken</div>
+            <ul>
+              <% product.specs.forEach(function(s){ %>
+                <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><%= s %></li>
+              <% }) %>
+            </ul>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% if (related && related.length) { %>
+<section class="sec" style="background:var(--black2);">
+  <div class="container">
+    <div class="p-hd"><div><div class="lbl">Misschien ook interessant</div><h2 class="ttl">Vergelijkbare <span class="ac">producten</span></h2></div></div>
+    <div class="pg">
+      <% related.forEach(function(p){ %>
+        <%- include('partials/product-card', { p: p }) %>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<%- include('partials/footer') %>

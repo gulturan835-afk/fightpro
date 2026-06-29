@@ -1,0 +1,24 @@
+<%
+  var badgeClass = 'bw';
+  if (p.badge === 'Bestseller') badgeClass = 'bg';
+  else if (p.badge === 'Aanbieding') badgeClass = 'bo';
+  else if (p.badge === 'Eigen merk') badgeClass = 'bg';
+%>
+<article class="pc">
+  <a href="/product/<%= p.slug %>" class="p-img" aria-label="<%= p.brand %> <%= p.name %>">
+    <% if (p.badge) { %><span class="bdg <%= badgeClass %>"><%= p.badge %></span><% } %>
+    <%- productArt(p, 140) %>
+  </a>
+  <div class="p-bd">
+    <div class="p-br"><%= p.brand %></div>
+    <h3 class="p-nm"><a href="/product/<%= p.slug %>" style="color:inherit"><%= p.name %></a></h3>
+    <p class="p-ds"><%= p.short %></p>
+    <div class="p-ft">
+      <div>
+        <span class="pr"><%= euro(p.price) %></span>
+        <% if (p.old_price) { %><span class="pr-o"><%= euro(p.old_price) %></span><% } %>
+      </div>
+      <button class="add js-add" data-slug="<%= p.slug %>" aria-label="<%= p.name %> toevoegen aan winkelwagen">+</button>
+    </div>
+  </div>
+</article>

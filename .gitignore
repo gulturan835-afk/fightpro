@@ -1,0 +1,5 @@
+node_modules/
+fightpro.db
+fightpro.db-shm
+fightpro.db-wal
+*.log

@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+
+<section class="sec" style="background:var(--black);min-height:60vh;">
+  <div class="container">
+    <div class="conf-box">
+      <div class="conf-check">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="lbl" style="justify-content:center;">Bedankt voor je bestelling</div>
+      <h1 class="conf-title">Bestelling <span class="ac">bevestigd</span></h1>
+      <p class="conf-sub">We hebben je bestelling ontvangen en een bevestiging gestuurd naar <strong><%= order.email %></strong>.</p>
+
+      <div class="conf-ref">
+        <div><span class="conf-ref-l">Bestelnummer</span><span class="conf-ref-v"><%= order.ref %></span></div>
+        <div><span class="conf-ref-l">Betaalmethode</span><span class="conf-ref-v"><%= order.payment.charAt(0).toUpperCase()+order.payment.slice(1) %></span></div>
+        <div><span class="conf-ref-l">Status</span><span class="conf-ref-v"><span class="status-pill"><%= order.status %></span></span></div>
+      </div>
+
+      <div class="conf-items">
+        <% order.items.forEach(function(it){ %>
+          <div class="conf-item">
+            <span class="co-item-q"><%= it.qty %>×</span>
+            <span class="co-item-n"><%= it.brand %> <%= it.name %><% if (it.size) { %> <small>(<%= it.size %>)</small><% } %></span>
+            <span class="co-item-p"><%= euro(it.price * it.qty) %></span>
+          </div>
+        <% }) %>
+        <div class="sum-row" style="margin-top:14px;"><span>Subtotaal</span><span><%= euro(order.subtotal) %></span></div>
+        <div class="sum-row"><span>Verzending</span><span><%= order.shipping === 0 ? 'Gratis' : euro(order.shipping) %></span></div>
+        <div class="sum-total"><span>Totaal betaald</span><span><%= euro(order.total) %></span></div>
+      </div>
+
+      <div class="conf-ship">
+        <div class="conf-ship-t">Verzendadres</div>
+        <p><%= order.name %><br><%= order.address %><br><%= order.postcode %> <%= order.city %></p>
+      </div>
+
+      <a href="/" class="btn-p btn-lg" style="margin-top:8px;">Terug naar home →</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

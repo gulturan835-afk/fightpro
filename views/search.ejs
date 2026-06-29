@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb"><a href="/">Home</a> <span>/</span> <span class="cur">Zoeken</span></nav>
+    <h1 class="shop-title">Zoekresultaten</h1>
+    <% if (q) { %><p class="shop-blurb"><%= results.length %> resultaat<%= results.length===1?'':'en' %> voor “<%= q %>”</p><% } %>
+  </div>
+</div>
+
+<section class="sec" style="background:var(--black);padding-top:24px;">
+  <div class="container">
+    <% if (!q) { %>
+      <p class="empty-msg">Typ iets in de zoekbalk om producten te vinden.</p>
+    <% } else if (!results.length) { %>
+      <p class="empty-msg">Geen producten gevonden voor “<%= q %>”.</p>
+      <a href="/categorie/bokshandschoenen" class="btn-p btn-lg" style="margin-top:8px;">Bekijk de collectie →</a>
+    <% } else { %>
+      <div class="pg">
+        <% results.forEach(function(p){ %>
+          <%- include('partials/product-card', { p: p }) %>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
