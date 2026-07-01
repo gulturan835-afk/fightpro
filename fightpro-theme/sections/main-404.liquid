@@ -1,0 +1,13 @@
+<section class="sec">
+  <div class="container tc">
+    <span class="lbl" style="justify-content:center">404</span>
+    <h1 class="shop-title" style="font-size:clamp(48px,8vw,90px)">PAGINA NIET GEVONDEN</h1>
+    <p class="sub" style="margin:16px auto 32px">Deze pagina bestaat niet (meer). Ga terug naar de winkel.</p>
+    <a href="{{ routes.root_url }}" class="btn-p btn-lg">Naar home</a>
+    <a href="{{ routes.all_products_collection_url }}" class="btn-s btn-lg" style="margin-left:12px">{{ 'collections.general.view_all' | t }}</a>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "404", "settings": [] }
+{% endschema %}

@@ -1,0 +1,78 @@
+<section class="sec" id="{{ section.settings.anchor | default: 'categorieen' }}">
+  <div class="container">
+    <div class="tc fi">
+      {%- if section.settings.label != blank -%}<span class="lbl">{{ section.settings.label }}</span>{%- endif -%}
+      <h2 class="ttl">{{ section.settings.title }} <span class="ac">{{ section.settings.title_accent }}</span></h2>
+      {%- if section.settings.subtitle != blank -%}<p class="sub">{{ section.settings.subtitle }}</p>{%- endif -%}
+    </div>
+
+    <div class="cats-g">
+      {%- for block in section.blocks -%}
+        {%- assign col = block.settings.collection -%}
+        {%- assign url = '#' -%}
+        {%- assign name = block.settings.title -%}
+        {%- assign img = block.settings.image -%}
+        {%- if col != blank -%}
+          {%- assign url = col.url -%}
+          {%- if name == blank -%}{%- assign name = col.title -%}{%- endif -%}
+          {%- if img == blank -%}{%- assign img = col.featured_image -%}{%- endif -%}
+        {%- endif -%}
+        <a href="{{ url }}" class="cat fi" {{ block.shopify_attributes }}>
+          {%- if img != blank -%}
+            {{ img | image_url: width: 800 | image_tag: alt: name, loading: 'lazy', class: 'cat-img', widths: '400,600,800' }}
+          {%- endif -%}
+          <div class="cat-ov"></div>
+          <div class="cat-bd">
+            {%- if block.settings.tag != blank -%}<span class="cat-tag">{{ block.settings.tag }}</span>{%- endif -%}
+            <div class="cat-n">{{ name }}</div>
+            <span class="cat-a">{{ block.settings.link_text | default: 'Bekijk →' }}</span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- style -%}
+  #{{ section.settings.anchor | default: 'categorieen' }} .cat-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;}
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "Categorie-raster",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anker-id", "default": "categorieen" },
+    { "type": "text", "id": "label", "label": "Label", "default": "Assortiment" },
+    { "type": "text", "id": "title", "label": "Titel", "default": "SHOP PER" },
+    { "type": "text", "id": "title_accent", "label": "Titel accent", "default": "CATEGORIE" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitel", "default": "Van handschoenen tot bescherming, bokszakken en kleding — alles voor jouw sport." }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Categorie",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collectie" },
+        { "type": "text", "id": "title", "label": "Titel (optioneel)" },
+        { "type": "text", "id": "tag", "label": "Tag", "default": "Categorie" },
+        { "type": "image_picker", "id": "image", "label": "Afbeelding (optioneel)" },
+        { "type": "text", "id": "link_text", "label": "Link-tekst", "default": "Bekijk →" }
+      ]
+    }
+  ],
+  "max_blocks": 9,
+  "presets": [
+    {
+      "name": "Categorie-raster",
+      "blocks": [
+        { "type": "category", "settings": { "title": "Handschoenen", "tag": "76 producten" } },
+        { "type": "category", "settings": { "title": "Bescherming", "tag": "89 producten" } },
+        { "type": "category", "settings": { "title": "Kids fight", "tag": "40 producten" } },
+        { "type": "category", "settings": { "title": "Trap- & stootkussens", "tag": "31 producten" } },
+        { "type": "category", "settings": { "title": "Kleding", "tag": "27 producten" } },
+        { "type": "category", "settings": { "title": "Voeding", "tag": "21 producten" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

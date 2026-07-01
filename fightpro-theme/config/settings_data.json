@@ -1,0 +1,18 @@
+{
+  "current": {
+    "color_gold": "#B8973A",
+    "color_bg": "#080808",
+    "color_text": "#F5F5F0",
+    "brand_name": "FightPro Enschede",
+    "free_shipping_threshold": "7500"
+  },
+  "presets": {
+    "FightPro": {
+      "color_gold": "#B8973A",
+      "color_bg": "#080808",
+      "color_text": "#F5F5F0",
+      "brand_name": "FightPro Enschede",
+      "free_shipping_threshold": "7500"
+    }
+  }
+}

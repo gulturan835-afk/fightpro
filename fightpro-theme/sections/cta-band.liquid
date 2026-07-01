@@ -1,0 +1,26 @@
+<section class="cta-bd">
+  <div class="cta-in fi">
+    <div>
+      {%- if section.settings.label != blank -%}<div class="cta-lb">{{ section.settings.label }}</div>{%- endif -%}
+      <h2 class="cta-h">{{ section.settings.title }}</h2>
+      {%- if section.settings.text != blank -%}<p class="cta-p">{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+    {%- if section.settings.button_text != blank -%}
+      <a href="{{ section.settings.button_link | default: '#contact' }}" class="btn-dk">{{ section.settings.button_text }}</a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA-band",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label", "default": "Kom langs in de winkel" },
+    { "type": "text", "id": "title", "label": "Titel", "default": "PROBEER VOOR JE KOOPT" },
+    { "type": "textarea", "id": "text", "label": "Tekst", "default": "Pas handschoenen en bescherming in onze winkel in het centrum van Enschede. Deskundig advies van vechtsporters, voor vechtsporters." },
+    { "type": "text", "id": "button_text", "label": "Knop tekst", "default": "Bekijk openingstijden" },
+    { "type": "url", "id": "button_link", "label": "Knop link" }
+  ],
+  "presets": [ { "name": "CTA-band" } ]
+}
+{% endschema %}

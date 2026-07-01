@@ -1,0 +1,167 @@
+{%- assign on_sale = false -%}
+{%- if product.compare_at_price > product.price -%}{%- assign on_sale = true -%}{%- endif -%}
+{%- assign badge = product.metafields.custom.badge -%}
+{%- if badge == blank and on_sale -%}{%- assign badge = 'Aanbieding' -%}{%- endif -%}
+
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb" aria-label="Kruimelpad">
+      <a href="{{ routes.root_url }}">{{ 'general.breadcrumb.home' | t }}</a>
+      <span>›</span>
+      {%- if product.collections.first -%}
+        <a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a>
+        <span>›</span>
+      {%- endif -%}
+      <span class="cur">{{ product.title }}</span>
+    </nav>
+  </div>
+</div>
+
+<section class="sec-sm">
+  <div class="container">
+    <div class="pd-g" id="ProductForm">
+      <div class="pd-media">
+        {%- if badge != blank -%}<span class="pd-badge bdg {% if badge == 'Aanbieding' %}bo{% else %}bg{% endif %}">{{ badge }}</span>{%- endif -%}
+        {% render 'product-media', product: product, size: 320, image_width: 900 %}
+      </div>
+
+      <div>
+        <div class="pd-brand">{{ product.vendor | default: shop.name }}</div>
+        <h1 class="pd-name">{{ product.title }}</h1>
+
+        <div class="pd-price-row">
+          <span class="pd-price" id="pdPrice">{{ product.price | money }}</span>
+          {%- if on_sale -%}
+            <span class="pd-old">{{ product.compare_at_price | money }}</span>
+            {%- assign save = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round -%}
+            <span class="pd-save">-{{ save }}%</span>
+          {%- endif -%}
+        </div>
+
+        {%- if product.metafields.custom.short != blank -%}
+          <p class="pd-desc">{{ product.metafields.custom.short }}</p>
+        {%- elsif product.description != blank -%}
+          <p class="pd-desc">{{ product.description | strip_html | truncatewords: 45 }}</p>
+        {%- endif -%}
+
+        {%- form 'product', product, id: 'AddToCartForm' -%}
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div class="pd-field">
+                <span class="pd-label">{{ option.name }}</span>
+                <div class="size-row">
+                  {%- for value in option.values -%}
+                    <label class="size-opt">
+                      <input type="radio" name="options[{{ option.name | escape }}]" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
+                      <span>{{ value }}</span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          {%- assign current_variant = product.selected_or_first_available_variant -%}
+          <input type="hidden" name="id" id="pdVariantId" value="{{ current_variant.id }}">
+
+          <div class="pd-actions">
+            <div class="qty-box">
+              <button type="button" class="qty-btn" data-dir="down" aria-label="Minder">−</button>
+              <input class="qty-input" type="number" name="quantity" value="1" min="1" inputmode="numeric" aria-label="{{ 'products.product.quantity' | t }}">
+              <button type="button" class="qty-btn" data-dir="up" aria-label="Meer">+</button>
+            </div>
+            {%- if product.available -%}
+              <button type="submit" class="btn-p btn-lg pd-add">{{ 'products.product.add_to_cart' | t }}</button>
+            {%- else -%}
+              <button type="button" class="btn-s btn-lg pd-add" disabled>{{ 'products.product.sold_out' | t }}</button>
+            {%- endif -%}
+          </div>
+
+          <div class="pd-stock">
+            {%- if product.available -%}
+              <span class="dot-ok"></span> {{ 'products.product.in_stock' | t }}
+            {%- else -%}
+              <span class="dot-no"></span> {{ 'products.product.sold_out' | t }}
+            {%- endif -%}
+          </div>
+        {%- endform -%}
+
+        <script type="application/json" id="pdVariants">
+          {{ product.variants | json }}
+        </script>
+        <script>
+          (function () {
+            var form = document.getElementById('AddToCartForm');
+            if (!form) return;
+            var data = document.getElementById('pdVariants');
+            var variants = [];
+            try { variants = JSON.parse(data.textContent); } catch (e) {}
+            var idField = document.getElementById('pdVariantId');
+            var priceEl = document.getElementById('pdPrice');
+            var addBtn = form.querySelector('.pd-add');
+            function fmt(cents) {
+              return '€ ' + (cents / 100).toFixed(2).replace('.', ',');
+            }
+            function selectedOptions() {
+              var groups = form.querySelectorAll('.pd-field');
+              var opts = [];
+              groups.forEach(function (g) {
+                var checked = g.querySelector('input[type=radio]:checked');
+                if (checked) opts.push(checked.value);
+              });
+              return opts;
+            }
+            function update() {
+              var opts = selectedOptions();
+              if (!opts.length) return;
+              var match = variants.find(function (v) {
+                return v.options.length === opts.length &&
+                  v.options.every(function (o, i) { return o === opts[i]; });
+              });
+              if (!match) return;
+              idField.value = match.id;
+              if (priceEl) priceEl.textContent = fmt(match.price);
+              if (addBtn && addBtn.tagName === 'BUTTON') {
+                addBtn.disabled = !match.available;
+                addBtn.textContent = match.available
+                  ? {{ 'products.product.add_to_cart' | t | json }}
+                  : {{ 'products.product.sold_out' | t | json }};
+              }
+            }
+            form.addEventListener('change', function (e) {
+              if (e.target.matches('input[type=radio]')) update();
+            });
+          })();
+        </script>
+
+        {%- if product.description != blank -%}
+          <div class="pd-specs">
+            <div class="pd-specs-t">{{ 'products.product.specifications' | t }}</div>
+            <div class="pd-desc" style="margin:0">{{ product.description }}</div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- if product.collections.first and product.collections.first.products.size > 1 -%}
+  <section class="sec-sm" style="padding-top:0">
+    <div class="container">
+      <div class="p-hd"><h2 class="ttl">Ook <span class="ac">interessant</span></h2></div>
+      <div class="pg">
+        {%- assign shown = 0 -%}
+        {%- for related in product.collections.first.products -%}
+          {%- if related.id != product.id and shown < 4 -%}
+            {% render 'product-card', product: related %}
+            {%- assign shown = shown | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{ "name": "Product", "settings": [] }
+{% endschema %}

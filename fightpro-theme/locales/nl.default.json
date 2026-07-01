@@ -1,0 +1,55 @@
+{
+  "general": {
+    "meta": { "page": "Pagina {{ page }}" },
+    "error": "Er ging iets mis",
+    "search": {
+      "search": "Zoeken",
+      "placeholder": "Zoeken naar producten…",
+      "no_results": "Geen resultaten voor “{{ terms }}”.",
+      "results_count": { "one": "{{ count }} resultaat", "other": "{{ count }} resultaten" }
+    },
+    "breadcrumb": { "home": "Home" },
+    "pagination": { "previous": "Vorige", "next": "Volgende" }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "In winkelwagen",
+      "added": "toegevoegd",
+      "sold_out": "Uitverkocht",
+      "unavailable": "Niet beschikbaar",
+      "on_sale": "Aanbieding",
+      "quantity": "Aantal",
+      "in_stock": "Op voorraad",
+      "size": "Maat",
+      "specifications": "Kenmerken",
+      "regular_price": "Normale prijs",
+      "sale_price": "Aanbiedingsprijs"
+    }
+  },
+  "collections": {
+    "general": {
+      "products_count": { "one": "{{ count }} product", "other": "{{ count }} producten" },
+      "no_products": "Geen producten in deze categorie.",
+      "all_collections": "Alle categorieën",
+      "view_all": "Bekijk alles"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Winkelwagen",
+      "empty": "Je winkelwagen is leeg.",
+      "continue_shopping": "Verder winkelen",
+      "subtotal": "Subtotaal",
+      "shipping": "Verzending",
+      "shipping_calculated": "Berekend bij afrekenen",
+      "total": "Totaal",
+      "checkout": "Afrekenen",
+      "remove": "Verwijderen",
+      "free_shipping": "Je hebt gratis verzending! 🎉",
+      "free_shipping_remaining": "Nog {{ amount }} tot gratis verzending"
+    }
+  },
+  "sections": {
+    "header": { "menu": "Menu" }
+  }
+}

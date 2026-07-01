@@ -1,0 +1,37 @@
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb" aria-label="Kruimelpad">
+      <a href="{{ routes.root_url }}">{{ 'general.breadcrumb.home' | t }}</a>
+      <span>›</span><span class="cur">{{ 'collections.general.all_collections' | t }}</span>
+    </nav>
+    <h1 class="shop-title">{{ 'collections.general.all_collections' | t }}</h1>
+  </div>
+</div>
+
+<section class="sec-sm">
+  <div class="container">
+    <div class="cats-g">
+      {%- for collection in collections -%}
+        {%- if collection.all_products_count > 0 or collection.products_count > 0 -%}
+          <a href="{{ collection.url }}" class="cat fi">
+            {%- if collection.featured_image != blank -%}
+              {{ collection.featured_image | image_url: width: 800 | image_tag: alt: collection.title, loading: 'lazy', class: 'cat-img', widths: '400,600,800' }}
+            {%- endif -%}
+            <div class="cat-ov"></div>
+            <div class="cat-bd">
+              <span class="cat-tag">{{ 'collections.general.products_count' | t: count: collection.all_products_count }}</span>
+              <div class="cat-n">{{ collection.title }}</div>
+              <span class="cat-a">Bekijk →</span>
+            </div>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- style -%}.cats-g .cat-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;}{%- endstyle -%}
+
+{% schema %}
+{ "name": "Collectielijst", "settings": [] }
+{% endschema %}

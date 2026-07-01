@@ -1,0 +1,85 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "t1": { "type": "trust", "settings": { "text": "Gratis verzending vanaf € 75" } },
+        "t2": { "type": "trust", "settings": { "text": "Officiële dealer 24 merken" } },
+        "t3": { "type": "trust", "settings": { "text": "Winkel in Enschede" } },
+        "s1": { "type": "stat", "settings": { "number": "290+", "label": "Producten" } },
+        "s2": { "type": "stat", "settings": { "number": "24", "label": "Topmerken" } },
+        "s3": { "type": "stat", "settings": { "number": "2020", "label": "Sinds" } }
+      },
+      "block_order": ["t1", "t2", "t3", "s1", "s2", "s3"],
+      "settings": {
+        "badge": "Sinds 2020 · Enschede",
+        "title": "FIGHTPRO ",
+        "title_accent": "ENSCHEDE",
+        "subtitle": "Dé vechtsportwinkel van Twente. Officiële dealer van Hayabusa, Twins, Joya, Fairtex, Booster en meer — voor de beginner én de prof.",
+        "cta1_text": "Shop de collectie",
+        "cta2_text": "Onze merken",
+        "cta2_link": "#merken"
+      }
+    },
+    "usp": {
+      "type": "usp-bar",
+      "blocks": {
+        "u1": { "type": "usp", "settings": { "title": "Gratis verzending", "text": "Vanaf € 75 in NL", "icon_path": "<path d='M1 3h15v13H1z'/><path d='M16 8h4l3 3v5h-7z'/><circle cx='5.5' cy='18.5' r='2.5'/><circle cx='18.5' cy='18.5' r='2.5'/>" } },
+        "u2": { "type": "usp", "settings": { "title": "Officiële dealer", "text": "24 topmerken", "icon_path": "<path d='M12 2l3 7h7l-5.5 4 2 7L12 17l-6.5 3 2-7L2 9h7z'/>" } },
+        "u3": { "type": "usp", "settings": { "title": "Advies in de winkel", "text": "Lipperkerkstraat 19", "icon_path": "<path d='M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z'/><circle cx='12' cy='10' r='3'/>" } },
+        "u4": { "type": "usp", "settings": { "title": "Veilig betalen", "text": "iDEAL · PayPal · card", "icon_path": "<rect x='1' y='4' width='22' height='16' rx='2'/><line x1='1' y1='10' x2='23' y2='10'/>" } }
+      },
+      "block_order": ["u1", "u2", "u3", "u4"]
+    },
+    "categories": {
+      "type": "category-grid",
+      "blocks": {
+        "c1": { "type": "category", "settings": { "collection": "bokshandschoenen-boxing-gloves-box-handschuhe-mma", "title": "Handschoenen", "tag": "76 producten" } },
+        "c2": { "type": "category", "settings": { "collection": "bescherming-mma-kickboks-scheen-kruis-hoofd", "title": "Bescherming", "tag": "89 producten" } },
+        "c3": { "type": "category", "settings": { "collection": "kids-kickboxing-wear-gear", "title": "Kids fight", "tag": "40 producten" } },
+        "c4": { "type": "category", "settings": { "collection": "trap-stoot-pads-kussens", "title": "Trap- & stootkussens", "tag": "31 producten" } },
+        "c5": { "type": "category", "settings": { "collection": "t-shirts-hoodies-trainingspakken-kleding-fighters-mma-kickboksen", "title": "Kleding", "tag": "27 producten" } },
+        "c6": { "type": "category", "settings": { "collection": "sportvoeding-pre-workout-eiwit-supplementen", "title": "Voeding", "tag": "21 producten" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6"],
+      "settings": {
+        "label": "Assortiment",
+        "title": "SHOP PER",
+        "title_accent": "CATEGORIE",
+        "subtitle": "Van handschoenen tot bescherming, bokszakken en kleding — alles voor jouw sport."
+      }
+    },
+    "featured": {
+      "type": "featured-products",
+      "settings": {
+        "label": "Populair",
+        "title": "BEST",
+        "title_accent": "SELLERS",
+        "collection": "bestsellers-top-vechtsport-artikelen",
+        "count": 8
+      }
+    },
+    "brands": {
+      "type": "brand-bar",
+      "settings": {
+        "label": "Officiële dealer van",
+        "brands": "Hayabusa, Twins, Joya, Fairtex, King, Booster, Venum, PX, Smai, Matchu, Makura, UFC, Bio Tech, Fightpro"
+      }
+    },
+    "cta": { "type": "cta-band" },
+    "info": {
+      "type": "store-info",
+      "blocks": {
+        "h1": { "type": "hours", "settings": { "day": "Maandag", "time": "Gesloten", "closed": true } },
+        "h2": { "type": "hours", "settings": { "day": "Dinsdag", "time": "13:00 – 18:00" } },
+        "h3": { "type": "hours", "settings": { "day": "Woensdag", "time": "13:00 – 18:00" } },
+        "h4": { "type": "hours", "settings": { "day": "Donderdag", "time": "13:00 – 18:00" } },
+        "h5": { "type": "hours", "settings": { "day": "Vrijdag", "time": "13:00 – 18:00" } },
+        "h6": { "type": "hours", "settings": { "day": "Zaterdag", "time": "10:00 – 16:00" } },
+        "h7": { "type": "hours", "settings": { "day": "Zondag", "time": "Gesloten", "closed": true } }
+      },
+      "block_order": ["h1", "h2", "h3", "h4", "h5", "h6", "h7"]
+    }
+  },
+  "order": ["hero", "usp", "categories", "featured", "brands", "cta", "info"]
+}

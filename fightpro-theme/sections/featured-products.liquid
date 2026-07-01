@@ -1,0 +1,43 @@
+{%- assign col = section.settings.collection -%}
+<section class="sec-sm" id="{{ section.settings.anchor | default: 'uitgelicht' }}">
+  <div class="container">
+    <div class="p-hd fi">
+      <div>
+        {%- if section.settings.label != blank -%}<span class="lbl">{{ section.settings.label }}</span>{%- endif -%}
+        <h2 class="ttl">{{ section.settings.title }} <span class="ac">{{ section.settings.title_accent }}</span></h2>
+      </div>
+      {%- if col != blank -%}
+        <a href="{{ col.url }}" class="la">{{ 'collections.general.view_all' | t }} →</a>
+      {%- endif -%}
+    </div>
+
+    <div class="pg">
+      {%- if col != blank and col.products.size > 0 -%}
+        {%- for product in col.products limit: section.settings.count -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for product in collections.all.products limit: section.settings.count -%}
+          {% render 'product-card', product: product %}
+        {%- else -%}
+          <p class="empty-msg">{{ 'collections.general.no_products' | t }}</p>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Uitgelichte producten",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anker-id", "default": "uitgelicht" },
+    { "type": "text", "id": "label", "label": "Label", "default": "Populair" },
+    { "type": "text", "id": "title", "label": "Titel", "default": "BEST" },
+    { "type": "text", "id": "title_accent", "label": "Titel accent", "default": "SELLERS" },
+    { "type": "collection", "id": "collection", "label": "Collectie" },
+    { "type": "range", "id": "count", "min": 4, "max": 12, "step": 4, "label": "Aantal producten", "default": 8 }
+  ],
+  "presets": [ { "name": "Uitgelichte producten" } ]
+}
+{% endschema %}

@@ -1,0 +1,97 @@
+<section class="sec-sm" id="{{ section.settings.anchor | default: 'contact' }}">
+  <div class="container">
+    <div class="tc fi">
+      {%- if section.settings.label != blank -%}<span class="lbl">{{ section.settings.label }}</span>{%- endif -%}
+      <h2 class="ttl">{{ section.settings.title }} <span class="ac">{{ section.settings.title_accent }}</span></h2>
+    </div>
+
+    <div class="inf-g">
+      <div class="inf-c fi">
+        <div class="inf-hd">Openingstijden</div>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'hours' -%}
+            <div class="hr-row" {{ block.shopify_attributes }}>
+              <span class="hr-d">{{ block.settings.day }}</span>
+              {%- if block.settings.closed -%}
+                <span class="hr-cl">{{ block.settings.time | default: 'Gesloten' }}</span>
+              {%- else -%}
+                <span class="hr-t">{{ block.settings.time }}</span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="inf-c fi d1">
+        <div class="inf-hd">Contact</div>
+        <div class="ct-row">
+          <div class="ci"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="c-lb">Adres</div><div class="c-vl">{{ section.settings.address }}</div></div>
+        </div>
+        <div class="ct-row">
+          <div class="ci"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg></div>
+          <div><div class="c-lb">Telefoon</div><div class="c-vl"><a href="tel:{{ section.settings.phone | remove: ' ' }}">{{ section.settings.phone }}</a></div></div>
+        </div>
+        {%- if section.settings.email != blank -%}
+          <div class="ct-row">
+            <div class="ci"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg></div>
+            <div><div class="c-lb">E-mail</div><div class="c-vl"><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></div></div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="inf-c fi d2">
+        <div class="inf-hd">Route</div>
+        <p class="usp-p">{{ section.settings.route_text }}</p>
+        {%- if section.settings.map_link != blank -%}
+          <a class="map-bx" href="{{ section.settings.map_link }}" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>Open in Google Maps</p>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Winkelinfo",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anker-id", "default": "contact" },
+    { "type": "text", "id": "label", "label": "Label", "default": "Bezoek ons" },
+    { "type": "text", "id": "title", "label": "Titel", "default": "DE" },
+    { "type": "text", "id": "title_accent", "label": "Titel accent", "default": "WINKEL" },
+    { "type": "text", "id": "address", "label": "Adres", "default": "Lipperkerkstraat 19, Enschede" },
+    { "type": "text", "id": "phone", "label": "Telefoon", "default": "06 340 397 34" },
+    { "type": "text", "id": "email", "label": "E-mail", "default": "info@fightpro.nl" },
+    { "type": "textarea", "id": "route_text", "label": "Route-tekst", "default": "In het centrum van Enschede, vlak bij de Lipperkerkstraat. Betaald parkeren in de buurt." },
+    { "type": "url", "id": "map_link", "label": "Google Maps link" }
+  ],
+  "blocks": [
+    {
+      "type": "hours",
+      "name": "Openingsdag",
+      "settings": [
+        { "type": "text", "id": "day", "label": "Dag", "default": "Maandag" },
+        { "type": "text", "id": "time", "label": "Tijd", "default": "Gesloten" },
+        { "type": "checkbox", "id": "closed", "label": "Gesloten (grijs)", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Winkelinfo",
+      "blocks": [
+        { "type": "hours", "settings": { "day": "Maandag", "time": "Gesloten", "closed": true } },
+        { "type": "hours", "settings": { "day": "Dinsdag", "time": "13:00 – 18:00" } },
+        { "type": "hours", "settings": { "day": "Woensdag", "time": "13:00 – 18:00" } },
+        { "type": "hours", "settings": { "day": "Donderdag", "time": "13:00 – 18:00" } },
+        { "type": "hours", "settings": { "day": "Vrijdag", "time": "13:00 – 18:00" } },
+        { "type": "hours", "settings": { "day": "Zaterdag", "time": "10:00 – 16:00" } },
+        { "type": "hours", "settings": { "day": "Zondag", "time": "Gesloten", "closed": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}

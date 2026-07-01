@@ -1,0 +1,44 @@
+<section class="usp-row">
+  <div class="usp-g">
+    {%- for block in section.blocks -%}
+      <div class="usp-c fi" {{ block.shopify_attributes }}>
+        <div class="usp-ico">
+          <svg viewBox="0 0 24 24">{{ block.settings.icon_path }}</svg>
+        </div>
+        <div>
+          <div class="usp-t">{{ block.settings.title }}</div>
+          <div class="usp-p">{{ block.settings.text }}</div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "USP-balk",
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "USP",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titel", "default": "Gratis verzending" },
+        { "type": "text", "id": "text", "label": "Tekst", "default": "Vanaf € 75 in NL" },
+        { "type": "textarea", "id": "icon_path", "label": "SVG-pad", "default": "<path d='M1 3h15v13H1z'/><path d='M16 8h4l3 3v5h-7z'/><circle cx='5.5' cy='18.5' r='2.5'/><circle cx='18.5' cy='18.5' r='2.5'/>" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "USP-balk",
+      "blocks": [
+        { "type": "usp", "settings": { "title": "Gratis verzending", "text": "Vanaf € 75 in NL", "icon_path": "<path d='M1 3h15v13H1z'/><path d='M16 8h4l3 3v5h-7z'/><circle cx='5.5' cy='18.5' r='2.5'/><circle cx='18.5' cy='18.5' r='2.5'/>" } },
+        { "type": "usp", "settings": { "title": "Officiële dealer", "text": "24 topmerken", "icon_path": "<path d='M12 2l3 7h7l-5.5 4 2 7L12 17l-6.5 3 2-7L2 9h7z'/>" } },
+        { "type": "usp", "settings": { "title": "Advies in de winkel", "text": "Lipperkerkstraat 19", "icon_path": "<path d='M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z'/><circle cx='12' cy='10' r='3'/>" } },
+        { "type": "usp", "settings": { "title": "Veilig betalen", "text": "iDEAL, PayPal, creditcard", "icon_path": "<rect x='1' y='4' width='22' height='16' rx='2'/><line x1='1' y1='10' x2='23' y2='10'/>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,60 @@
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb" aria-label="Kruimelpad">
+      <a href="{{ routes.root_url }}">{{ 'general.breadcrumb.home' | t }}</a>
+      <span>›</span>
+      <a href="{{ routes.collections_url }}">{{ 'collections.general.all_collections' | t }}</a>
+      <span>›</span>
+      <span class="cur">{{ collection.title }}</span>
+    </nav>
+    <h1 class="shop-title">{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}
+      <p class="shop-blurb">{{ collection.description | strip_html | truncatewords: 40 }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.show_brand_filter and collection.all_vendors.size > 1 -%}
+      <div class="filter-row">
+        <span class="filter-lbl">Merk</span>
+        <a href="{{ collection.url }}" class="chip {% unless current_tags %}chip-on{% endunless %}">Alle</a>
+        {%- for vendor in collection.all_vendors -%}
+          {%- assign is_on = false -%}
+          {%- if current_tags contains vendor -%}{%- assign is_on = true -%}{%- endif -%}
+          <a href="{{ collection.url }}/{{ vendor | handle }}" class="chip {% if is_on %}chip-on{% endif %}">{{ vendor }}</a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<section class="sec-sm">
+  <div class="container">
+    {%- paginate collection.products by 24 -%}
+      <p class="result-count">{{ 'collections.general.products_count' | t: count: collection.products_count }}</p>
+      {%- if collection.products.size > 0 -%}
+        <div class="pg">
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product %}
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+          <div class="p-more">
+            {%- if paginate.previous -%}<a class="btn-s" href="{{ paginate.previous.url }}">← {{ 'general.pagination.previous' | t }}</a>{%- endif -%}
+            {%- if paginate.next -%}<a class="btn-p" href="{{ paginate.next.url }}">{{ 'general.pagination.next' | t }} →</a>{%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        <p class="empty-msg">{{ 'collections.general.no_products' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn-p">{{ 'collections.general.view_all' | t }}</a>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collectie",
+  "settings": [
+    { "type": "checkbox", "id": "show_brand_filter", "label": "Toon merkfilter", "default": true }
+  ]
+}
+{% endschema %}

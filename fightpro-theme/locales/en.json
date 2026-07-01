@@ -1,0 +1,55 @@
+{
+  "general": {
+    "meta": { "page": "Page {{ page }}" },
+    "error": "Something went wrong",
+    "search": {
+      "search": "Search",
+      "placeholder": "Search products…",
+      "no_results": "No results for “{{ terms }}”.",
+      "results_count": { "one": "{{ count }} result", "other": "{{ count }} results" }
+    },
+    "breadcrumb": { "home": "Home" },
+    "pagination": { "previous": "Previous", "next": "Next" }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "added": "added",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "on_sale": "Sale",
+      "quantity": "Quantity",
+      "in_stock": "In stock",
+      "size": "Size",
+      "specifications": "Specifications",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price"
+    }
+  },
+  "collections": {
+    "general": {
+      "products_count": { "one": "{{ count }} product", "other": "{{ count }} products" },
+      "no_products": "No products in this collection.",
+      "all_collections": "All collections",
+      "view_all": "View all"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Cart",
+      "empty": "Your cart is empty.",
+      "continue_shopping": "Continue shopping",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "shipping_calculated": "Calculated at checkout",
+      "total": "Total",
+      "checkout": "Checkout",
+      "remove": "Remove",
+      "free_shipping": "You have free shipping! 🎉",
+      "free_shipping_remaining": "{{ amount }} away from free shipping"
+    }
+  },
+  "sections": {
+    "header": { "menu": "Menu" }
+  }
+}

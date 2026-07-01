@@ -1,0 +1,26 @@
+<section id="{{ section.settings.anchor | default: 'merken' }}" class="br-row">
+  <div class="br-in fi">
+    <span class="br-lbl">{{ section.settings.label | default: 'Officiële dealer van' }}</span>
+    <div class="br-ls">
+      {%- assign brands = section.settings.brands | split: ',' -%}
+      {%- for brand in brands -%}
+        {%- assign b = brand | strip -%}
+        {%- if b != blank -%}
+          <a class="br" href="{{ routes.search_url }}?q={{ b | url_encode }}&type=product" aria-label="{{ b }}">{{ b }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Merkenbalk",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anker-id", "default": "merken" },
+    { "type": "text", "id": "label", "label": "Label", "default": "Officiële dealer van" },
+    { "type": "textarea", "id": "brands", "label": "Merken (komma-gescheiden)", "default": "Hayabusa, Twins, Joya, Fairtex, King, Booster, Venum, PX, Smai, Matchu, Makura, UFC, Adidas, Fightpro" }
+  ],
+  "presets": [ { "name": "Merkenbalk" } ]
+}
+{% endschema %}
