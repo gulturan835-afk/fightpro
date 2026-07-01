@@ -1,0 +1,19 @@
+{%- if section.settings.text != blank -%}
+  <div class="topbar">
+    <p>{{ section.settings.text }}
+      {%- if section.settings.phone != blank -%}
+        &nbsp;·&nbsp; <a href="tel:{{ section.settings.phone | remove: ' ' }}">{{ section.settings.phone }}</a>
+      {%- endif -%}
+    </p>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Aankondigingsbalk",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Tekst", "default": "📍 Lipperkerkstraat 19, Enschede · Di–Vr 13:00–18:00 · Za 10:00–16:00" },
+    { "type": "text", "id": "phone", "label": "Telefoon", "default": "06 340 397 34" }
+  ]
+}
+{% endschema %}

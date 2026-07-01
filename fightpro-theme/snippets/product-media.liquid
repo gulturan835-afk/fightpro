@@ -1,0 +1,30 @@
+{%- comment -%}
+  Renders a product's image, or a branded SVG fallback.
+  Params: product (required), size (px, default 140), image_width (default 600)
+{%- endcomment -%}
+{%- assign media_size = size | default: 140 -%}
+{%- assign img_w = image_width | default: 600 -%}
+{%- if product.featured_image != blank -%}
+  {{ product.featured_image | image_url: width: img_w | image_tag: alt: product.title, loading: 'lazy', widths: '200,300,400,600,800', class: 'p-photo' }}
+{%- else -%}
+  {%- comment -%} Resolve illustration kind from metafield, else infer from type/tags {%- endcomment -%}
+  {%- assign resolved_kind = product.metafields.custom.kind -%}
+  {%- if resolved_kind == blank -%}
+    {%- assign hay = product.type | append: ' ' | append: product.tags | join: ' ' | downcase -%}
+    {%- if hay contains 'bescherm' or hay contains 'schee' or hay contains 'hoofd' or hay contains 'kruis' or hay contains 'gebit' -%}
+      {%- assign resolved_kind = 'shield' -%}
+    {%- elsif hay contains 'bandage' or hay contains 'wrap' or hay contains 'binnenhand' -%}
+      {%- assign resolved_kind = 'wrap' -%}
+    {%- elsif hay contains 'zak' or hay contains 'pad' or hay contains 'kussen' or hay contains 'tas' -%}
+      {%- assign resolved_kind = 'bag' -%}
+    {%- elsif hay contains 'touw' or hay contains 'rope' or hay contains 'spring' -%}
+      {%- assign resolved_kind = 'rope' -%}
+    {%- elsif hay contains 'kleding' or hay contains 'shirt' or hay contains 'short' or hay contains 'yoga' or hay contains 'mat' or hay contains 'band' -%}
+      {%- assign resolved_kind = 'apparel' -%}
+    {%- else -%}
+      {%- assign resolved_kind = 'glove' -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- assign accent = product.metafields.custom.accent_color | default: '#1A1A1A' -%}
+  {% render 'product-art', kind: resolved_kind, body: accent, cuff: settings.color_gold, brand: product.vendor, name: product.title, size: media_size %}
+{%- endif -%}

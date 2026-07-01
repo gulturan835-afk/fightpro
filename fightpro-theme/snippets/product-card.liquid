@@ -1,0 +1,35 @@
+{%- comment -%} Params: product (required) {%- endcomment -%}
+{%- assign on_sale = false -%}
+{%- if product.compare_at_price > product.price -%}{%- assign on_sale = true -%}{%- endif -%}
+{%- assign badge = product.metafields.custom.badge -%}
+{%- if badge == blank and on_sale -%}{%- assign badge = 'Aanbieding' -%}{%- endif -%}
+{%- assign badge_class = 'bw' -%}
+{%- if badge == 'Aanbieding' -%}{%- assign badge_class = 'bo' -%}{%- elsif badge != blank -%}{%- assign badge_class = 'bg' -%}{%- endif -%}
+{%- assign variant = product.selected_or_first_available_variant -%}
+
+<article class="pc">
+  <a href="{{ product.url }}" class="p-img" aria-label="{{ product.vendor }} {{ product.title | escape }}">
+    {%- if badge != blank -%}<span class="bdg {{ badge_class }}">{{ badge }}</span>{%- endif -%}
+    {% render 'product-media', product: product, size: 140 %}
+  </a>
+  <div class="p-bd">
+    <div class="p-br">{{ product.vendor | default: shop.name }}</div>
+    <h3 class="p-nm"><a href="{{ product.url }}" style="color:inherit">{{ product.title }}</a></h3>
+    {%- if product.metafields.custom.short != blank -%}
+      <p class="p-ds">{{ product.metafields.custom.short }}</p>
+    {%- else -%}
+      <p class="p-ds">{{ product.description | strip_html | truncatewords: 14 }}</p>
+    {%- endif -%}
+    <div class="p-ft">
+      <div>
+        <span class="pr">{{ product.price | money }}</span>
+        {%- if on_sale -%}<span class="pr-o">{{ product.compare_at_price | money }}</span>{%- endif -%}
+      </div>
+      {%- if product.available -%}
+        <button class="add js-add" data-variant-id="{{ variant.id }}" data-name="{{ product.vendor }} {{ product.title | escape }}" aria-label="{{ product.title | escape }} toevoegen aan winkelwagen">+</button>
+      {%- else -%}
+        <a href="{{ product.url }}" class="add add-soldout" aria-label="Uitverkocht">✕</a>
+      {%- endif -%}
+    </div>
+  </div>
+</article>

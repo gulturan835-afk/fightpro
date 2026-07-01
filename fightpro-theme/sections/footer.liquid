@@ -1,0 +1,114 @@
+<footer>
+  <div class="f-bar"></div>
+  <div class="f-top">
+    <div>
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 288 | image_tag: alt: shop.name, width: 144, height: 48, class: 'f-logo' }}
+      {%- else -%}
+        <div class="f-logo-text">{{ shop.name }}</div>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <p class="f-desc">{{ section.settings.description }}</p>
+      {%- endif -%}
+      {%- if section.settings.show_social -%}
+        <div class="f-soc-r">
+          {%- if section.settings.facebook != blank -%}<a class="f-soc" href="{{ section.settings.facebook }}" aria-label="Facebook">FB</a>{%- endif -%}
+          {%- if section.settings.instagram != blank -%}<a class="f-soc" href="{{ section.settings.instagram }}" aria-label="Instagram">IG</a>{%- endif -%}
+          {%- if section.settings.youtube != blank -%}<a class="f-soc" href="{{ section.settings.youtube }}" aria-label="YouTube">YT</a>{%- endif -%}
+        </div>
+      {%- endif -%}
+      <div class="pay-r"><span class="pay">iDEAL</span><span class="pay">VISA</span><span class="pay">MC</span><span class="pay">PAYPAL</span></div>
+    </div>
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'menu_column' -%}
+        <div {{ block.shopify_attributes }}>
+          <div class="f-ct">{{ block.settings.heading }}</div>
+          <ul class="f-ls">
+            {%- for link in block.settings.menu.links -%}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- elsif block.type == 'brands_column' -%}
+        <div {{ block.shopify_attributes }}>
+          <div class="f-ct">{{ block.settings.heading | default: 'Merken' }}</div>
+          <ul class="f-ls">
+            {%- assign brand_list = block.settings.brands | split: ',' -%}
+            {%- for brand in brand_list -%}
+              {%- assign b = brand | strip -%}
+              {%- if b != blank -%}
+                <li><a href="{{ routes.search_url }}?q={{ b | url_encode }}&type=product">{{ b }}</a></li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- elsif block.type == 'text_column' -%}
+        <div {{ block.shopify_attributes }}>
+          <div class="f-ct">{{ block.settings.heading }}</div>
+          <div class="f-ls f-text">{{ block.settings.text }}</div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="f-bot">
+    <p class="f-cp">{{ section.settings.copyright | default: '© FightPro Enschede' }} — {{ 'now' | date: '%Y' }}</p>
+    <div class="f-lg">
+      {%- for link in section.settings.legal_menu.links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "textarea", "id": "description", "label": "Omschrijving", "default": "Dé vechtsportwinkel van Twente. Officiële dealer van topmerken. Geopend in 2020 in Enschede." },
+    { "type": "header", "content": "Social" },
+    { "type": "checkbox", "id": "show_social", "label": "Toon social links", "default": true },
+    { "type": "url", "id": "facebook", "label": "Facebook URL" },
+    { "type": "url", "id": "instagram", "label": "Instagram URL" },
+    { "type": "url", "id": "youtube", "label": "YouTube URL" },
+    { "type": "header", "content": "Onderkant" },
+    { "type": "text", "id": "copyright", "label": "Copyright", "default": "© FightPro Enschede — by FP Fight Gear®" },
+    { "type": "link_list", "id": "legal_menu", "label": "Juridisch menu", "default": "footer" }
+  ],
+  "blocks": [
+    {
+      "type": "menu_column",
+      "name": "Menu kolom",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Kop", "default": "Shop" },
+        { "type": "link_list", "id": "menu", "label": "Menu" }
+      ]
+    },
+    {
+      "type": "brands_column",
+      "name": "Merken kolom",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Kop", "default": "Merken" },
+        { "type": "textarea", "id": "brands", "label": "Merken (komma-gescheiden)", "default": "Joya, Fightpro, Hayabusa, Twins, Booster, King, Venum, Smai, Adidas, Lifemaxx, Crossmaxx, Matchu, ESN, Bio Tech, Super Pro, Tatami Fightwear, Queen, UFC, Shockdoctor, Makura, Namman Muay, Fairtex, Windy, PX" }
+      ]
+    },
+    {
+      "type": "text_column",
+      "name": "Tekst kolom",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Kop", "default": "Informatie" },
+        { "type": "richtext", "id": "text", "label": "Tekst" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "menu_column", "settings": { "heading": "Shop" } },
+      { "type": "brands_column", "settings": { "heading": "Merken" } },
+      { "type": "menu_column", "settings": { "heading": "Informatie" } }
+    ]
+  }
+}
+{% endschema %}
