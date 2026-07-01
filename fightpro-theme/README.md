@@ -56,6 +56,29 @@ homepage-tegels zodat alles linkt, bijv.:
 
 De volledige lijst met categorieën en aantallen staat in `data/catalog.json`.
 
+## Snel: alles-in-één winkel-sectie (werkt meteen, zonder import)
+
+Wil je de complete winkel meteen zien werken zonder eerst te importeren? Gebruik
+de sectie **`sections/fightpro-shop.liquid`**. Alle 294 producten (met foto's,
+prijzen, maten en omschrijvingen) zitten er al in ingebakken, en de knoppen
+werken volledig in de browser:
+
+- categorie-chips, merk-filter, sorteren en live zoeken
+- klik op een product → productvenster met maatkeuze en aantal
+- **In winkelwagen** → winkelwagen-lade met aantal aanpassen, verwijderen en
+  totaal (inclusief gratis-verzending-teller)
+
+Twee manieren om het te plaatsen in je store:
+
+1. **Als sectie** — Thema bewerken → *Sectie toevoegen* → **FightPro Winkel**.
+2. **Als aparte pagina** — maak een pagina (bijv. “Winkel”) en kies bij
+   *Thema-sjabloon* de template **winkel** (`templates/page.winkel.json`).
+
+> De winkelwagen in deze sectie werkt in de browser (localStorage). Online
+> écht afrekenen met iDEAL/creditcard loopt via Shopify-checkout en werkt zodra
+> de producten in je catalogus staan — importeer daarvoor `products_export.csv`
+> (zie hieronder). De productfoto's worden geladen vanaf fightpro.nl.
+
 ## Thema uploaden
 
 Via de Shopify CLI:

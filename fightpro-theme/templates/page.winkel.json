@@ -1,0 +1,4 @@
+{
+  "sections": { "shop": { "type": "fightpro-shop" } },
+  "order": ["shop"]
+}
