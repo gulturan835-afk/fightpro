@@ -7,19 +7,25 @@
   </div>
 </div>
 
-<section class="sec" style="background:var(--black);padding-top:24px;">
+<section class="sec" style="background:var(--black);padding-top:32px;">
   <div class="container">
     <% if (!cart.lines.length) { %>
       <div class="empty-cart">
         <p class="empty-msg">Je winkelwagen is leeg.</p>
-        <a href="/categorie/bokshandschoenen" class="btn-p btn-lg">Verder winkelen →</a>
+        <a href="<%= shopUrl %>" class="btn-p btn-lg">Verder winkelen →</a>
       </div>
     <% } else { %>
       <div class="cart-g">
         <div class="cart-lines">
           <% cart.lines.forEach(function(l){ %>
             <div class="cart-line">
-              <a href="/product/<%= l.product.slug %>" class="cart-thumb"><%- productArt(l.product, 90) %></a>
+              <a href="/product/<%= l.product.slug %>" class="cart-thumb">
+                <% if (l.product.image) { %>
+                  <img src="<%= l.product.image %>" alt="<%= l.product.name %>" width="92" height="92">
+                <% } else { %>
+                  <%- productArt(l.product, 76) %>
+                <% } %>
+              </a>
               <div class="cart-mid">
                 <div class="cart-brand"><%= l.product.brand %></div>
                 <a href="/product/<%= l.product.slug %>" class="cart-name"><%= l.product.name %></a>
@@ -56,7 +62,7 @@
           <% } %>
           <div class="sum-total"><span>Totaal</span><span><%= euro(cart.total) %></span></div>
           <a href="/afrekenen" class="btn-p btn-lg sum-checkout">Afrekenen →</a>
-          <a href="/categorie/bokshandschoenen" class="sum-cont">← Verder winkelen</a>
+          <a href="<%= shopUrl %>" class="sum-cont">← Verder winkelen</a>
         </aside>
       </div>
     <% } %>

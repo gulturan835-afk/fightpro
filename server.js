@@ -59,6 +59,7 @@ app.use((req, res, next) => {
   res.locals.navGroups = navGroups;
   res.locals.navSingles = navSingles;
   res.locals.brands = brands;
+  res.locals.shopUrl = '/categorie/' + (navGroups[0] ? navGroups[0].slug : '');
   res.locals.cartCount = cartDetails(req.session).count;
   res.locals.path = req.path;
   res.locals.query = '';
@@ -108,7 +109,7 @@ app.get('/categorie/:slug', (req, res, next) => {
   const brand = req.query.merk;
   if (brand) products = products.filter((p) => p.brand === brand);
 
-  const brands = [...new Set(
+  const catBrands = [...new Set(
     (children.length
       ? children.flatMap((c) => store.getProductsByCategory(c.slug))
       : store.getProductsByCategory(cat.slug)
@@ -118,9 +119,10 @@ app.get('/categorie/:slug', (req, res, next) => {
   res.render('category', {
     title: `${cat.name} | FightPro Enschede`,
     category: cat,
+    parentCat: cat.parent ? catBySlug.get(cat.parent) : null,
     children,
     products: products.map(decorate),
-    brands,
+    catBrands,
     activeBrand: brand || null,
   });
 });

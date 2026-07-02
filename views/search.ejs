@@ -14,7 +14,7 @@
       <p class="empty-msg">Typ iets in de zoekbalk om producten te vinden.</p>
     <% } else if (!results.length) { %>
       <p class="empty-msg">Geen producten gevonden voor “<%= q %>”.</p>
-      <a href="/categorie/bokshandschoenen" class="btn-p btn-lg" style="margin-top:8px;">Bekijk de collectie →</a>
+      <a href="<%= shopUrl %>" class="btn-p btn-lg" style="margin-top:8px;">Bekijk de collectie →</a>
     <% } else { %>
       <div class="pg">
         <% results.forEach(function(p){ %>
