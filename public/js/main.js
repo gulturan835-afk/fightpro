@@ -26,14 +26,16 @@ if (ham && mnav) {
   }));
 }
 
-// ---- Tellers (alleen op home) ----
+// ---- Tellers (statistieken-band) ----
 function animCnt(el) {
-  const tgt = +el.dataset.target, dur = 1800, t0 = performance.now(), s = tgt === 2020 ? 2010 : 0;
+  const tgt = +el.dataset.target;
+  const start = el.dataset.start ? +el.dataset.start : 0;
+  const suffix = el.dataset.suffix || '';
+  const dur = 1800, t0 = performance.now();
   (function upd(now) {
     const t = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - t, 4);
-    el.textContent = Math.round(s + (tgt - s) * e);
+    el.textContent = Math.round(start + (tgt - start) * e) + (t === 1 ? suffix : '');
     if (t < 1) requestAnimationFrame(upd);
-    else el.textContent = tgt === 288 ? '288+' : tgt;
   })(t0);
 }
 const co = new IntersectionObserver((e) => {
@@ -125,3 +127,14 @@ if (addForm) {
     addToCart(slug, size, qtyInput.value);
   });
 }
+
+// Productpagina: galerij-thumbnails wisselen de hoofdfoto
+document.querySelectorAll('.pd-thumb').forEach((th) => {
+  th.addEventListener('click', () => {
+    const main = document.querySelector('.pd-media img');
+    if (!main) return;
+    main.src = th.dataset.src;
+    document.querySelectorAll('.pd-thumb').forEach((x) => x.classList.remove('on'));
+    th.classList.add('on');
+  });
+});

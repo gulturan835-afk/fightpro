@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const store = require('./db');
 const { euro, productArt } = require('./lib/helpers');
+const { brands } = require('./data/catalog-live');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -57,6 +58,7 @@ app.use((req, res, next) => {
   res.locals.productArt = productArt;
   res.locals.navGroups = navGroups;
   res.locals.navSingles = navSingles;
+  res.locals.brands = brands;
   res.locals.cartCount = cartDetails(req.session).count;
   res.locals.path = req.path;
   res.locals.query = '';
@@ -66,10 +68,26 @@ app.use((req, res, next) => {
 // ================= ROUTES =================
 
 // Home
+const allProducts = store.getAllProducts();
+const countForCat = (slug) => {
+  const kids = store.getChildren(slug).map((c) => c.slug);
+  return allProducts.filter((p) => p.category === slug || kids.includes(p.category)).length;
+};
 app.get('/', (req, res) => {
   const featured = store.getFeatured(8).map(decorate);
-  const shopCats = categories.filter((c) => c.parent === null);
-  res.render('home', { title: 'FightPro Enschede | Vechtsport Artikelen', featured, shopCats });
+  const catTiles = categories
+    .filter((c) => c.parent === null)
+    .map((c) => ({ slug: c.slug, name: c.name, count: countForCat(c.slug) }))
+    .filter((c) => c.count > 0)
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 6);
+  res.render('home', {
+    title: 'FightPro Enschede | Vechtsport Artikelen',
+    featured,
+    catTiles,
+    stats: { products: allProducts.length, brands: brands.length },
+    includeIntro: true,
+  });
 });
 
 // Categoriepagina (zowel groep als losse/leaf-categorie)

@@ -1,8 +1,9 @@
 // Database-laag (SQLite via better-sqlite3).
-// Bij opstarten worden categorieën en producten geseed vanuit data/catalog.js.
+// Bij opstarten worden categorieën en producten geseed vanuit
+// data/catalog-live.js (de echte fightpro.nl-catalogus, zie scripts/).
 const path = require('path');
 const Database = require('better-sqlite3');
-const { categories, products } = require('./data/catalog');
+const { categories, products } = require('./data/catalog-live');
 
 const db = new Database(path.join(__dirname, 'fightpro.db'));
 db.pragma('journal_mode = WAL');
@@ -33,6 +34,9 @@ db.exec(`
     specs       TEXT,               -- JSON array
     sizes       TEXT,               -- JSON array
     stock       INTEGER DEFAULT 0,
+    image       TEXT,               -- hoofdfoto (URL)
+    images      TEXT,               -- JSON array van foto-URL's
+    bestseller  INTEGER DEFAULT 0,
     pos         INTEGER
   );
 
@@ -66,10 +70,11 @@ db.exec(`
   );
 `);
 
-// ---- Seed (alleen wanneer leeg, zodat bestellingen behouden blijven) ----
+// ---- Seed (opnieuw wanneer de catalogus wijzigt; bestellingen blijven staan) ----
 function seed() {
   const count = db.prepare('SELECT COUNT(*) AS n FROM products').get().n;
-  if (count > 0) return;
+  if (count === products.length) return;
+  db.exec('DELETE FROM products; DELETE FROM categories;');
 
   const insCat = db.prepare(
     'INSERT INTO categories (slug,name,parent,nav,kind,blurb,pos) VALUES (@slug,@name,@parent,@nav,@kind,@blurb,@pos)'
@@ -79,15 +84,18 @@ function seed() {
   );
 
   const insProd = db.prepare(`
-    INSERT INTO products (slug,name,brand,palette,category,price,old_price,badge,short,description,specs,sizes,stock,pos)
-    VALUES (@slug,@name,@brand,@palette,@category,@price,@old_price,@badge,@short,@description,@specs,@sizes,@stock,@pos)
+    INSERT INTO products (slug,name,brand,palette,category,price,old_price,badge,short,description,specs,sizes,stock,image,images,bestseller,pos)
+    VALUES (@slug,@name,@brand,@palette,@category,@price,@old_price,@badge,@short,@description,@specs,@sizes,@stock,@image,@images,@bestseller,@pos)
   `);
   products.forEach((p, i) =>
     insProd.run({
-      old_price: null, badge: null, palette: null, short: '', description: '', stock: 0,
+      old_price: null, badge: null, palette: null, short: '', description: '', stock: 0, image: null,
       ...p,
+      old_price: p.old_price !== undefined ? p.old_price : (p.oldPrice || null),
       specs: JSON.stringify(p.specs || []),
       sizes: JSON.stringify(p.sizes || []),
+      images: JSON.stringify(p.images || []),
+      bestseller: p.bestseller ? 1 : 0,
       pos: i,
     })
   );
@@ -98,7 +106,12 @@ seed();
 // ---- Helpers ----
 function rowToProduct(r) {
   if (!r) return null;
-  return { ...r, specs: JSON.parse(r.specs || '[]'), sizes: JSON.parse(r.sizes || '[]') };
+  return {
+    ...r,
+    specs: JSON.parse(r.specs || '[]'),
+    sizes: JSON.parse(r.sizes || '[]'),
+    images: JSON.parse(r.images || '[]'),
+  };
 }
 
 const Q = {

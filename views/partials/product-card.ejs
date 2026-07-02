@@ -7,7 +7,11 @@
 <article class="pc">
   <a href="/product/<%= p.slug %>" class="p-img" aria-label="<%= p.brand %> <%= p.name %>">
     <% if (p.badge) { %><span class="bdg <%= badgeClass %>"><%= p.badge %></span><% } %>
-    <%- productArt(p, 140) %>
+    <% if (p.image) { %>
+      <img src="<%= p.image %>" alt="<%= p.brand %> <%= p.name %>" loading="lazy" width="400" height="400">
+    <% } else { %>
+      <%- productArt(p, 140) %>
+    <% } %>
   </a>
   <div class="p-bd">
     <div class="p-br"><%= p.brand %></div>

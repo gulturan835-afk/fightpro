@@ -1,78 +1,101 @@
 <%- include('partials/header') %>
 
-<section class="hero" aria-label="Hero">
-<div class="hero-in">
-<div class="hero-cnt">
-<div class="hero-badge fi">Dé vechtsportwinkel van Twente</div>
-<h1 class="fi d1">Topmerken.<br><span class="ac">Topprijzen.</span><br>Top advies.</h1>
-<p class="hero-sub fi d2">Bij FightPro kun je handschoenen én beschermers <strong>eerst passen</strong> voordat je koopt. Van topmerken als <strong>Hayabusa, Twins, Joya, Fairtex en King</strong> — voor beginners én professionals.</p>
-<div class="hero-btns fi d3">
-<a href="/categorie/bokshandschoenen" class="btn-p btn-lg">Bekijk de collectie →</a>
-<a href="#over-ons" class="btn-s btn-lg">Ons verhaal</a>
-</div>
-<div class="hero-trust fi d4">
-<div class="ti"><span class="ti-ic">✓</span> 288+ producten op voorraad</div>
-<div class="ti"><span class="ti-ic">✓</span> Passen in de winkel</div>
-<div class="ti"><span class="ti-ic">✓</span> Officiële groothandel</div>
-</div>
-</div>
-<div class="hero-vis fr d2">
-<div class="hlw"><img src="/img/logo.png" alt="FightPro logo" width="300" height="300"></div>
-<div class="stats-g">
-<div class="stat-b"><div class="s-num" data-target="288">0</div><div class="s-lbl">Producten</div></div>
-<div class="stat-b"><div class="s-num" data-target="6">0</div><div class="s-lbl">Merken</div></div>
-<div class="stat-b"><div class="s-num" data-target="2020">0</div><div class="s-lbl">Geopend</div></div>
-</div>
-</div>
-</div>
+<!-- ========== 3D SCROLL-INTRO ========== -->
+<section class="intro" id="intro" aria-label="Introductie">
+  <canvas class="intro-canvas" id="introCanvas" aria-hidden="true"></canvas>
+
+  <div class="intro-fallback" id="introFallback" hidden>
+    <div class="fb-grid" aria-hidden="true"></div>
+    <div class="fb-glow" aria-hidden="true"></div>
+  </div>
+
+  <div class="chapter ch-1" id="ch1">
+    <p class="eyebrow">Enschede · sinds 2020</p>
+    <h1 class="mega" aria-label="FightPro">
+      <span class="ltr">F</span><span class="ltr">I</span><span class="ltr">G</span><span class="ltr">H</span><span class="ltr">T</span><span class="ltr ac">P</span><span class="ltr ac">R</span><span class="ltr ac">O</span>
+    </h1>
+    <p class="ch-sub">Dé vechtsportwinkel van Twente</p>
+    <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
+  </div>
+
+  <div class="chapter ch-2" id="ch2" aria-hidden="true">
+    <p class="line l1">Topmerken.</p>
+    <p class="line l2 ac">Topprijzen.</p>
+    <p class="line l3">Top advies.</p>
+  </div>
+
+  <div class="chapter ch-3" id="ch3" aria-hidden="true">
+    <p class="eyebrow">Passen vóór kopen — <%= stats.products %>+ producten · <%= stats.brands %> merken</p>
+    <p class="lockup">Train harder.<br><span class="ac">Vecht slimmer.</span></p>
+    <div class="cta-row">
+      <a class="btn-p btn-lg" href="#shop">Bekijk de collectie <span aria-hidden="true">→</span></a>
+      <a class="btn-s btn-lg" href="#over-ons">Ons verhaal</a>
+    </div>
+  </div>
 </section>
 
-<div class="ticker" aria-hidden="true"><div class="ticker-in"><span class="t-item">Handschoenen passen in de winkel</span><span class="t-dot"></span><span class="t-item">Officiële groothandel</span><span class="t-dot"></span><span class="t-item">Hayabusa · Twins · Joya · Fairtex · King</span><span class="t-dot"></span><span class="t-item">Deskundig advies van actieve sporters</span><span class="t-dot"></span><span class="t-item">Lipperkerkstraat 19 Enschede</span><span class="t-dot"></span><span class="t-item">Gepersonaliseerde uitrusting voor gyms</span><span class="t-dot"></span><span class="t-item">Handschoenen passen in de winkel</span><span class="t-dot"></span><span class="t-item">Officiële groothandel</span><span class="t-dot"></span><span class="t-item">Hayabusa · Twins · Joya · Fairtex · King</span><span class="t-dot"></span><span class="t-item">Deskundig advies van actieve sporters</span><span class="t-dot"></span><span class="t-item">Lipperkerkstraat 19 Enschede</span><span class="t-dot"></span><span class="t-item">Gepersonaliseerde uitrusting voor gyms</span><span class="t-dot"></span></div></div>
+<!-- ========== TICKER ========== -->
+<div class="ticker" aria-hidden="true"><div class="ticker-in"><% for (var t=0;t<2;t++){ %><span class="t-item">Handschoenen passen in de winkel</span><span class="t-dot"></span><span class="t-item">Officiële groothandel</span><span class="t-dot"></span><span class="t-item">Joya · Hayabusa · Twins · Booster · Fairtex</span><span class="t-dot"></span><span class="t-item">Deskundig advies van actieve sporters</span><span class="t-dot"></span><span class="t-item">Lipperkerkstraat 19 Enschede</span><span class="t-dot"></span><span class="t-item"><%= stats.brands %> topmerken onder één dak</span><span class="t-dot"></span><% } %></div></div>
 
+<!-- ========== USP'S ========== -->
 <div class="usp-row"><div class="container"><div class="usp-g">
 <div class="usp-c fi"><div class="usp-ico"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div><div><div class="usp-t">Passen voor kopen</div><div class="usp-p">Net als schoenen zitten handschoenen niet allemaal hetzelfde. Kom langs en pas ze gewoon in de winkel.</div></div></div>
-<div class="usp-c fi d1"><div class="usp-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="usp-t">Officiële topmerken</div><div class="usp-p">Hayabusa, Twins, Joya, Fairtex, King én het eigen FightPro merk — altijd 100% origineel.</div></div></div>
+<div class="usp-c fi d1"><div class="usp-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="usp-t"><%= stats.brands %> officiële topmerken</div><div class="usp-p">Van Joya, Hayabusa en Twins tot Booster, Fairtex en Venum — altijd 100% origineel.</div></div></div>
 <div class="usp-c fi d2"><div class="usp-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><div class="usp-t">Deskundig advies</div><div class="usp-p">Onze medewerkers zijn zelf actieve sporters en weten precies wat bij jou past.</div></div></div>
 <div class="usp-c fi d3"><div class="usp-ico"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div><div class="usp-t">Groothandel voor gyms</div><div class="usp-p">Sportscholen en clubs krijgen speciale inkoopprijzen en gepersonaliseerde uitrusting.</div></div></div>
 </div></div></div>
 
+<!-- ========== CATEGORIEËN ========== -->
 <section class="sec" id="shop" style="background:var(--black);">
 <div class="container">
-<div class="tc fi"><div class="lbl">Ons assortiment</div><h2 class="ttl">Alles voor de <span class="ac">vechtsporter</span></h2><p class="sub">Van bokshandschoenen tot scheenbeschermers, van kleding tot yoga — bij FightPro vind je het allemaal.</p></div>
+<div class="tc fi"><div class="lbl">Ons assortiment</div><h2 class="ttl">Alles voor de <span class="ac">vechtsporter</span></h2><p class="sub">Van bokshandschoenen tot scheenbeschermers, van kids-lijnen tot voeding — <%= stats.products %>+ producten op voorraad.</p></div>
 <div class="cats-g">
-  <% var tiles=[
-    {slug:'bokshandschoenen',tag:'Meest verkocht',name:'Bokshandschoenen'},
-    {slug:'scheenbeschermers',tag:'Bescherming',name:'Scheenbeschermers'},
-    {slug:'mma-handschoenen',tag:'Volledig pakket',name:'MMA & Kickboksen'},
-    {slug:'bokszakken',tag:'Training',name:'Bokszakken & Pads'},
-    {slug:'kleding',tag:'Sportswear',name:'Kleding & Shorts'},
-    {slug:'yoga-fitness',tag:'Welzijn',name:'Yoga & Fitness'}
-  ]; %>
-  <% tiles.forEach(function(t){ %>
+  <% catTiles.forEach(function(t){ %>
     <a class="cat fi" href="/categorie/<%= t.slug %>">
-      <div class="cat-ov"></div>
-      <div class="cat-bd"><div class="cat-tag"><%= t.tag %></div><div class="cat-n"><%= t.name %></div><div class="cat-a">Bekijk collectie <span>→</span></div></div>
+      <div class="cat-bd"><div class="cat-tag"><%= t.count %> producten</div><div class="cat-n"><%= t.name %></div><div class="cat-a">Bekijk collectie <span>→</span></div></div>
     </a>
   <% }) %>
 </div>
 </div>
 </section>
 
+<!-- ========== BESTSELLERS ========== -->
 <section class="sec" style="background:var(--black2);">
 <div class="container">
-<div class="p-hd"><div class="fi"><div class="lbl">Uitgelicht</div><h2 class="ttl">Best <span class="ac">verkochte</span></h2></div><a href="/categorie/bokshandschoenen" class="la fi">Alle producten →</a></div>
+<div class="p-hd"><div class="fi"><div class="lbl">Uitgelicht</div><h2 class="ttl">Best <span class="ac">verkochte</span></h2></div><a href="/categorie/<%= catTiles[0] ? catTiles[0].slug : 'kickboxing-gloves-leather-handschoenen-leer' %>" class="la fi">Alle producten →</a></div>
 <div class="pg">
   <% featured.forEach(function(p){ %>
     <%- include('partials/product-card', { p: p }) %>
   <% }) %>
 </div>
-<div class="p-more fi"><a href="/categorie/bokshandschoenen" class="btn-p btn-lg">Bekijk de hele collectie →</a></div>
+<div class="p-more fi"><a href="/categorie/<%= catTiles[0] ? catTiles[0].slug : 'kickboxing-gloves-leather-handschoenen-leer' %>" class="btn-p btn-lg">Bekijk de hele collectie →</a></div>
 </div>
 </section>
 
-<div class="br-row"><div class="br-in"><span class="br-lbl">Officiële dealer van</span><div class="br-ls"><span class="br">HAYABUSA</span><span class="br">TWINS</span><span class="br">JOYA</span><span class="br">FAIRTEX</span><span class="br">KING PRO</span><span class="br">MATCHU</span></div></div></div>
+<!-- ========== STATISTIEKEN ========== -->
+<div class="stats-band">
+<div class="container"><div class="stats-g">
+<div class="fi"><div class="s-num" data-target="<%= stats.products %>" data-suffix="+">0</div><div class="s-lbl">Producten</div></div>
+<div class="fi d1"><div class="s-num" data-target="<%= stats.brands %>">0</div><div class="s-lbl">Merken</div></div>
+<div class="fi d2"><div class="s-num" data-target="2020" data-start="2010">0</div><div class="s-lbl">Geopend</div></div>
+<div class="fi d3"><div class="s-num" data-target="100" data-suffix="%">0</div><div class="s-lbl">Origineel</div></div>
+</div></div>
+</div>
 
-<section class="sec" id="over-ons" style="background:var(--black);">
+<!-- ========== MERKENWAND ========== -->
+<section class="sec" id="merken" style="background:var(--black);">
+<div class="container">
+<div class="tc fi"><div class="lbl">Officiële dealer</div><h2 class="ttl">Alle <span class="ac"><%= stats.brands %> merken</span></h2><p class="sub">Wij verkopen uitsluitend originele producten, rechtstreeks van de officiële merken en importeurs.</p></div>
+<div class="brands-g fi">
+  <% brands.forEach(function(b){ %>
+    <a class="brand-c" href="/zoeken?q=<%= encodeURIComponent(b) %>"><%= b %></a>
+  <% }) %>
+</div>
+</div>
+</section>
+
+<!-- ========== OVER ONS ========== -->
+<section class="sec" id="over-ons" style="background:var(--black2);">
 <div class="container"><div class="ab-g">
 <div class="ab-vis fl"><div class="ab-card"><img src="/img/logo.png" alt="FightPro logo" width="280"></div><div class="ab-fl"><div class="ab-fl-n">2020</div><div class="ab-fl-l">Geopend</div></div></div>
 <div class="fr">
@@ -85,14 +108,15 @@
 <li><div class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Advies van medewerkers die zelf actief sporten</li>
 <li><div class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Officieel groothandel voor sportscholen en clubs</li>
 <li><div class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Gepersonaliseerde uitrusting met uw eigen logo</li>
-<li><div class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Vechtsport, fitness én yoga — alles op één plek</li>
+<li><div class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Vechtsport, fitness én voeding — alles op één plek</li>
 </ul>
 <a href="#contact" class="btn-p btn-lg">Kom langs in de winkel →</a>
 </div>
 </div></div>
 </section>
 
-<section class="sec-sm" id="groothandel" style="background:var(--black2);">
+<!-- ========== GROOTHANDEL ========== -->
+<section class="sec-sm" id="groothandel" style="background:var(--black);">
 <div class="container"><div class="wh-g">
 <div class="wh-co fl">
 <div class="lbl">Voor clubs & instellingen</div>
@@ -116,8 +140,10 @@
 </div></div>
 </section>
 
+<!-- ========== CTA-BAND ========== -->
 <div class="cta-bd"><div class="cta-in"><div class="fi"><div class="cta-lb">Kom langs in Enschede</div><h2 class="cta-h">Passen voor kopen.<br>Altijd het goede advies.</h2><p class="cta-p">In tegenstelling tot webshops kun je bij FightPro handschoenen en beschermers écht passen voordat je koopt. Onze medewerkers helpen je graag bij de juiste keuze.</p></div><a href="#contact" class="btn-dk fi d2">Winkel bezoeken →</a></div></div>
 
+<!-- ========== CONTACT ========== -->
 <section class="sec" id="contact" style="background:var(--black);">
 <div class="container">
 <div class="tc fi" style="margin-bottom:56px;"><div class="lbl">Vind ons</div><h2 class="ttl">Openingstijden & <span class="ac">contact</span></h2></div>
