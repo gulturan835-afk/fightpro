@@ -442,3 +442,14 @@ footer{background:var(--black2);border-top:1px solid var(--border);}
   .scroll-hint span{animation:none;}
   .fi,.fl,.fr{opacity:1;transform:none;transition:none;}
 }
+
+/* ---------- Footer: contact & openingstijden (fightpro.nl-informatie) ---------- */
+.f-contact{display:flex;flex-direction:column;gap:10px;margin-bottom:22px;}
+.f-ct-row{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-s);}
+.f-ct-row svg{flex:none;width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-top:3px;}
+.f-ct-row a{color:var(--text-s);transition:color .2s;}
+.f-ct-row a:hover{color:var(--gold);}
+.f-hours li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--border);padding-bottom:8px;}
+.f-day{color:var(--text-s);font-size:13.5px;}
+.f-time{font-size:13.5px;font-weight:700;color:var(--text);font-variant-numeric:tabular-nums;}
+.f-closed{font-size:13.5px;font-weight:600;color:var(--text-m);}

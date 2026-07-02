@@ -1,16 +1,435 @@
 {
   "sections": {
-    "hero": { "type": "hero-intro", "settings": {} },
-    "ticker": { "type": "ticker" },
-    "usp": { "type": "usp" },
-    "tiles": { "type": "collection-tiles" },
-    "featured": { "type": "featured-collection", "settings": {} },
-    "stats": { "type": "stats" },
-    "brands": { "type": "brand-wall", "settings": {} },
-    "about": { "type": "about" },
-    "wholesale": { "type": "wholesale" },
-    "cta": { "type": "cta-banner", "settings": {} },
-    "contact": { "type": "store-info" }
+    "hero": {
+      "type": "hero-intro",
+      "settings": {
+        "eyebrow": "Enschede · sinds 2020",
+        "title": "FIGHT",
+        "title_accent": "PRO",
+        "subtitle": "Dé vechtsportwinkel van Twente",
+        "claim_1": "Topmerken.",
+        "claim_2": "Topprijzen.",
+        "claim_3": "Top advies.",
+        "lockup_eyebrow": "Passen vóór kopen — 294+ producten · 25 merken",
+        "lockup_line_1": "Train harder.",
+        "lockup_line_2": "Vecht slimmer.",
+        "cta_text": "Bekijk de collectie",
+        "cta2_text": "Ons verhaal"
+      }
+    },
+    "ticker": {
+      "type": "ticker",
+      "blocks": {
+        "ticker-item-1": {
+          "type": "item",
+          "settings": {
+            "text": "Handschoenen passen in de winkel"
+          }
+        },
+        "ticker-item-2": {
+          "type": "item",
+          "settings": {
+            "text": "Officiële groothandel"
+          }
+        },
+        "ticker-item-3": {
+          "type": "item",
+          "settings": {
+            "text": "Joya · Hayabusa · Twins · Booster · Fairtex"
+          }
+        },
+        "ticker-item-4": {
+          "type": "item",
+          "settings": {
+            "text": "Deskundig advies van actieve sporters"
+          }
+        },
+        "ticker-item-5": {
+          "type": "item",
+          "settings": {
+            "text": "Lipperkerkstraat 19 Enschede"
+          }
+        },
+        "ticker-item-6": {
+          "type": "item",
+          "settings": {
+            "text": "25 topmerken onder één dak"
+          }
+        }
+      },
+      "block_order": [
+        "ticker-item-1",
+        "ticker-item-2",
+        "ticker-item-3",
+        "ticker-item-4",
+        "ticker-item-5",
+        "ticker-item-6"
+      ]
+    },
+    "usp": {
+      "type": "usp",
+      "blocks": {
+        "usp-usp-1": {
+          "type": "usp",
+          "settings": {
+            "icon": "check",
+            "title": "Passen voor kopen",
+            "text": "Net als schoenen zitten handschoenen niet allemaal hetzelfde. Kom langs en pas ze gewoon in de winkel."
+          }
+        },
+        "usp-usp-2": {
+          "type": "usp",
+          "settings": {
+            "icon": "shield",
+            "title": "25 officiële topmerken",
+            "text": "Van Joya, Hayabusa en Twins tot Booster, Fairtex en Venum — altijd 100% origineel."
+          }
+        },
+        "usp-usp-3": {
+          "type": "usp",
+          "settings": {
+            "icon": "users",
+            "title": "Deskundig advies",
+            "text": "Onze medewerkers zijn zelf actieve sporters en weten precies wat bij jou past."
+          }
+        },
+        "usp-usp-4": {
+          "type": "usp",
+          "settings": {
+            "icon": "truck",
+            "title": "Groothandel voor gyms",
+            "text": "Sportscholen en clubs krijgen speciale inkoopprijzen en gepersonaliseerde uitrusting."
+          }
+        }
+      },
+      "block_order": [
+        "usp-usp-1",
+        "usp-usp-2",
+        "usp-usp-3",
+        "usp-usp-4"
+      ]
+    },
+    "tiles": {
+      "type": "collection-tiles",
+      "settings": {
+        "eyebrow": "Ons assortiment",
+        "heading": "Alles voor de vechtsporter",
+        "subtitle": "Van bokshandschoenen tot scheenbeschermers, van kids-lijnen tot voeding."
+      },
+      "blocks": {
+        "tiles-tile-1": {
+          "type": "tile",
+          "settings": {
+            "tag": "Shop",
+            "title": "Bescherming"
+          }
+        },
+        "tiles-tile-2": {
+          "type": "tile",
+          "settings": {
+            "tag": "Shop",
+            "title": "Handschoenen"
+          }
+        },
+        "tiles-tile-3": {
+          "type": "tile",
+          "settings": {
+            "tag": "Shop",
+            "title": "Uitrusting"
+          }
+        },
+        "tiles-tile-4": {
+          "type": "tile",
+          "settings": {
+            "tag": "Shop",
+            "title": "Kids"
+          }
+        },
+        "tiles-tile-5": {
+          "type": "tile",
+          "settings": {
+            "tag": "Shop",
+            "title": "Voeding"
+          }
+        },
+        "tiles-tile-6": {
+          "type": "tile",
+          "settings": {
+            "tag": "Shop",
+            "title": "Kleding"
+          }
+        }
+      },
+      "block_order": [
+        "tiles-tile-1",
+        "tiles-tile-2",
+        "tiles-tile-3",
+        "tiles-tile-4",
+        "tiles-tile-5",
+        "tiles-tile-6"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Uitgelicht",
+        "heading": "Best verkochte",
+        "limit": 8,
+        "link_text": "Alle producten →",
+        "button_text": "Bekijk de hele collectie →"
+      }
+    },
+    "stats": {
+      "type": "stats",
+      "blocks": {
+        "stats-stat-1": {
+          "type": "stat",
+          "settings": {
+            "number": 294,
+            "start": 0,
+            "label": "Producten",
+            "suffix": "+"
+          }
+        },
+        "stats-stat-2": {
+          "type": "stat",
+          "settings": {
+            "number": 25,
+            "start": 0,
+            "label": "Merken"
+          }
+        },
+        "stats-stat-3": {
+          "type": "stat",
+          "settings": {
+            "number": 2020,
+            "start": 2010,
+            "label": "Geopend"
+          }
+        },
+        "stats-stat-4": {
+          "type": "stat",
+          "settings": {
+            "number": 100,
+            "start": 0,
+            "label": "Origineel",
+            "suffix": "%"
+          }
+        }
+      },
+      "block_order": [
+        "stats-stat-1",
+        "stats-stat-2",
+        "stats-stat-3",
+        "stats-stat-4"
+      ]
+    },
+    "brands": {
+      "type": "brand-wall",
+      "settings": {
+        "eyebrow": "Officiële dealer",
+        "heading": "Alle 25 merken",
+        "subtitle": "Wij verkopen uitsluitend originele producten, rechtstreeks van de officiële merken en importeurs.",
+        "brands": "Adidas, Bio Tech, Booster, Crossmaxx, Danger, ESN, Fairtex, Fightpro, Hayabusa, Joya, King, Lifemaxx, Makura, Matchu, Namman Muay, PX, Queen, Shockdoctor, Smai, Super Pro, Tatami Fightwear, Twins, UFC, Venum, Windy"
+      }
+    },
+    "about": {
+      "type": "about",
+      "settings": {
+        "badge_number": "2020",
+        "badge_label": "Geopend",
+        "eyebrow": "Ons verhaal",
+        "heading": "Van Topstar naar FightPro",
+        "text": "<p>Al tientallen jaren ging iedereen in Twente naar TOPSTAR voor vechtsport en fitness artikelen. Toen Topstar in 2019 failliet ging, bleef Enschede zonder een enkele vechtsportwinkel.</p><p>Dankzij ons goede contact met de voormalige eigenaren en hun leveranciers besloten wij de handel voort te zetten onder een nieuwe naam: FightPro. Op 1 september 2020 gingen onze deuren open.</p>",
+        "cta_text": "Kom langs in de winkel →"
+      },
+      "blocks": {
+        "about-check-1": {
+          "type": "check",
+          "settings": {
+            "text": "Handschoenen en beschermers passen vóór kopen"
+          }
+        },
+        "about-check-2": {
+          "type": "check",
+          "settings": {
+            "text": "Advies van medewerkers die zelf actief sporten"
+          }
+        },
+        "about-check-3": {
+          "type": "check",
+          "settings": {
+            "text": "Officieel groothandel voor sportscholen en clubs"
+          }
+        },
+        "about-check-4": {
+          "type": "check",
+          "settings": {
+            "text": "Gepersonaliseerde uitrusting met uw eigen logo"
+          }
+        },
+        "about-check-5": {
+          "type": "check",
+          "settings": {
+            "text": "Vechtsport, fitness én voeding — alles op één plek"
+          }
+        }
+      },
+      "block_order": [
+        "about-check-1",
+        "about-check-2",
+        "about-check-3",
+        "about-check-4",
+        "about-check-5"
+      ]
+    },
+    "wholesale": {
+      "type": "wholesale",
+      "settings": {
+        "eyebrow": "Voor clubs & instellingen",
+        "heading": "Officiële groothandel",
+        "text": "<p>FightPro is niet alleen een winkel — we zijn een officiële groothandel. Heeft u een sportschool, club of vereniging? Neem contact op voor speciale inkoopprijzen.</p>",
+        "email": "info@fightpro.nl",
+        "phone": "06 340 397 34"
+      },
+      "blocks": {
+        "wholesale-item-1": {
+          "type": "item",
+          "settings": {
+            "title": "Teamkleding",
+            "text": "Trainingspakken, shirts, handdoeken en bidons met uw logo"
+          }
+        },
+        "wholesale-item-2": {
+          "type": "item",
+          "settings": {
+            "title": "Vechtsport uitrusting",
+            "text": "Bokszakken, pads, handschoenen met uw huisstijl"
+          }
+        },
+        "wholesale-item-3": {
+          "type": "item",
+          "settings": {
+            "title": "Sportschool interieur",
+            "text": "Spandoeken, aluminium borden, textieldoeken en vlaggen"
+          }
+        },
+        "wholesale-item-4": {
+          "type": "item",
+          "settings": {
+            "title": "Drukwerk & reclame",
+            "text": "Posters, flyers, polsbandjes, stickers en entreekaartjes"
+          }
+        },
+        "wholesale-item-5": {
+          "type": "item",
+          "settings": {
+            "title": "Website op maat",
+            "text": "Professionele website voor uw sportschool of bedrijf"
+          }
+        }
+      },
+      "block_order": [
+        "wholesale-item-1",
+        "wholesale-item-2",
+        "wholesale-item-3",
+        "wholesale-item-4",
+        "wholesale-item-5"
+      ]
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "eyebrow": "Kom langs in Enschede",
+        "heading": "Passen voor kopen. Altijd het goede advies.",
+        "text": "In tegenstelling tot webshops kun je bij FightPro handschoenen en beschermers écht passen voordat je koopt.",
+        "cta_text": "Winkel bezoeken →"
+      }
+    },
+    "contact": {
+      "type": "store-info",
+      "settings": {
+        "eyebrow": "Vind ons",
+        "heading": "Openingstijden & contact",
+        "hours_note": "Iets niet op de site? Bel, WhatsApp of mail ons gewoon.",
+        "address": "Lipperkerkstraat 19, 7511 CT Enschede",
+        "phone": "06 340 397 34",
+        "email": "info@fightpro.nl",
+        "map_note": "Kom langs om handschoenen of beschermers te passen."
+      },
+      "blocks": {
+        "contact-hours-1": {
+          "type": "hours",
+          "settings": {
+            "day": "Maandag",
+            "time": ""
+          }
+        },
+        "contact-hours-2": {
+          "type": "hours",
+          "settings": {
+            "day": "Dinsdag",
+            "time": "13:00 – 18:00"
+          }
+        },
+        "contact-hours-3": {
+          "type": "hours",
+          "settings": {
+            "day": "Woensdag",
+            "time": "13:00 – 18:00"
+          }
+        },
+        "contact-hours-4": {
+          "type": "hours",
+          "settings": {
+            "day": "Donderdag",
+            "time": "13:00 – 18:00"
+          }
+        },
+        "contact-hours-5": {
+          "type": "hours",
+          "settings": {
+            "day": "Vrijdag",
+            "time": "13:00 – 18:00"
+          }
+        },
+        "contact-hours-6": {
+          "type": "hours",
+          "settings": {
+            "day": "Zaterdag",
+            "time": "10:00 – 16:00"
+          }
+        },
+        "contact-hours-7": {
+          "type": "hours",
+          "settings": {
+            "day": "Zondag",
+            "time": ""
+          }
+        }
+      },
+      "block_order": [
+        "contact-hours-1",
+        "contact-hours-2",
+        "contact-hours-3",
+        "contact-hours-4",
+        "contact-hours-5",
+        "contact-hours-6",
+        "contact-hours-7"
+      ]
+    }
   },
-  "order": ["hero", "ticker", "usp", "tiles", "featured", "stats", "brands", "about", "wholesale", "cta", "contact"]
+  "order": [
+    "hero",
+    "ticker",
+    "usp",
+    "tiles",
+    "featured",
+    "stats",
+    "brands",
+    "about",
+    "wholesale",
+    "cta",
+    "contact"
+  ]
 }

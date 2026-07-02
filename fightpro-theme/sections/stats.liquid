@@ -17,21 +17,104 @@
       "type": "stat",
       "name": "Statistiek",
       "settings": [
-        { "type": "number", "id": "number", "label": "Getal", "default": 294 },
-        { "type": "text", "id": "suffix", "label": "Suffix (bv. + of %)" },
-        { "type": "number", "id": "start", "label": "Startwaarde teller", "default": 0 },
-        { "type": "text", "id": "label", "label": "Label", "default": "Producten" }
+        {
+          "type": "number",
+          "id": "number",
+          "label": "Getal",
+          "default": 294
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Suffix (bv. + of %)"
+        },
+        {
+          "type": "number",
+          "id": "start",
+          "label": "Startwaarde teller",
+          "default": 0
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Producten"
+        }
       ]
     }
   ],
   "default": {
     "blocks": [
-      { "type": "stat", "settings": { "number": 294, "suffix": "+", "label": "Producten" } },
-      { "type": "stat", "settings": { "number": 25, "label": "Merken" } },
-      { "type": "stat", "settings": { "number": 2020, "start": 2010, "label": "Geopend" } },
-      { "type": "stat", "settings": { "number": 100, "suffix": "%", "label": "Origineel" } }
+      {
+        "type": "stat",
+        "settings": {
+          "number": 294,
+          "suffix": "+",
+          "label": "Producten"
+        }
+      },
+      {
+        "type": "stat",
+        "settings": {
+          "number": 25,
+          "label": "Merken"
+        }
+      },
+      {
+        "type": "stat",
+        "settings": {
+          "number": 2020,
+          "start": 2010,
+          "label": "Geopend"
+        }
+      },
+      {
+        "type": "stat",
+        "settings": {
+          "number": 100,
+          "suffix": "%",
+          "label": "Origineel"
+        }
+      }
     ]
   },
-  "presets": [ { "name": "Statistieken" } ]
+  "presets": [
+    {
+      "name": "Statistieken",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "number": 294,
+            "suffix": "+",
+            "label": "Producten"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": 25,
+            "label": "Merken"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": 2020,
+            "start": 2010,
+            "label": "Geopend"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": 100,
+            "suffix": "%",
+            "label": "Origineel"
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

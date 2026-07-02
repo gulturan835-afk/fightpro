@@ -1,0 +1,19 @@
+<section class="sec" style="background:var(--black);min-height:60vh;">
+  <div class="container" style="max-width:480px;">
+    <div class="lbl">Account</div>
+    <h1 class="ttl" style="margin-bottom:28px;">Account activeren</h1>
+    {% form 'activate_customer_password' %}
+      {{ form.errors | default_errors }}
+      <div class="co-field">
+        <label for="ActivatePassword">Wachtwoord</label>
+        <input type="password" id="ActivatePassword" name="customer[password]" autocomplete="new-password" required>
+      </div>
+      <div class="co-field">
+        <label for="ActivatePasswordConfirm">Wachtwoord bevestigen</label>
+        <input type="password" id="ActivatePasswordConfirm" name="customer[password_confirmation]" autocomplete="new-password" required>
+      </div>
+      <button type="submit" class="btn-p btn-lg" style="width:100%;justify-content:center;">Account activeren →</button>
+      <button type="submit" name="decline" class="btn-s" style="width:100%;justify-content:center;margin-top:12px;">Uitnodiging afwijzen</button>
+    {% endform %}
+  </div>
+</section>

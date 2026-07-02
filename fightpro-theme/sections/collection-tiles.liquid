@@ -26,31 +26,131 @@
 {
   "name": "Collectie-tegels",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Ons assortiment" },
-    { "type": "text", "id": "heading", "label": "Kop", "default": "Alles voor de vechtsporter" },
-    { "type": "text", "id": "subtitle", "label": "Subtitel", "default": "Van bokshandschoenen tot scheenbeschermers, van kids-lijnen tot voeding." }
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Ons assortiment"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Kop",
+      "default": "Alles voor de vechtsporter"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitel",
+      "default": "Van bokshandschoenen tot scheenbeschermers, van kids-lijnen tot voeding."
+    }
   ],
   "blocks": [
     {
       "type": "tile",
       "name": "Tegel",
       "settings": [
-        { "type": "collection", "id": "collection", "label": "Collectie" },
-        { "type": "text", "id": "title", "label": "Titel (optioneel, anders collectienaam)" },
-        { "type": "text", "id": "tag", "label": "Label (als geen collectie gekozen)", "default": "Shop" }
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collectie"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel (optioneel, anders collectienaam)"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Label (als geen collectie gekozen)",
+          "default": "Shop"
+        }
       ]
     }
   ],
   "default": {
     "blocks": [
-      { "type": "tile", "settings": { "title": "Bescherming" } },
-      { "type": "tile", "settings": { "title": "Handschoenen" } },
-      { "type": "tile", "settings": { "title": "Uitrusting" } },
-      { "type": "tile", "settings": { "title": "Kids" } },
-      { "type": "tile", "settings": { "title": "Voeding" } },
-      { "type": "tile", "settings": { "title": "Kleding" } }
+      {
+        "type": "tile",
+        "settings": {
+          "title": "Bescherming"
+        }
+      },
+      {
+        "type": "tile",
+        "settings": {
+          "title": "Handschoenen"
+        }
+      },
+      {
+        "type": "tile",
+        "settings": {
+          "title": "Uitrusting"
+        }
+      },
+      {
+        "type": "tile",
+        "settings": {
+          "title": "Kids"
+        }
+      },
+      {
+        "type": "tile",
+        "settings": {
+          "title": "Voeding"
+        }
+      },
+      {
+        "type": "tile",
+        "settings": {
+          "title": "Kleding"
+        }
+      }
     ]
   },
-  "presets": [ { "name": "Collectie-tegels" } ]
+  "presets": [
+    {
+      "name": "Collectie-tegels",
+      "blocks": [
+        {
+          "type": "tile",
+          "settings": {
+            "title": "Bescherming"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "title": "Handschoenen"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "title": "Uitrusting"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "title": "Kids"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "title": "Voeding"
+          }
+        },
+        {
+          "type": "tile",
+          "settings": {
+            "title": "Kleding"
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

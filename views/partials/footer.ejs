@@ -4,29 +4,36 @@
 <div>
   <img class="f-logo" src="/img/logo.png" alt="FightPro Enschede" width="144" height="46">
   <p class="f-desc">Dé vechtsportwinkel van Twente. Officiële dealer van <%= brands.length %> topmerken — van Joya en Hayabusa tot Twins en Fairtex. Geopend in 2020 in Enschede.</p>
-  <div class="f-soc-r"><a class="f-soc" href="#" aria-label="Facebook">FB</a><a class="f-soc" href="#" aria-label="Instagram">IG</a><a class="f-soc" href="#" aria-label="YouTube">YT</a></div>
+  <div class="f-contact">
+    <div class="f-ct-row"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Lipperkerkstraat 19, 7511 CT Enschede</span></div>
+    <div class="f-ct-row"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .99h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.02z"/></svg><a href="https://wa.me/31634039734">WhatsApp +31 6 340 397 34</a></div>
+    <div class="f-ct-row"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@fightpro.nl">info@fightpro.nl</a></div>
+  </div>
   <div class="pay-r"><span class="pay">iDEAL</span><span class="pay">VISA</span><span class="pay">MC</span><span class="pay">PAYPAL</span></div>
 </div>
-<div><div class="f-ct">Shop</div><ul class="f-ls">
+<div><div class="f-ct">Openingstijden</div><ul class="f-ls f-hours">
+  <li><span class="f-day">Maandag</span><span class="f-closed">Gesloten</span></li>
+  <li><span class="f-day">Dinsdag</span><span class="f-time">13:00 – 18:00</span></li>
+  <li><span class="f-day">Woensdag</span><span class="f-time">13:00 – 18:00</span></li>
+  <li><span class="f-day">Donderdag</span><span class="f-time">13:00 – 18:00</span></li>
+  <li><span class="f-day">Vrijdag</span><span class="f-time">13:00 – 18:00</span></li>
+  <li><span class="f-day">Zaterdag</span><span class="f-time">10:00 – 16:00</span></li>
+  <li><span class="f-day">Zondag</span><span class="f-closed">Gesloten</span></li>
+</ul></div>
+<div><div class="f-ct">Algemene info</div><ul class="f-ls">
+  <li><a href="/#contact">Contact</a></li>
+  <li><a href="https://www.fightpro.nl/category/interessante-vechtsport-artikelen/" target="_blank" rel="noopener">Interessante artikelen</a></li>
+  <li><a href="/#groothandel">Club, instelling of sportschool?</a></li>
+  <li><a href="/#over-ons">Wie zijn wij?</a></li>
+  <li><a href="https://www.fightpro.nl/promotie-materialen-voor-sportscholen/" target="_blank" rel="noopener">Promotie</a></li>
   <% navGroups.forEach(function(g){ %>
     <li><a href="/categorie/<%= g.slug %>"><%= g.name %></a></li>
-  <% }) %>
-  <% navSingles.forEach(function(c){ %>
-    <li><a href="/categorie/<%= c.slug %>"><%= c.name %></a></li>
   <% }) %>
 </ul></div>
 <div><div class="f-ct">Merken (<%= brands.length %>)</div><ul class="f-ls f-cols">
   <% brands.forEach(function(b){ %>
     <li><a href="/zoeken?q=<%= encodeURIComponent(b) %>"><%= b %></a></li>
   <% }) %>
-</ul></div>
-<div><div class="f-ct">Informatie</div><ul class="f-ls">
-  <li><a href="/#over-ons">Over ons</a></li>
-  <li><a href="/#groothandel">Groothandel</a></li>
-  <li><a href="/#contact">Openingstijden</a></li>
-  <li><a href="/#contact">Contact</a></li>
-  <li><a href="#">Privacybeleid</a></li>
-  <li><a href="#">Algemene voorwaarden</a></li>
 </ul></div>
 </div>
 <div class="f-bot"><div class="f-bot-in"><p class="f-cp">© <%= new Date().getFullYear() %> <span>FightPro Enschede</span> — by FP Fight Gear®. Alle rechten voorbehouden.</p><div class="f-lg"><a href="#">Privacy</a><a href="#">Voorwaarden</a><a href="#">Cookies</a></div></div></div>

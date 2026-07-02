@@ -30,31 +30,137 @@
 {
   "name": "Over ons",
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Afbeelding" },
-    { "type": "text", "id": "badge_number", "label": "Badge getal", "default": "2020" },
-    { "type": "text", "id": "badge_label", "label": "Badge label", "default": "Geopend" },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Ons verhaal" },
-    { "type": "text", "id": "heading", "label": "Kop", "default": "Van Topstar naar FightPro" },
-    { "type": "richtext", "id": "text", "label": "Tekst", "default": "<p>Al tientallen jaren ging iedereen in Twente naar TOPSTAR voor vechtsport en fitness artikelen. Toen Topstar in 2019 failliet ging, bleef Enschede zonder een enkele vechtsportwinkel.</p><p>Dankzij ons goede contact met de voormalige eigenaren en hun leveranciers besloten wij de handel voort te zetten onder een nieuwe naam: FightPro. Op 1 september 2020 gingen onze deuren open.</p>" },
-    { "type": "text", "id": "cta_text", "label": "Knoptekst", "default": "Kom langs in de winkel →" },
-    { "type": "url", "id": "cta_link", "label": "Knoplink" }
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Afbeelding"
+    },
+    {
+      "type": "text",
+      "id": "badge_number",
+      "label": "Badge getal",
+      "default": "2020"
+    },
+    {
+      "type": "text",
+      "id": "badge_label",
+      "label": "Badge label",
+      "default": "Geopend"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Ons verhaal"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Kop",
+      "default": "Van Topstar naar FightPro"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Tekst",
+      "default": "<p>Al tientallen jaren ging iedereen in Twente naar TOPSTAR voor vechtsport en fitness artikelen. Toen Topstar in 2019 failliet ging, bleef Enschede zonder een enkele vechtsportwinkel.</p><p>Dankzij ons goede contact met de voormalige eigenaren en hun leveranciers besloten wij de handel voort te zetten onder een nieuwe naam: FightPro. Op 1 september 2020 gingen onze deuren open.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Knoptekst",
+      "default": "Kom langs in de winkel →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Knoplink"
+    }
   ],
   "blocks": [
     {
       "type": "check",
       "name": "Checkpunt",
-      "settings": [ { "type": "text", "id": "text", "label": "Tekst", "default": "Handschoenen en beschermers passen vóór kopen" } ]
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Tekst",
+          "default": "Handschoenen en beschermers passen vóór kopen"
+        }
+      ]
     }
   ],
   "default": {
     "blocks": [
-      { "type": "check", "settings": { "text": "Handschoenen en beschermers passen vóór kopen" } },
-      { "type": "check", "settings": { "text": "Advies van medewerkers die zelf actief sporten" } },
-      { "type": "check", "settings": { "text": "Officieel groothandel voor sportscholen en clubs" } },
-      { "type": "check", "settings": { "text": "Gepersonaliseerde uitrusting met uw eigen logo" } },
-      { "type": "check", "settings": { "text": "Vechtsport, fitness én voeding — alles op één plek" } }
+      {
+        "type": "check",
+        "settings": {
+          "text": "Handschoenen en beschermers passen vóór kopen"
+        }
+      },
+      {
+        "type": "check",
+        "settings": {
+          "text": "Advies van medewerkers die zelf actief sporten"
+        }
+      },
+      {
+        "type": "check",
+        "settings": {
+          "text": "Officieel groothandel voor sportscholen en clubs"
+        }
+      },
+      {
+        "type": "check",
+        "settings": {
+          "text": "Gepersonaliseerde uitrusting met uw eigen logo"
+        }
+      },
+      {
+        "type": "check",
+        "settings": {
+          "text": "Vechtsport, fitness én voeding — alles op één plek"
+        }
+      }
     ]
   },
-  "presets": [ { "name": "Over ons" } ]
+  "presets": [
+    {
+      "name": "Over ons",
+      "blocks": [
+        {
+          "type": "check",
+          "settings": {
+            "text": "Handschoenen en beschermers passen vóór kopen"
+          }
+        },
+        {
+          "type": "check",
+          "settings": {
+            "text": "Advies van medewerkers die zelf actief sporten"
+          }
+        },
+        {
+          "type": "check",
+          "settings": {
+            "text": "Officieel groothandel voor sportscholen en clubs"
+          }
+        },
+        {
+          "type": "check",
+          "settings": {
+            "text": "Gepersonaliseerde uitrusting met uw eigen logo"
+          }
+        },
+        {
+          "type": "check",
+          "settings": {
+            "text": "Vechtsport, fitness én voeding — alles op één plek"
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

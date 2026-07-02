@@ -1,0 +1,30 @@
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb"><a href="{{ routes.root_url }}">Home</a> <span>/</span> <span class="cur">Mijn account</span></nav>
+    <h1 class="shop-title">Mijn account</h1>
+    <p class="shop-blurb">{{ customer.first_name }} {{ customer.last_name }} · {{ customer.email }} · <a href="{{ routes.account_logout_url }}" style="color:var(--gold);">Uitloggen</a></p>
+  </div>
+</div>
+
+<section class="sec" style="background:var(--black);padding-top:36px;">
+  <div class="container">
+    <h2 class="sum-title">Bestellingen</h2>
+    {%- paginate customer.orders by 10 -%}
+      {%- if customer.orders.size > 0 -%}
+        {%- for order in customer.orders -%}
+          <div class="cart-line">
+            <div class="cart-mid">
+              <div class="cart-brand">{{ order.created_at | date: '%d-%m-%Y' }}</div>
+              <a href="{{ order.customer_url }}" class="cart-name">Bestelling {{ order.name }}</a>
+              <div class="cart-unit">{{ order.financial_status_label }} · {{ order.fulfillment_status_label }}</div>
+            </div>
+            <div class="cart-right"><div class="cart-line-total">{{ order.total_price | money }}</div></div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <p class="empty-msg">Je hebt nog geen bestellingen geplaatst.</p>
+      {%- endif -%}
+    {%- endpaginate -%}
+    <p style="margin-top:26px;"><a href="{{ routes.account_addresses_url }}" class="btn-s">Adressen beheren ({{ customer.addresses_count }})</a></p>
+  </div>
+</section>

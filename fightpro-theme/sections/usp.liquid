@@ -18,23 +18,119 @@
       "type": "usp",
       "name": "USP",
       "settings": [
-        { "type": "select", "id": "icon", "label": "Icoon", "options": [
-          {"value":"check","label":"Vinkje"},{"value":"shield","label":"Schild"},
-          {"value":"users","label":"Mensen"},{"value":"truck","label":"Vrachtwagen"}
-        ], "default": "check" },
-        { "type": "text", "id": "title", "label": "Titel", "default": "Passen voor kopen" },
-        { "type": "textarea", "id": "text", "label": "Tekst", "default": "Kom langs en pas handschoenen gewoon in de winkel." }
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icoon",
+          "options": [
+            {
+              "value": "check",
+              "label": "Vinkje"
+            },
+            {
+              "value": "shield",
+              "label": "Schild"
+            },
+            {
+              "value": "users",
+              "label": "Mensen"
+            },
+            {
+              "value": "truck",
+              "label": "Vrachtwagen"
+            }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Passen voor kopen"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Tekst",
+          "default": "Kom langs en pas handschoenen gewoon in de winkel."
+        }
       ]
     }
   ],
   "default": {
     "blocks": [
-      { "type": "usp", "settings": { "icon": "check", "title": "Passen voor kopen", "text": "Net als schoenen zitten handschoenen niet allemaal hetzelfde. Kom langs en pas ze gewoon in de winkel." } },
-      { "type": "usp", "settings": { "icon": "shield", "title": "25 officiële topmerken", "text": "Van Joya, Hayabusa en Twins tot Booster, Fairtex en Venum — altijd 100% origineel." } },
-      { "type": "usp", "settings": { "icon": "users", "title": "Deskundig advies", "text": "Onze medewerkers zijn zelf actieve sporters en weten precies wat bij jou past." } },
-      { "type": "usp", "settings": { "icon": "truck", "title": "Groothandel voor gyms", "text": "Sportscholen en clubs krijgen speciale inkoopprijzen en gepersonaliseerde uitrusting." } }
+      {
+        "type": "usp",
+        "settings": {
+          "icon": "check",
+          "title": "Passen voor kopen",
+          "text": "Net als schoenen zitten handschoenen niet allemaal hetzelfde. Kom langs en pas ze gewoon in de winkel."
+        }
+      },
+      {
+        "type": "usp",
+        "settings": {
+          "icon": "shield",
+          "title": "25 officiële topmerken",
+          "text": "Van Joya, Hayabusa en Twins tot Booster, Fairtex en Venum — altijd 100% origineel."
+        }
+      },
+      {
+        "type": "usp",
+        "settings": {
+          "icon": "users",
+          "title": "Deskundig advies",
+          "text": "Onze medewerkers zijn zelf actieve sporters en weten precies wat bij jou past."
+        }
+      },
+      {
+        "type": "usp",
+        "settings": {
+          "icon": "truck",
+          "title": "Groothandel voor gyms",
+          "text": "Sportscholen en clubs krijgen speciale inkoopprijzen en gepersonaliseerde uitrusting."
+        }
+      }
     ]
   },
-  "presets": [ { "name": "USP-rij" } ]
+  "presets": [
+    {
+      "name": "USP-rij",
+      "blocks": [
+        {
+          "type": "usp",
+          "settings": {
+            "icon": "check",
+            "title": "Passen voor kopen",
+            "text": "Net als schoenen zitten handschoenen niet allemaal hetzelfde. Kom langs en pas ze gewoon in de winkel."
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "icon": "shield",
+            "title": "25 officiële topmerken",
+            "text": "Van Joya, Hayabusa en Twins tot Booster, Fairtex en Venum — altijd 100% origineel."
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "icon": "users",
+            "title": "Deskundig advies",
+            "text": "Onze medewerkers zijn zelf actieve sporters en weten precies wat bij jou past."
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "icon": "truck",
+            "title": "Groothandel voor gyms",
+            "text": "Sportscholen en clubs krijgen speciale inkoopprijzen en gepersonaliseerde uitrusting."
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

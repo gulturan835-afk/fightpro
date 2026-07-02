@@ -1,0 +1,27 @@
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb"><a href="{{ routes.root_url }}">Home</a> <span>/</span> <a href="{{ routes.account_url }}">Mijn account</a> <span>/</span> <span class="cur">Bestelling {{ order.name }}</span></nav>
+    <h1 class="shop-title">Bestelling {{ order.name }}</h1>
+    <p class="shop-blurb">Geplaatst op {{ order.created_at | date: '%d-%m-%Y' }} · {{ order.financial_status_label }}</p>
+  </div>
+</div>
+
+<section class="sec" style="background:var(--black);padding-top:36px;">
+  <div class="container" style="max-width:840px;">
+    {%- for line_item in order.line_items -%}
+      <div class="cart-line">
+        <div class="cart-mid">
+          <div class="cart-brand">{{ line_item.vendor }}</div>
+          <span class="cart-name">{{ line_item.title }}</span>
+          <div class="cart-unit">{{ line_item.quantity }} × {{ line_item.price | money }}</div>
+        </div>
+        <div class="cart-right"><div class="cart-line-total">{{ line_item.final_line_price | money }}</div></div>
+      </div>
+    {%- endfor -%}
+    <div class="sum-row" style="margin-top:16px;"><span>Subtotaal</span><span>{{ order.subtotal_price | money }}</span></div>
+    {%- for shipping_method in order.shipping_methods -%}
+      <div class="sum-row"><span>Verzending ({{ shipping_method.title }})</span><span>{{ shipping_method.price | money }}</span></div>
+    {%- endfor -%}
+    <div class="sum-total"><span>Totaal</span><span>{{ order.total_price | money }}</span></div>
+  </div>
+</section>
