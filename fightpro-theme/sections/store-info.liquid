@@ -1,0 +1,77 @@
+<section class="sec" id="contact" style="background:var(--black);">
+<div class="container">
+  <div class="tc fi" style="margin-bottom:56px;">
+    <div class="lbl">{{ section.settings.eyebrow }}</div>
+    <h2 class="ttl">{{ section.settings.heading }}</h2>
+  </div>
+  <div class="inf-g">
+    <div class="inf-c fi"><div class="inf-hd">Openingstijden</div>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'hours' -%}
+          <div class="hr-row" {{ block.shopify_attributes }}>
+            <span class="hr-d">{{ block.settings.day }}</span>
+            {%- if block.settings.time == blank or block.settings.time == 'Gesloten' -%}
+              <span class="hr-cl">Gesloten</span>
+            {%- else -%}
+              <span class="hr-t">{{ block.settings.time }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+      <p style="font-size:13px;color:var(--text-m);margin-top:20px;line-height:1.6;">{{ section.settings.hours_note }}</p>
+    </div>
+    <div class="inf-c fi d1"><div class="inf-hd">Contactgegevens</div>
+      <div class="ct-row"><div class="ci">{% render 'icon', name: 'pin' %}</div><div><div class="c-lb">Adres</div><div class="c-vl">{{ section.settings.address }}</div></div></div>
+      <div class="ct-row"><div class="ci">{% render 'icon', name: 'phone' %}</div><div><div class="c-lb">Telefoon / WhatsApp</div><div class="c-vl"><a href="tel:{{ section.settings.phone | remove: ' ' }}" style="color:var(--gold);">{{ section.settings.phone }}</a></div></div></div>
+      <div class="ct-row"><div class="ci">{% render 'icon', name: 'mail' %}</div><div><div class="c-lb">E-mail</div><div class="c-vl"><a href="mailto:{{ section.settings.email }}" style="color:var(--gold);">{{ section.settings.email }}</a></div></div></div>
+      {%- if section.settings.iban != blank -%}
+        <div class="ct-row"><div class="ci">{% render 'icon', name: 'lock' %}</div><div><div class="c-lb">IBAN</div><div class="c-vl">{{ section.settings.iban }}</div></div></div>
+      {%- endif -%}
+    </div>
+    <div class="inf-c fi d2"><div class="inf-hd">Locatie</div>
+      <div class="map-bx">{% render 'icon', name: 'pin' %}<p>{{ section.settings.address }}</p></div>
+      <p style="font-size:13px;color:var(--text-m);line-height:1.7;margin:20px 0 16px;">{{ section.settings.map_note }}</p>
+      <a href="{{ section.settings.map_link }}" target="_blank" rel="noopener" class="btn-p" style="display:inline-flex;">Route plannen →</a>
+    </div>
+  </div>
+</div>
+</section>
+
+{% schema %}
+{
+  "name": "Winkel-info",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Vind ons" },
+    { "type": "text", "id": "heading", "label": "Kop", "default": "Openingstijden & contact" },
+    { "type": "text", "id": "hours_note", "label": "Notitie onder tijden", "default": "Iets niet op de site? Bel, WhatsApp of mail ons gewoon." },
+    { "type": "textarea", "id": "address", "label": "Adres", "default": "Lipperkerkstraat 19, 7511 CT Enschede" },
+    { "type": "text", "id": "phone", "label": "Telefoon", "default": "06 340 397 34" },
+    { "type": "text", "id": "email", "label": "E-mail", "default": "info@fightpro.nl" },
+    { "type": "text", "id": "iban", "label": "IBAN" },
+    { "type": "text", "id": "map_note", "label": "Notitie bij kaart", "default": "Kom langs om handschoenen of beschermers te passen." },
+    { "type": "url", "id": "map_link", "label": "Route-link" }
+  ],
+  "blocks": [
+    {
+      "type": "hours",
+      "name": "Openingstijd",
+      "settings": [
+        { "type": "text", "id": "day", "label": "Dag", "default": "Maandag" },
+        { "type": "text", "id": "time", "label": "Tijd (leeg = gesloten)" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "hours", "settings": { "day": "Maandag", "time": "" } },
+      { "type": "hours", "settings": { "day": "Dinsdag", "time": "13:00 – 18:00" } },
+      { "type": "hours", "settings": { "day": "Woensdag", "time": "13:00 – 18:00" } },
+      { "type": "hours", "settings": { "day": "Donderdag", "time": "13:00 – 18:00" } },
+      { "type": "hours", "settings": { "day": "Vrijdag", "time": "13:00 – 18:00" } },
+      { "type": "hours", "settings": { "day": "Zaterdag", "time": "10:00 – 16:00" } },
+      { "type": "hours", "settings": { "day": "Zondag", "time": "" } }
+    ]
+  },
+  "presets": [ { "name": "Winkel-info" } ]
+}
+{% endschema %}

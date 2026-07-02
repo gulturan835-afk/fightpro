@@ -1,0 +1,22 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "FightPro",
+    "theme_version": "1.0.0",
+    "theme_author": "FightPro Enschede",
+    "theme_documentation_url": "https://www.fightpro.nl",
+    "theme_support_url": "https://www.fightpro.nl"
+  },
+  {
+    "name": "Kleuren",
+    "settings": [
+      { "type": "color", "id": "color_gold", "label": "Accentkleur (goud)", "default": "#B8973A" }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      { "type": "image_picker", "id": "favicon", "label": "Favicon", "info": "32 × 32 px aanbevolen" }
+    ]
+  }
+]

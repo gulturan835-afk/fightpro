@@ -1,0 +1,40 @@
+<div class="usp-row"><div class="container"><div class="usp-g">
+  {%- for block in section.blocks -%}
+    <div class="usp-c fi {% cycle '', 'd1', 'd2', 'd3' %}" {{ block.shopify_attributes }}>
+      <div class="usp-ico">{% render 'icon', name: block.settings.icon %}</div>
+      <div>
+        <div class="usp-t">{{ block.settings.title }}</div>
+        <div class="usp-p">{{ block.settings.text }}</div>
+      </div>
+    </div>
+  {%- endfor -%}
+</div></div></div>
+
+{% schema %}
+{
+  "name": "USP-rij",
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "USP",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icoon", "options": [
+          {"value":"check","label":"Vinkje"},{"value":"shield","label":"Schild"},
+          {"value":"users","label":"Mensen"},{"value":"truck","label":"Vrachtwagen"}
+        ], "default": "check" },
+        { "type": "text", "id": "title", "label": "Titel", "default": "Passen voor kopen" },
+        { "type": "textarea", "id": "text", "label": "Tekst", "default": "Kom langs en pas handschoenen gewoon in de winkel." }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "usp", "settings": { "icon": "check", "title": "Passen voor kopen", "text": "Net als schoenen zitten handschoenen niet allemaal hetzelfde. Kom langs en pas ze gewoon in de winkel." } },
+      { "type": "usp", "settings": { "icon": "shield", "title": "25 officiële topmerken", "text": "Van Joya, Hayabusa en Twins tot Booster, Fairtex en Venum — altijd 100% origineel." } },
+      { "type": "usp", "settings": { "icon": "users", "title": "Deskundig advies", "text": "Onze medewerkers zijn zelf actieve sporters en weten precies wat bij jou past." } },
+      { "type": "usp", "settings": { "icon": "truck", "title": "Groothandel voor gyms", "text": "Sportscholen en clubs krijgen speciale inkoopprijzen en gepersonaliseerde uitrusting." } }
+    ]
+  },
+  "presets": [ { "name": "USP-rij" } ]
+}
+{% endschema %}

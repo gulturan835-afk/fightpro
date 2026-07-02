@@ -1,0 +1,22 @@
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb"><a href="{{ routes.root_url }}">Home</a> <span>/</span> <span class="cur">Collecties</span></nav>
+    <h1 class="shop-title">Alle collecties</h1>
+  </div>
+</div>
+
+<section class="sec" style="background:var(--black);padding-top:36px;">
+  <div class="container">
+    <div class="cats-g" style="margin-top:0;">
+      {%- for collection in collections -%}
+        <a class="cat" href="{{ collection.url }}">
+          <div class="cat-bd">
+            <div class="cat-tag">{{ collection.products_count }} producten</div>
+            <div class="cat-n">{{ collection.title }}</div>
+            <div class="cat-a">Bekijk collectie <span>→</span></div>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>

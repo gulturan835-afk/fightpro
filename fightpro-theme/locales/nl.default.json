@@ -1,0 +1,10 @@
+{
+  "general": {
+    "meta": {
+      "page": "Pagina {{ page }}"
+    },
+    "search": {
+      "placeholder": "Zoeken…"
+    }
+  }
+}

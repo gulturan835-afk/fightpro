@@ -1,0 +1,60 @@
+<section class="sec" id="over-ons" style="background:var(--black2);">
+<div class="container"><div class="ab-g">
+  <div class="ab-vis fl">
+    <div class="ab-card">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 560 | image_tag: alt: shop.name, width: 280 }}
+      {%- else -%}
+        {{ 'logo.png' | asset_url | img_tag: shop.name }}
+      {%- endif -%}
+    </div>
+    <div class="ab-fl"><div class="ab-fl-n">{{ section.settings.badge_number }}</div><div class="ab-fl-l">{{ section.settings.badge_label }}</div></div>
+  </div>
+  <div class="fr">
+    <div class="lbl">{{ section.settings.eyebrow }}</div>
+    <h2 class="ab-ttl">{{ section.settings.heading }}</h2>
+    <div class="ab-p">{{ section.settings.text }}</div>
+    <ul class="ck-ls">
+      {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}><div class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>{{ block.settings.text }}</li>
+      {%- endfor -%}
+    </ul>
+    {%- if section.settings.cta_text != blank -%}
+      <a href="{{ section.settings.cta_link | default: '#contact' }}" class="btn-p btn-lg">{{ section.settings.cta_text }}</a>
+    {%- endif -%}
+  </div>
+</div></div>
+</section>
+
+{% schema %}
+{
+  "name": "Over ons",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Afbeelding" },
+    { "type": "text", "id": "badge_number", "label": "Badge getal", "default": "2020" },
+    { "type": "text", "id": "badge_label", "label": "Badge label", "default": "Geopend" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Ons verhaal" },
+    { "type": "text", "id": "heading", "label": "Kop", "default": "Van Topstar naar FightPro" },
+    { "type": "richtext", "id": "text", "label": "Tekst", "default": "<p>Al tientallen jaren ging iedereen in Twente naar TOPSTAR voor vechtsport en fitness artikelen. Toen Topstar in 2019 failliet ging, bleef Enschede zonder een enkele vechtsportwinkel.</p><p>Dankzij ons goede contact met de voormalige eigenaren en hun leveranciers besloten wij de handel voort te zetten onder een nieuwe naam: FightPro. Op 1 september 2020 gingen onze deuren open.</p>" },
+    { "type": "text", "id": "cta_text", "label": "Knoptekst", "default": "Kom langs in de winkel →" },
+    { "type": "url", "id": "cta_link", "label": "Knoplink" }
+  ],
+  "blocks": [
+    {
+      "type": "check",
+      "name": "Checkpunt",
+      "settings": [ { "type": "text", "id": "text", "label": "Tekst", "default": "Handschoenen en beschermers passen vóór kopen" } ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "check", "settings": { "text": "Handschoenen en beschermers passen vóór kopen" } },
+      { "type": "check", "settings": { "text": "Advies van medewerkers die zelf actief sporten" } },
+      { "type": "check", "settings": { "text": "Officieel groothandel voor sportscholen en clubs" } },
+      { "type": "check", "settings": { "text": "Gepersonaliseerde uitrusting met uw eigen logo" } },
+      { "type": "check", "settings": { "text": "Vechtsport, fitness én voeding — alles op één plek" } }
+    ]
+  },
+  "presets": [ { "name": "Over ons" } ]
+}
+{% endschema %}

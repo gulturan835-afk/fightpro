@@ -1,0 +1,31 @@
+<section class="sec" id="merken" style="background:var(--black);">
+<div class="container">
+  <div class="tc fi">
+    <div class="lbl">{{ section.settings.eyebrow }}</div>
+    <h2 class="ttl">{{ section.settings.heading }}</h2>
+    {%- if section.settings.subtitle != blank -%}<p class="sub">{{ section.settings.subtitle }}</p>{%- endif -%}
+  </div>
+  <div class="brands-g fi">
+    {%- assign brand_list = section.settings.brands | split: ',' -%}
+    {%- for brand in brand_list -%}
+      {%- assign b = brand | strip -%}
+      {%- if b != blank -%}
+        <a class="brand-c" href="{{ routes.collections_url }}/vendors?q={{ b | url_encode }}">{{ b }}</a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+</section>
+
+{% schema %}
+{
+  "name": "Merkenwand",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Officiële dealer" },
+    { "type": "text", "id": "heading", "label": "Kop", "default": "Alle 25 merken" },
+    { "type": "text", "id": "subtitle", "label": "Subtitel", "default": "Wij verkopen uitsluitend originele producten, rechtstreeks van de officiële merken en importeurs." },
+    { "type": "textarea", "id": "brands", "label": "Merken (komma-gescheiden)", "default": "Adidas, Bio Tech, Booster, Crossmaxx, Danger, ESN, Fairtex, Fightpro, Hayabusa, Joya, King, Lifemaxx, Makura, Matchu, Namman Muay, PX, Queen, Shockdoctor, Smai, Super Pro, Tatami Fightwear, Twins, UFC, Venum, Windy" }
+  ],
+  "presets": [ { "name": "Merkenwand" } ]
+}
+{% endschema %}

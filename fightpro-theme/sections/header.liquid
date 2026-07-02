@@ -4,7 +4,7 @@
       {%- if section.settings.logo != blank -%}
         {{ section.settings.logo | image_url: width: 312 | image_tag: alt: shop.name, width: 156, height: 52, class: 'logo-img' }}
       {%- else -%}
-        <span class="logo-text">{{ shop.name | default: 'FIGHT' }}<span class="ac">PRO</span></span>
+        <span class="logo-txt">{{ shop.name | default: 'FIGHT' }}<span class="ac">PRO</span></span>
       {%- endif -%}
     </a>
 

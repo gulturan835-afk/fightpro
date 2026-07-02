@@ -1,0 +1,32 @@
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb"><a href="{{ routes.root_url }}">Home</a> <span>/</span> <span class="cur">{{ blog.title }}</span></nav>
+    <h1 class="shop-title">{{ blog.title }}</h1>
+  </div>
+</div>
+
+<section class="sec" style="background:var(--black);padding-top:36px;">
+  <div class="container">
+    {%- paginate blog.articles by 12 -%}
+      <div class="cats-g" style="margin-top:0;">
+        {%- for article in blog.articles -%}
+          <a class="cat" href="{{ article.url }}">
+            <div class="cat-bd">
+              <div class="cat-tag">{{ article.published_at | date: '%d-%m-%Y' }}</div>
+              <div class="cat-n" style="font-size:21px;">{{ article.title }}</div>
+              <div class="cat-a">Lees verder <span>→</span></div>
+            </div>
+          </a>
+        {%- else -%}
+          <p class="empty-msg">Nog geen artikelen.</p>
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}
+        <div class="filter-row" style="justify-content:center;margin-top:44px;">
+          {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" class="chip">← Vorige</a>{%- endif -%}
+          {%- if paginate.next -%}<a href="{{ paginate.next.url }}" class="chip">Volgende →</a>{%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>

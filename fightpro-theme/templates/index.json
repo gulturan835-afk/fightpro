@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "hero": { "type": "hero-intro", "settings": {} },
+    "ticker": { "type": "ticker" },
+    "usp": { "type": "usp" },
+    "tiles": { "type": "collection-tiles" },
+    "featured": { "type": "featured-collection", "settings": {} },
+    "stats": { "type": "stats" },
+    "brands": { "type": "brand-wall", "settings": {} },
+    "about": { "type": "about" },
+    "wholesale": { "type": "wholesale" },
+    "cta": { "type": "cta-banner", "settings": {} },
+    "contact": { "type": "store-info" }
+  },
+  "order": ["hero", "ticker", "usp", "tiles", "featured", "stats", "brands", "about", "wholesale", "cta", "contact"]
+}

@@ -1,0 +1,48 @@
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb"><a href="{{ routes.root_url }}">Home</a> <span>/</span> <span class="cur">{{ collection.title }}</span></nav>
+    <h1 class="shop-title">{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}<div class="shop-blurb">{{ collection.description }}</div>{%- endif -%}
+  </div>
+</div>
+
+<section class="sec" style="background:var(--black);padding-top:36px;">
+  <div class="container">
+    {%- if collection.all_vendors.size > 1 -%}
+      <div class="filter-row" style="margin-top:0;margin-bottom:26px;">
+        <span class="filter-lbl">Merk:</span>
+        <a href="{{ collection.url }}" class="chip {% unless current_vendor %}chip-on{% endunless %}">Alle</a>
+        {%- for vendor in collection.all_vendors -%}
+          <a href="{{ routes.collections_url }}/vendors?q={{ vendor | url_encode }}" class="chip">{{ vendor }}</a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <p class="result-count">{{ collection.products_count }} product{% if collection.products_count != 1 %}en{% endif %}</p>
+
+    {%- paginate collection.products by 24 -%}
+      {%- if collection.products.size > 0 -%}
+        <div class="pg">
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product %}
+          {%- endfor -%}
+        </div>
+        {%- if paginate.pages > 1 -%}
+          <div class="filter-row" style="justify-content:center;margin-top:44px;">
+            {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" class="chip">← Vorige</a>{%- endif -%}
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a href="{{ part.url }}" class="chip">{{ part.title }}</a>
+              {%- else -%}
+                <span class="chip chip-on">{{ part.title }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if paginate.next -%}<a href="{{ paginate.next.url }}" class="chip">Volgende →</a>{%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        <p class="empty-msg">Geen producten gevonden in deze collectie.</p>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>

@@ -1,0 +1,37 @@
+<div class="stats-band">
+<div class="container"><div class="stats-g">
+  {%- for block in section.blocks -%}
+    <div class="fi {% cycle '', 'd1', 'd2', 'd3' %}" {{ block.shopify_attributes }}>
+      <div class="s-num" data-target="{{ block.settings.number }}"{% if block.settings.suffix != blank %} data-suffix="{{ block.settings.suffix }}"{% endif %}{% if block.settings.start != blank and block.settings.start != 0 %} data-start="{{ block.settings.start }}"{% endif %}>0</div>
+      <div class="s-lbl">{{ block.settings.label }}</div>
+    </div>
+  {%- endfor -%}
+</div></div>
+</div>
+
+{% schema %}
+{
+  "name": "Statistieken",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistiek",
+      "settings": [
+        { "type": "number", "id": "number", "label": "Getal", "default": 294 },
+        { "type": "text", "id": "suffix", "label": "Suffix (bv. + of %)" },
+        { "type": "number", "id": "start", "label": "Startwaarde teller", "default": 0 },
+        { "type": "text", "id": "label", "label": "Label", "default": "Producten" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "stat", "settings": { "number": 294, "suffix": "+", "label": "Producten" } },
+      { "type": "stat", "settings": { "number": 25, "label": "Merken" } },
+      { "type": "stat", "settings": { "number": 2020, "start": 2010, "label": "Geopend" } },
+      { "type": "stat", "settings": { "number": 100, "suffix": "%", "label": "Origineel" } }
+    ]
+  },
+  "presets": [ { "name": "Statistieken" } ]
+}
+{% endschema %}

@@ -1,0 +1,39 @@
+<section class="sec" style="background:var(--black2);">
+<div class="container">
+  <div class="p-hd">
+    <div class="fi">
+      <div class="lbl">{{ section.settings.eyebrow }}</div>
+      <h2 class="ttl">{{ section.settings.heading }}</h2>
+    </div>
+    {%- assign col = section.settings.collection -%}
+    <a href="{{ col.url | default: routes.all_products_collection_url }}" class="la fi">{{ section.settings.link_text }}</a>
+  </div>
+  <div class="pg">
+    {%- if col != blank and col.products.size > 0 -%}
+      {%- for product in col.products limit: section.settings.limit -%}
+        {% render 'product-card', product: product %}
+      {%- endfor -%}
+    {%- else -%}
+      {%- for i in (1..4) -%}
+        <article class="pc"><div class="p-img"></div><div class="p-bd"><div class="p-br">Merk</div><h3 class="p-nm">Kies een collectie in de theme-editor</h3><div class="p-ft"><span class="pr">€ —</span></div></div></article>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+  <div class="p-more fi"><a href="{{ col.url | default: routes.all_products_collection_url }}" class="btn-p btn-lg">{{ section.settings.button_text }}</a></div>
+</div>
+</section>
+
+{% schema %}
+{
+  "name": "Uitgelichte collectie",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Uitgelicht" },
+    { "type": "text", "id": "heading", "label": "Kop", "default": "Best verkochte" },
+    { "type": "collection", "id": "collection", "label": "Collectie" },
+    { "type": "range", "id": "limit", "label": "Aantal producten", "min": 4, "max": 12, "step": 4, "default": 8 },
+    { "type": "text", "id": "link_text", "label": "Linktekst", "default": "Alle producten →" },
+    { "type": "text", "id": "button_text", "label": "Knoptekst", "default": "Bekijk de hele collectie →" }
+  ],
+  "presets": [ { "name": "Uitgelichte collectie" } ]
+}
+{% endschema %}

@@ -1,0 +1,18 @@
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb"><a href="{{ routes.root_url }}">Home</a> <span>/</span> <a href="{{ blog.url }}">{{ blog.title }}</a> <span>/</span> <span class="cur">{{ article.title }}</span></nav>
+    <h1 class="shop-title">{{ article.title }}</h1>
+    <p class="shop-blurb">{{ article.published_at | date: '%d-%m-%Y' }}{% if article.author != blank %} · {{ article.author }}{% endif %}</p>
+  </div>
+</div>
+
+<section class="sec" style="background:var(--black);padding-top:40px;">
+  <div class="container" style="max-width:840px;">
+    {%- if article.image -%}
+      <div style="border-radius:var(--r-l);overflow:hidden;margin-bottom:36px;">
+        {{ article.image | image_url: width: 1600 | image_tag: alt: article.title }}
+      </div>
+    {%- endif -%}
+    <div class="ab-p">{{ article.content }}</div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+{% layout none %}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ 'Cadeaubon' }} — {{ shop.name }}</title>
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+</head>
+<body style="display:flex;align-items:center;justify-content:center;min-height:100vh;">
+  <div style="text-align:center;padding:40px;">
+    <div class="lbl" style="justify-content:center;">{{ shop.name }}</div>
+    <h1 class="ttl" style="margin-bottom:20px;">Cadeaubon</h1>
+    <p class="sub" style="margin:0 auto 24px;">Waarde: <strong>{{ gift_card.initial_value | money }}</strong></p>
+    <p style="font-family:monospace;font-size:22px;letter-spacing:3px;background:var(--surface);border:1px dashed var(--border-g);border-radius:8px;padding:18px 26px;display:inline-block;">{{ gift_card.code | format_code }}</p>
+    <p class="sub" style="margin:24px auto 0;">In te wisselen bij {{ shop.name }} — <a href="{{ shop.url }}" style="color:var(--gold);">{{ shop.url | remove: 'https://' }}</a></p>
+  </div>
+</body>
+</html>

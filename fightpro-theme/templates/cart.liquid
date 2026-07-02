@@ -1,0 +1,57 @@
+<div class="shop-head">
+  <div class="container">
+    <nav class="crumb"><a href="{{ routes.root_url }}">Home</a> <span>/</span> <span class="cur">Winkelwagen</span></nav>
+    <h1 class="shop-title">Winkelwagen</h1>
+  </div>
+</div>
+
+<section class="sec" style="background:var(--black);padding-top:32px;">
+  <div class="container">
+    {%- if cart.item_count == 0 -%}
+      <div class="empty-cart">
+        <p class="empty-msg">Je winkelwagen is leeg.</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn-p btn-lg">Verder winkelen →</a>
+      </div>
+    {%- else -%}
+      <form action="{{ routes.cart_url }}" method="post" novalidate>
+        <div class="cart-g">
+          <div class="cart-lines">
+            {%- for item in cart.items -%}
+              <div class="cart-line">
+                <a href="{{ item.url }}" class="cart-thumb">
+                  {%- if item.image -%}
+                    {{ item.image | image_url: width: 184 | image_tag: alt: item.product.title, width: 92, height: 92 }}
+                  {%- endif -%}
+                </a>
+                <div class="cart-mid">
+                  <div class="cart-brand">{{ item.vendor }}</div>
+                  <a href="{{ item.url }}" class="cart-name">{{ item.product.title }}</a>
+                  {%- unless item.variant.title == 'Default Title' -%}
+                    <div class="cart-size">{{ item.variant.title }}</div>
+                  {%- endunless -%}
+                  <div class="cart-unit">{{ item.price | money }} per stuk</div>
+                </div>
+                <div class="cart-right">
+                  <div class="qty-box sm">
+                    <input type="number" name="updates[]" class="qty-input" value="{{ item.quantity }}" min="0" aria-label="Aantal">
+                  </div>
+                  <div class="cart-line-total">{{ item.final_line_price | money }}</div>
+                  <a href="{{ item.url_to_remove }}" class="cart-remove">Verwijderen</a>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+
+          <aside class="cart-summary">
+            <h2 class="sum-title">Overzicht</h2>
+            <div class="sum-row"><span>Subtotaal</span><span>{{ cart.items_subtotal_price | money }}</span></div>
+            <div class="sum-total"><span>Totaal</span><span>{{ cart.total_price | money }}</span></div>
+            <button type="submit" name="update" class="btn-s" style="width:100%;justify-content:center;margin-top:16px;">Winkelwagen bijwerken</button>
+            <button type="submit" name="checkout" class="btn-p btn-lg sum-checkout">Afrekenen →</button>
+            <a href="{{ routes.all_products_collection_url }}" class="sum-cont">← Verder winkelen</a>
+          </aside>
+        </div>
+      </form>
+    {%- endif -%}
+  </div>
+</section>
