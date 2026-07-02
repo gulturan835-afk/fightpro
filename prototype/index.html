@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FightPro — 3D scroll-intro prototype</title>
+<meta name="description" content="Prototype: scroll-gestuurde 3D intro voor het FightPro redesign.">
+<link rel="preload" href="fonts/anton-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="css/intro.css">
+</head>
+<body>
+
+<!-- ========== 3D SCROLL-INTRO ========== -->
+<section class="intro" id="intro" aria-label="Introductie">
+  <canvas class="intro-canvas" id="introCanvas" aria-hidden="true"></canvas>
+
+  <!-- Statische fallback (zichtbaar zonder WebGL / bij reduced-motion / lage FPS) -->
+  <div class="intro-fallback" id="introFallback" hidden>
+    <div class="fb-grid" aria-hidden="true"></div>
+    <div class="fb-glow" aria-hidden="true"></div>
+  </div>
+
+  <!-- Hoofdstuk 1 · titel -->
+  <div class="chapter ch-1" id="ch1">
+    <p class="eyebrow">Enschede · sinds 2020</p>
+    <h1 class="mega" aria-label="FightPro">
+      <span class="ltr">F</span><span class="ltr">I</span><span class="ltr">G</span><span class="ltr">H</span><span class="ltr">T</span><span class="ltr ac">P</span><span class="ltr ac">R</span><span class="ltr ac">O</span>
+    </h1>
+    <p class="ch-sub">Dé vechtsportwinkel van Twente</p>
+    <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
+  </div>
+
+  <!-- Hoofdstuk 2 · claims -->
+  <div class="chapter ch-2" id="ch2" aria-hidden="true">
+    <p class="line l1">Topmerken.</p>
+    <p class="line l2 ac">Topprijzen.</p>
+    <p class="line l3">Top advies.</p>
+  </div>
+
+  <!-- Hoofdstuk 3 · lockup + CTA -->
+  <div class="chapter ch-3" id="ch3" aria-hidden="true">
+    <p class="eyebrow">Passen vóór kopen — 294 producten · 24 merken</p>
+    <p class="lockup">Train harder.<br><span class="ac">Vecht slimmer.</span></p>
+    <div class="cta-row">
+      <a class="btn-p btn-lg" href="#collectie">Bekijk de collectie <span aria-hidden="true">→</span></a>
+      <a class="btn-s btn-lg" href="#collectie">Ons verhaal</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DEMO-VERVOLGSECTIE (toont de soepele overgang na de intro) ========== -->
+<section class="after" id="collectie">
+  <div class="container">
+    <p class="eyebrow">Ons assortiment</p>
+    <h2 class="h2">Alles voor de <span class="ac">vechtsporter</span></h2>
+    <p class="sub">Hier vloeit de intro over in de gewone pagina — de rest van de homepage volgt in Fase&nbsp;3.</p>
+    <div class="demo-grid">
+      <div class="demo-card"><div class="dc-tag">Meest verkocht</div><div class="dc-n">Bokshandschoenen</div></div>
+      <div class="demo-card"><div class="dc-tag">Bescherming</div><div class="dc-n">Scheenbeschermers</div></div>
+      <div class="demo-card"><div class="dc-tag">Training</div><div class="dc-n">Bokszakken &amp; pads</div></div>
+    </div>
+  </div>
+</section>
+
+<script src="vendor/three.min.js"></script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="js/intro.js"></script>
+</body>
+</html>
